@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sebastián Zamperoni — Coach deportivo especializado en natación, running, ciclismo y triatlón Ironman. Entrenamiento por TrainingPeaks." />
+  <title>Sebastián Zamperoni | Coach · Ironman · Running · Natación · SZ Tria Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/servicios.css" />
+  <link rel="stylesheet" href="css/trainingpeaks.css" />
+  <link rel="stylesheet" href="css/galeria.css" />
+  <link rel="stylesheet" href="css/contacto.css" />
+</head>
+<body>
+
+  <!-- HEADER + NAVBAR -->
+  <header class="header" id="inicio">
+    <nav class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="#inicio" class="navbar__logo">
+          <svg class="navbar__logo-svg" viewBox="0 0 60 56" xmlns="http://www.w3.org/2000/svg" aria-label="SZ Logo">
+            <text x="1" y="40" font-family="Georgia,serif" font-size="42" font-weight="900" font-style="italic" fill="#FF44E4">S</text>
+            <text x="20" y="48" font-family="Georgia,serif" font-size="48" font-weight="900" font-style="italic" fill="#FF44E4">Z</text>
+          </svg>
+          <span class="navbar__logo-text">SEBASTIÁN<strong>ZAMPERONI</strong></span>
+        </a>
+        <ul class="navbar__links" id="navLinks">
+          <li><a href="#inicio"        class="navbar__link active">Inicio</a></li>
+          <li><a href="#servicios"     class="navbar__link">Servicios</a></li>
+          <li><a href="#trainingpeaks" class="navbar__link">TrainingPeaks</a></li>
+          <li><a href="#galeria"       class="navbar__link">Galería</a></li>
+          <li><a href="#contacto"      class="navbar__link">Contacto</a></li>
+          <li><a href="#contacto"      class="btn btn--cta navbar__cta">Empezá ahora</a></li>
+        </ul>
+        <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- SECCIÓN 1: HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=1800&q=85" alt="Atleta corriendo al amanecer" class="hero__img" />
+        <div class="hero__overlay"></div>
+        <div class="hero__diagonal"></div>
+      </div>
+      <div class="hero__content">
+        <div class="hero__disciplines">
+          <span><i class="bi bi-water"></i> Natación</span>
+          <span class="sep">·</span>
+          <span><i class="bi bi-person-walking"></i> Running</span>
+          <span class="sep">·</span>
+          <span><i class="bi bi-bicycle"></i> Ciclismo</span>
+          <span class="sep">·</span>
+          <span><i class="bi bi-trophy-fill"></i> Ironman</span>
+        </div>
+        <h1 class="hero__title">
+          Entrenamiento real<br />
+          <em>para desafíos<br />extraordinarios.</em>
+        </h1>
+        <p class="hero__subtitle">
+          Preparación física para natación, running y triatlón<br class="hero__br" />
+          de la mano de un atleta que entiende tus tiempos.
+        </p>
+        <div class="hero__team-badge">
+          <svg viewBox="0 0 40 38" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="28" font-family="Georgia,serif" font-size="28" font-weight="900" font-style="italic" fill="#FF44E4">S</text>
+            <text x="14" y="34" font-family="Georgia,serif" font-size="32" font-weight="900" font-style="italic" fill="#FF44E4">Z</text>
+          </svg>
+          <span>SZ TRIA TEAM</span>
+        </div>
+        <div class="hero__ctas">
+          <a href="#servicios" class="btn btn--primary"><i class="bi bi-arrow-right-circle"></i> Ver servicios</a>
+          <a href="#contacto"  class="btn btn--ghost"><i class="bi bi-chat-dots"></i> Consultar gratis</a>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat"><strong>+200</strong><span>Atletas entrenados</span></div>
+          <div class="hero__stat-sep"></div>
+          <div class="hero__stat"><strong>8</strong><span>Finishes Ironman</span></div>
+          <div class="hero__stat-sep"></div>
+          <div class="hero__stat"><strong>12 años</strong><span>de experiencia</span></div>
+        </div>
+      </div>
+      <a href="#servicios" class="hero__scroll" aria-label="Ir a servicios">
+        <i class="bi bi-chevron-double-down"></i>
+      </a>
+    </section>
+  </header>
+
+  <main>
+
+    <!-- SECCIÓN 2: SERVICIOS -->
+    <section class="servicios" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow"><i class="bi bi-grid-3x3-gap"></i> Lo que ofrezco</p>
+          <h2 class="section-title">Mis servicios</h2>
+          <p class="section-desc">Planes diseñados a medida según tu nivel, objetivos y disponibilidad horaria.</p>
+        </div>
+        <div class="cards-grid">
+
+          <article class="svc-card" id="svc-natacion">
+            <div class="svc-card__top">
+              <div class="svc-card__icon"><i class="bi bi-water"></i></div>
+              <span class="svc-card__tag">Pileta · Aguas abiertas</span>
+            </div>
+            <h3 class="svc-card__title">Natación<br />Técnica</h3>
+            <p class="svc-card__desc">Corrección de estilo, respiración, patada y brazada. Adaptado para pileta y aguas abiertas con visión de carrera.</p>
+            <ul class="svc-card__features">
+              <li><i class="bi bi-check2-circle"></i> Análisis biomecánico en video</li>
+              <li><i class="bi bi-check2-circle"></i> Plan de volumen semanal</li>
+              <li><i class="bi bi-check2-circle"></i> Seguimiento por TrainingPeaks</li>
+              <li><i class="bi bi-check2-circle"></i> Sesiones presenciales o remotas</li>
+            </ul>
+            <a href="#contacto" class="btn btn--primary svc-card__btn"><i class="bi bi-envelope-arrow-up"></i> Consultar</a>
+          </article>
+
+          <article class="svc-card" id="svc-running">
+            <div class="svc-card__top">
+              <div class="svc-card__icon svc-card__icon--alt"><i class="bi bi-stopwatch"></i></div>
+              <span class="svc-card__tag">Maratón · Media maratón</span>
+            </div>
+            <h3 class="svc-card__title">Running<br />Plan</h3>
+            <p class="svc-card__desc">Periodización inteligente para que llegués al día de la carrera en tu mejor versión. Desde principiantes hasta marcas personales.</p>
+            <ul class="svc-card__features">
+              <li><i class="bi bi-check2-circle"></i> Test de VO2 máx y umbrales</li>
+              <li><i class="bi bi-check2-circle"></i> Plan por pulso y RPE</li>
+              <li><i class="bi bi-check2-circle"></i> Nutrición deportiva básica</li>
+              <li><i class="bi bi-check2-circle"></i> Ajustes semanales vía TrainingPeaks</li>
+            </ul>
+            <a href="#contacto" class="btn btn--primary svc-card__btn"><i class="bi bi-envelope-arrow-up"></i> Consultar</a>
+          </article>
+
+          <article class="svc-card svc-card--premium" id="svc-ironman">
+            <div class="svc-card__premium-badge"><i class="bi bi-star-fill"></i> Premium</div>
+            <div class="svc-card__top">
+              <div class="svc-card__icon svc-card__icon--gold"><i class="bi bi-trophy-fill"></i></div>
+              <span class="svc-card__tag">Preparación integral · Triatlón</span>
+            </div>
+            <h3 class="svc-card__title">Ironman<br />Training</h3>
+            <p class="svc-card__desc">El plan más completo. Entrenamiento de las 3 disciplinas con periodización anual, transiciones y estrategia de carrera.</p>
+            <ul class="svc-card__features">
+              <li><i class="bi bi-check2-circle"></i> Natación + Ciclismo + Running</li>
+              <li><i class="bi bi-check2-circle"></i> Transiciones T1 y T2</li>
+              <li><i class="bi bi-check2-circle"></i> Nutrición e hidratación en carrera</li>
+              <li><i class="bi bi-check2-circle"></i> Estrategia de ritmo y energía</li>
+              <li><i class="bi bi-check2-circle"></i> Soporte directo 7 días/semana</li>
+            </ul>
+            <a href="#contacto" class="btn btn--cta svc-card__btn"><i class="bi bi-lightning-charge-fill"></i> Empezar ahora</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: TRAINING PEAKS -->
+    <section class="tp-section" id="trainingpeaks">
+      <div class="container">
+        <div class="tp-box">
+
+          <!-- Columna izquierda: texto -->
+          <div class="tp-content">
+            <p class="eyebrow"><i class="bi bi-laptop"></i> Plataforma oficial</p>
+            <h2 class="section-title tp-title">
+              Entrenamos con<br /><em>TrainingPeaks</em>
+            </h2>
+            <p class="tp-desc">
+              Todos mis planes se gestionan a través de <strong>TrainingPeaks</strong>, la plataforma web y móvil líder mundial diseñada para que atletas y entrenadores planifiquen, analicen y sigan entrenamientos de resistencia.
+            </p>
+
+            <ul class="tp-features">
+              <li>
+                <div class="tp-feat-icon"><i class="bi bi-calendar2-check"></i></div>
+                <div>
+                  <strong>Planificación estructurada</strong>
+                  <span>Recibís tu plan semana a semana con cada sesión detallada: duración, zonas, métricas y objetivos.</span>
+                </div>
+              </li>
+              <li>
+                <div class="tp-feat-icon"><i class="bi bi-bar-chart-line"></i></div>
+                <div>
+                  <strong>Análisis de rendimiento</strong>
+                  <span>Métricas avanzadas de carga, TSS, CTL y ATL para entender tu progreso real en tiempo real.</span>
+                </div>
+              </li>
+              <li>
+                <div class="tp-feat-icon"><i class="bi bi-phone"></i></div>
+                <div>
+                  <strong>App móvil siempre disponible</strong>
+                  <span>Accedé a tus entrenamientos desde el celular, sincronizá con Garmin, Wahoo, Polar y más.</span>
+                </div>
+              </li>
+              <li>
+                <div class="tp-feat-icon"><i class="bi bi-chat-left-dots"></i></div>
+                <div>
+                  <strong>Feedback directo del coach</strong>
+                  <span>Comentá cada sesión y recibís retroalimentación personalizada para mejorar día a día.</span>
+                </div>
+              </li>
+            </ul>
+
+            <a href="https://www.trainingpeaks.com" target="_blank" rel="noopener" class="btn btn--tp">
+              <svg viewBox="0 0 22 18" width="18" height="14" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0"  y="4" width="4" height="10" rx="0.8" fill="currentColor"/>
+                <rect x="6"  y="0" width="4" height="18" rx="0.8" fill="currentColor"/>
+                <rect x="12" y="5" width="4" height="8"  rx="0.8" fill="currentColor"/>
+              </svg>
+              Conocer TrainingPeaks
+            </a>
+          </div>
+
+          <!-- Columna derecha: mockup -->
+          <div class="tp-visual">
+            <div class="tp-mockup">
+              <div class="tp-mockup__header">
+                <div class="tp-mockup__dots"><span></span><span></span><span></span></div>
+                <span class="tp-mockup__title">
+                  <svg viewBox="0 0 16 14" width="12" height="10" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0"  y="3" width="3" height="8"  rx="0.4" fill="#1E5BC6"/>
+                    <rect x="4.5" y="0" width="3" height="14" rx="0.4" fill="#1E5BC6"/>
+                    <rect x="9.5" y="4" width="3" height="6"  rx="0.4" fill="#1E5BC6"/>
+                  </svg>
+                  TrainingPeaks · Dashboard
+                </span>
+              </div>
+              <div class="tp-mockup__body">
+                <div class="tp-metrics">
+                  <div class="tp-metric">
+                    <span class="tp-metric__label">CTL (Forma)</span>
+                    <span class="tp-metric__val tp-metric__val--blue">82</span>
+                  </div>
+                  <div class="tp-metric">
+                    <span class="tp-metric__label">ATL (Fatiga)</span>
+                    <span class="tp-metric__val tp-metric__val--pink">94</span>
+                  </div>
+                  <div class="tp-metric">
+                    <span class="tp-metric__label">TSB (Estado)</span>
+                    <span class="tp-metric__val tp-metric__val--white">−12</span>
+                  </div>
+                </div>
+                <div class="tp-week">
+                  <p class="tp-week__label">Carga semanal — Semana 14</p>
+                  <div class="tp-bars">
+                    <div class="tp-bar"><div class="tp-bar__fill" style="height:55%"></div><span>L</span></div>
+                    <div class="tp-bar"><div class="tp-bar__fill tp-bar__fill--rest" style="height:10%"></div><span>M</span></div>
+                    <div class="tp-bar"><div class="tp-bar__fill" style="height:80%"></div><span>Mi</span></div>
+                    <div class="tp-bar"><div class="tp-bar__fill" style="height:65%"></div><span>J</span></div>
+                    <div class="tp-bar"><div class="tp-bar__fill tp-bar__fill--rest" style="height:15%"></div><span>V</span></div>
+                    <div class="tp-bar"><div class="tp-bar__fill tp-bar__fill--long" style="height:100%"></div><span>S</span></div>
+                    <div class="tp-bar"><div class="tp-bar__fill tp-bar__fill--rest" style="height:5%"></div><span>D</span></div>
+                  </div>
+                </div>
+                <div class="tp-today">
+                  <div class="tp-today__header">
+                    <i class="bi bi-calendar-check"></i>
+                    <span>Sesión de hoy</span>
+                    <span class="tp-today__badge">Natación</span>
+                  </div>
+                  <p class="tp-today__desc">Técnica de brazada · 2.400m · Zona 2 · 65 min</p>
+                  <div class="tp-today__progress">
+                    <div class="tp-today__bar" style="width:68%"></div>
+                  </div>
+                  <div class="tp-today__meta">
+                    <span><i class="bi bi-clock"></i> 44 min completados</span>
+                    <span class="tp-today__pct">68%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tp-badges">
+              <span class="tp-badge"><i class="bi bi-watch"></i> Garmin</span>
+              <span class="tp-badge"><i class="bi bi-phone"></i> Wahoo</span>
+              <span class="tp-badge"><i class="bi bi-heart-pulse"></i> Polar</span>
+              <span class="tp-badge"><i class="bi bi-activity"></i> Strava</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: GALERÍA -->
+    <section class="galeria" id="galeria">
+      <div class="container">
+        <div class="section-head section-head--light">
+          <p class="eyebrow"><i class="bi bi-images"></i> En acción</p>
+          <h2 class="section-title">El trabajo habla<br />por sí solo</h2>
+          <p class="section-desc">Competencias, pileta y detalles del entrenamiento real.</p>
+        </div>
+        <div class="galeria__grid">
+          <figure class="galeria__item galeria__item--wide">
+            <img src="https://images.unsplash.com/photo-1530143311094-34d807799e8f?w=900&q=80" alt="Atleta cruzando la meta en triatlón" loading="lazy" />
+            <figcaption><i class="bi bi-trophy"></i> Ironman · Llegada a meta</figcaption>
+          </figure>
+          <figure class="galeria__item">
+            <img src="https://images.unsplash.com/photo-1594882645126-14ac19a0f16b?w=500&q=75" alt="Corredor en maratón" loading="lazy" />
+            <figcaption><i class="bi bi-person-walking"></i> Running · Maratón</figcaption>
+          </figure>
+          <figure class="galeria__item">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75" alt="Ciclista en carrera" loading="lazy" />
+            <figcaption><i class="bi bi-bicycle"></i> Ciclismo · Gran Fondo</figcaption>
+          </figure>
+          <figure class="galeria__item">
+            <img src="https://images.unsplash.com/photo-1560090995-e9a16293b7e4?w=500&q=75" alt="Nadadores en pileta entrenando" loading="lazy" />
+            <figcaption><i class="bi bi-water"></i> Alumnos · Pileta técnica</figcaption>
+          </figure>
+          <figure class="galeria__item">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=75" alt="Grupo nadando en lago" loading="lazy" />
+            <figcaption><i class="bi bi-people"></i> Aguas abiertas · Comunidad</figcaption>
+          </figure>
+          <figure class="galeria__item">
+            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&q=75" alt="Plan de entrenamiento" loading="lazy" />
+            <figcaption><i class="bi bi-journal-check"></i> Planificación</figcaption>
+          </figure>
+          <figure class="galeria__item">
+            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=500&q=75" alt="Equipamiento de natación" loading="lazy" />
+            <figcaption><i class="bi bi-stopwatch"></i> Equipamiento · Técnica</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: CONTACTO -->
+    <section class="contacto" id="contacto">
+      <div class="contacto__layout">
+
+        <div class="contacto__info">
+          <div class="contacto__info-top">
+            <p class="eyebrow"><i class="bi bi-send-check"></i> Hablemos</p>
+            <h2 class="section-title">Tu próximo<br /><em>desafío empieza acá.</em></h2>
+            <p class="contacto__desc">Completá el formulario y te respondo en menos de 24hs. La primera consulta es siempre gratuita.</p>
+          </div>
+          <ul class="contacto__data">
+            <li>
+              <i class="bi bi-geo-alt-fill"></i>
+              <div><strong>Ubicación</strong><span>Ciudad de Buenos Aires, Argentina</span></div>
+            </li>
+            <li>
+              <i class="bi bi-whatsapp"></i>
+              <div><strong>WhatsApp</strong><span>+54 9 11 5555-0000</span></div>
+            </li>
+            <li>
+              <i class="bi bi-envelope-fill"></i>
+              <div><strong>Email</strong><span>sebastian@sztriateam.com.ar</span></div>
+            </li>
+            <li>
+              <i class="bi bi-instagram"></i>
+              <div><strong>Instagram</strong><span>@sz.triateam</span></div>
+            </li>
+          </ul>
+          <div class="contacto__redes">
+            <a href="#" aria-label="Instagram" class="social-btn"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"   class="social-btn"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" aria-label="YouTube"    class="social-btn"><i class="bi bi-youtube"></i></a>
+            <a href="#" aria-label="Strava"     class="social-btn"><i class="bi bi-activity"></i></a>
+          </div>
+        </div>
+
+        <div class="contacto__form-wrap">
+          <form class="form" id="coachForm">
+            <h3 class="form__title">Enviá tu consulta</h3>
+            <div class="form__row">
+              <div class="form__group">
+                <label for="nombre" class="form__label"><i class="bi bi-person"></i> Nombre completo <span>*</span></label>
+                <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Juan Pérez" required />
+              </div>
+              <div class="form__group">
+                <label for="telefono" class="form__label"><i class="bi bi-telephone"></i> Teléfono <span>*</span></label>
+                <input type="tel" id="telefono" name="telefono" class="form__input" placeholder="+54 11 1234-5678" required />
+              </div>
+            </div>
+            <div class="form__group">
+              <label for="email" class="form__label"><i class="bi bi-envelope"></i> Email <span>*</span></label>
+              <input type="email" id="email" name="email" class="form__input" placeholder="juan@email.com" required />
+            </div>
+            <div class="form__group">
+              <label for="objetivo" class="form__label"><i class="bi bi-bullseye"></i> ¿Cuál es tu próximo objetivo? <span>*</span></label>
+              <select id="objetivo" name="objetivo" class="form__input form__select" required>
+                <option value="" disabled selected>Seleccioná tu meta</option>
+                <option value="maraton">Maratón (42K)</option>
+                <option value="media-maraton">Media Maratón (21K)</option>
+                <option value="triatlon">Triatlón / Ironman</option>
+                <option value="natacion">Natación competitiva</option>
+                <option value="ciclismo">Ciclismo / Gran Fondo</option>
+                <option value="general">Preparación física general</option>
+              </select>
+            </div>
+            <fieldset class="form__fieldset">
+              <legend class="form__label"><i class="bi bi-activity"></i> ¿Entrenás actualmente?</legend>
+              <div class="form__radios">
+                <label class="form__radio-label">
+                  <input type="radio" name="entrena" value="si" />
+                  <span class="form__radio-custom"></span>
+                  <span>Sí, entreno regularmente</span>
+                </label>
+                <label class="form__radio-label">
+                  <input type="radio" name="entrena" value="no" />
+                  <span class="form__radio-custom"></span>
+                  <span>No, quiero empezar desde cero</span>
+                </label>
+                <label class="form__radio-label">
+                  <input type="radio" name="entrena" value="irregular" />
+                  <span class="form__radio-custom"></span>
+                  <span>De forma irregular</span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="form__fieldset">
+              <legend class="form__label"><i class="bi bi-check2-square"></i> Me interesa entrenar (puede ser más de una)</legend>
+              <div class="form__checks">
+                <label class="form__check-label">
+                  <input type="checkbox" name="disciplina" value="natacion" />
+                  <span class="form__check-custom"><i class="bi bi-check-lg"></i></span>
+                  <span>Natación</span>
+                </label>
+                <label class="form__check-label">
+                  <input type="checkbox" name="disciplina" value="running" />
+                  <span class="form__check-custom"><i class="bi bi-check-lg"></i></span>
+                  <span>Running</span>
+                </label>
+                <label class="form__check-label">
+                  <input type="checkbox" name="disciplina" value="ciclismo" />
+                  <span class="form__check-custom"><i class="bi bi-check-lg"></i></span>
+                  <span>Ciclismo</span>
+                </label>
+                <label class="form__check-label">
+                  <input type="checkbox" name="disciplina" value="ironman" />
+                  <span class="form__check-custom"><i class="bi bi-check-lg"></i></span>
+                  <span>Ironman / Triatlón</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="form__group">
+              <label for="comentario" class="form__label"><i class="bi bi-chat-left-text"></i> Contame tu historia <span>*</span></label>
+              <textarea id="comentario" name="comentario" class="form__input form__textarea" rows="4" placeholder="¿Cuánto tiempo tenés para entrenar? ¿Alguna lesión? ¿Qué querés lograr?" required></textarea>
+            </div>
+            <div class="form__actions">
+              <button type="submit" class="btn btn--cta btn--submit"><i class="bi bi-send-fill"></i> Enviar consulta</button>
+              <button type="reset"  class="btn btn--ghost"><i class="bi bi-arrow-counterclockwise"></i> Limpiar</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="#inicio" class="navbar__logo">
+          <svg viewBox="0 0 60 56" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+            <text x="1" y="40" font-family="Georgia,serif" font-size="42" font-weight="900" font-style="italic" fill="#FF44E4">S</text>
+            <text x="20" y="48" font-family="Georgia,serif" font-size="48" font-weight="900" font-style="italic" fill="#FF44E4">Z</text>
+          </svg>
+          <span class="navbar__logo-text">SEBASTIÁN<strong>ZAMPERONI</strong></span>
+        </a>
+        <p>Preparador físico certificado · SZ Tria Team<br />Natación · Running · Ciclismo · Ironman</p>
+        <span class="footer__tp-note">
+          <svg viewBox="0 0 16 14" width="13" height="11" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0"   y="3" width="3" height="8"  rx="0.4" fill="#1E5BC6"/>
+            <rect x="4.5" y="0" width="3" height="14" rx="0.4" fill="#1E5BC6"/>
+            <rect x="9.5" y="4" width="3" height="6"  rx="0.4" fill="#1E5BC6"/>
+          </svg>
+          Clases gestionadas por TrainingPeaks
+        </span>
+        <div class="footer__redes">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Strava"><i class="bi bi-activity"></i></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#trainingpeaks">TrainingPeaks</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#svc-natacion">Natación técnica</a></li>
+          <li><a href="#svc-running">Running plan</a></li>
+          <li><a href="#svc-ironman">Ironman training</a></li>
+          <li><a href="#contacto">Consulta gratis</a></li>
+        </ul>
+      </div>
+      <div class="footer__cta">
+        <p class="footer__cta-text">¿Listo para el próximo desafío?</p>
+        <a href="#contacto" class="btn btn--cta"><i class="bi bi-lightning-charge-fill"></i> Empezá hoy</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Sebastián Zamperoni · SZ Tria Team · Todos los derechos reservados</p>
+      <p>Diseñado con <i class="bi bi-heart-fill" style="color:#FF44E4;"></i> para atletas que no se rinden</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
