@@ -553,10 +553,3 @@
   color: var(--color-blue-lt);
   margin-top: 0.25rem;
 }
-
-/* Radios en fila horizontal (formulario simplificado) */
-.form__radios--row {
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-}

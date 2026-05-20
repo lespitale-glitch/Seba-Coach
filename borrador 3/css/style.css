@@ -1,0 +1,211 @@
+/* ===================================================
+   style.css — Estilos globales compartidos
+   Sebastián Zamperoni — SZ Tria Team
+=================================================== */
+
+/* ---- Variables de diseño ---- */
+:root {
+  /* Paleta — SZ Tria Team: azul royal + rosa magenta */
+  --color-bg:         #080c14;
+  --color-bg-alt:     #0d1220;
+  --color-surface:    #111826;
+  --color-surface-2:  #192030;
+  --color-border:     rgba(255,255,255,0.07);
+
+  /* Acento primario: azul royal (del traje) */
+  --color-blue:       #1E5BC6;
+  --color-blue-lt:    #3a78e8;
+  --color-blue-dim:   rgba(30,91,198,0.18);
+
+  /* Acento secundario: rosa magenta (logo SZ) */
+  --color-pink:       #FF44E4;
+  --color-pink-lt:    #ff6eec;
+  --color-pink-dim:   rgba(255,68,228,0.15);
+
+  /* Alias para compatibilidad con clases existentes */
+  --color-orange:     #1E5BC6;
+  --color-orange-lt:  #3a78e8;
+  --color-orange-dim: rgba(30,91,198,0.18);
+
+  --color-white:      #ffffff;
+  --color-text:       #c8d4e8;
+  --color-muted:      #5a6880;
+
+  /* Tipografía */
+  --font-display: 'Montserrat', sans-serif;
+  --font-body:    'Barlow Condensed', sans-serif;
+
+  /* Espaciado */
+  --sp-xs:  0.5rem;
+  --sp-sm:  1rem;
+  --sp-md:  2rem;
+  --sp-lg:  4rem;
+  --sp-xl:  6rem;
+
+  /* Bordes / radios */
+  --r-sm:   3px;
+  --r-md:   8px;
+  --r-lg:   16px;
+  --r-full: 9999px;
+
+  /* Sombras */
+  --shadow-card: 0 12px 48px rgba(0,0,0,0.55);
+  --shadow-cta:  0 6px 28px rgba(30,91,198,0.4);
+
+  /* Transición */
+  --t: 0.3s ease;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; object-fit: cover; }
+a   { text-decoration: none; color: inherit; }
+ul  { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ---- Contenedor ---- */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--sp-md);
+}
+
+/* ====================================================
+   BOTONES GLOBALES
+==================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--r-sm);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all var(--t);
+  cursor: pointer;
+  border: none;
+}
+
+/* Naranja sólido */
+.btn--primary {
+  background: var(--color-orange);
+  color: #fff;
+}
+.btn--primary:hover {
+  background: var(--color-orange-lt);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cta);
+}
+
+/* CTA fuerte (naranja con glow) */
+.btn--cta {
+  background: var(--color-orange);
+  color: #fff;
+  box-shadow: var(--shadow-cta);
+}
+.btn--cta:hover {
+  background: var(--color-orange-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(255,87,34,0.5);
+}
+
+/* Ghost (borde blanco tenue) */
+.btn--ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.7);
+}
+.btn--ghost:hover {
+  border-color: rgba(255,255,255,0.6);
+  color: #fff;
+}
+
+.btn--submit { width: 100%; justify-content: center; font-size: 0.85rem; padding: 1rem; }
+
+/* ====================================================
+   ENCABEZADOS DE SECCIÓN (compartido)
+==================================================== */
+.section-head {
+  text-align: center;
+  margin-bottom: var(--sp-lg);
+}
+
+.section-head--light .section-title { color: var(--color-white); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--color-white);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--color-orange);
+  font-weight: 700;
+}
+
+.section-desc {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin-inline: auto;
+  letter-spacing: 0.02em;
+}
+
+/* ====================================================
+   SCROLLBAR
+==================================================== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-pink); border-radius: 2px; }
+
+/* ====================================================
+   RESPONSIVE GLOBAL
+==================================================== */
+@media (max-width: 768px) {
+  .container { padding-inline: var(--sp-sm); }
+}
+@media (max-width: 480px) {
+  .container { padding-inline: 0.875rem; }
+}
