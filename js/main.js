@@ -1,6 +1,6 @@
 /* ===================================================
    main.js — Interactividad
-   Coach Marcos Vidal
+   Coach Sebastián Zamperoni
 =================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,22 +22,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks  = document.getElementById('navLinks');
 
   if (toggleBtn && navLinks) {
+
+    function openMenu() {
+      navLinks.classList.add('open');
+      toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
+      // Bloquear scroll del body y fijar posición para que no salte
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.dataset.scrollY = scrollY;
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
+      // Restaurar scroll exactamente donde estaba
+      const scrollY = parseInt(document.body.dataset.scrollY || '0');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
+    }
+
     toggleBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      toggleBtn.innerHTML = open
-        ? '<i class="bi bi-x-lg"></i>'
-        : '<i class="bi bi-list"></i>';
-      // Bloquear scroll del body al abrir
-      document.body.style.overflow = open ? 'hidden' : '';
+      navLinks.classList.contains('open') ? closeMenu() : openMenu();
     });
 
     // Cerrar al hacer click en un link
-    navLinks.querySelectorAll('.navbar__link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
-        document.body.style.overflow = '';
-      });
+    navLinks.querySelectorAll('.navbar__link, .navbar__cta').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
     });
   }
 
