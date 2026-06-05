@@ -1,0 +1,303 @@
+/* ===================================================
+   testimonios.css — Carrusel de Testimonios
+   Sebastián Zamperoni — SZ Tria Team
+=================================================== */
+
+.testimonios {
+  padding: var(--sp-xl) 0;
+  background: var(--color-bg-alt);
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* impide que el track desborde */
+}
+
+/* ====================================================
+   CARRUSEL — wrapper y viewport
+==================================================== */
+.testi-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;          /* viewport del carrusel */
+}
+
+/* Track: todos los cards en fila */
+.testi-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  /* Sin overflow-visible: el clip lo hace .testi-carousel */
+}
+
+/* ====================================================
+   CARD
+==================================================== */
+.testi-card {
+  /* Ancho: en desktop 2 cards visibles, en mobile 1 */
+  flex: 0 0 calc(50% - 10px);   /* (100% - 1 gap de 20px) / 2 */
+  min-width: 0;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+
+/* Comilla decorativa de fondo */
+.testi-card::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  right: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--color-blue);
+  opacity: 0.06;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Línea de acento izquierda */
+.testi-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--color-blue);
+  border-radius: 0 0 2px 2px;
+  transition: height 0.4s ease;
+}
+
+.testi-card:hover {
+  border-color: rgba(30,91,198,0.25);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+
+.testi-card:hover::after { height: 100%; }
+
+/* Card destacada */
+.testi-card--highlight {
+  border-color: rgba(255,68,228,0.2);
+  background: linear-gradient(145deg, #0f1628 0%, #111826 100%);
+}
+
+.testi-card--highlight::before { color: var(--color-pink); }
+.testi-card--highlight::after  { background: var(--color-pink); height: 100%; opacity: 0.7; }
+.testi-card--highlight:hover   { border-color: rgba(255,68,228,0.4); }
+
+/* ---- Top: avatar + meta + estrellas ---- */
+.testi-card__top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.testi-card__avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-border);
+  flex-shrink: 0;
+  transition: border-color var(--t);
+}
+
+.testi-card:hover .testi-card__avatar     { border-color: var(--color-blue); }
+.testi-card--highlight:hover .testi-card__avatar { border-color: var(--color-pink); }
+
+.testi-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.testi-card__meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.testi-card__meta strong {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.testi-card__meta span {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  letter-spacing: 0.04em;
+}
+
+.testi-card__meta span i { color: var(--color-blue-lt); font-size: 0.75rem; }
+.testi-card--highlight .testi-card__meta span i { color: var(--color-pink); }
+
+.testi-card__stars { display: flex; gap: 2px; align-self: flex-start; }
+.testi-card__stars i { font-size: 0.7rem; color: #f4c430; }
+
+/* ---- Quote ---- */
+.testi-card__quote {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  font-style: italic;
+  border: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+/* ---- Logro ---- */
+.testi-card__logro {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.testi-card__logro i { color: var(--color-blue-lt); font-size: 0.85rem; flex-shrink: 0; }
+.testi-card--highlight .testi-card__logro i { color: var(--color-pink); }
+
+
+/* ====================================================
+   CARD ACTIVA en el carrusel — replica el estado hover
+   La clase .testi-card--active se asigna por JS
+==================================================== */
+
+/* Card normal activa: borde azul + sombra + línea lateral al 100% */
+.testi-card--active {
+  border-color: rgba(30,91,198,0.4) !important;
+  box-shadow: 0 16px 52px rgba(30,91,198,0.18), 0 4px 16px rgba(0,0,0,0.4) !important;
+}
+
+.testi-card--active::after {
+  height: 100% !important;
+}
+
+.testi-card--active .testi-card__avatar {
+  border-color: var(--color-blue) !important;
+}
+
+/* Card highlight activa: borde rosa más fuerte */
+.testi-card--highlight.testi-card--active {
+  border-color: rgba(255,68,228,0.55) !important;
+  box-shadow: 0 16px 52px rgba(255,68,228,0.15), 0 4px 16px rgba(0,0,0,0.4) !important;
+}
+
+.testi-card--highlight.testi-card--active .testi-card__avatar {
+  border-color: var(--color-pink) !important;
+}
+
+/* Transición suave al activarse */
+.testi-card {
+  transition:
+    border-color 0.4s ease,
+    box-shadow   0.4s ease,
+    opacity      0.4s ease;
+}
+
+/* Las cards no activas se atenúan levemente */
+.testi-carousel.has-active .testi-card:not(.testi-card--active) {
+  opacity: 0.55;
+}
+
+/* ====================================================
+   CONTROLES DEL CARRUSEL
+==================================================== */
+.testi-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Flechas prev / next */
+.testi-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all var(--t);
+  flex-shrink: 0;
+}
+
+.testi-btn:hover:not(:disabled) {
+  border-color: var(--color-blue);
+  color: var(--color-blue-lt);
+  background: var(--color-blue-dim);
+}
+
+.testi-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* Dots */
+.testi-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.testi-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: all var(--t);
+  padding: 0;
+}
+
+.testi-dot.active {
+  background: var(--color-blue);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Contador numérico */
+.testi-counter {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  min-width: 40px;
+  text-align: center;
+}
+
+/* ====================================================
+   RESPONSIVE
+==================================================== */
+@media (max-width: 1024px) {
+  /* 1 card visible en tablet/mobile */
+  .testi-card {
+    flex: 0 0 100%;
+  }
+  .testimonios { padding: var(--sp-lg) 0; }
+}
+
+@media (max-width: 768px) {
+  .testi-card { padding: 1.4rem 1.25rem; }
+  .testi-controls { gap: 1rem; }
+}

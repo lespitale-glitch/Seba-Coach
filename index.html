@@ -1,26 +1,221 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- =============================================
+         META ESENCIALES
+    ============================================= -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Título y descripción optimizados para SEO -->
+    <title>
+      Sebastián Zamperoni | Entrenador de Triatlón, Running y Natación — Buenos
+      Aires
+    </title>
     <meta
       name="description"
-      content="Sebastián Zamperoni — Profesor y entrenador de natación, running, ciclismo y triatlón. Planes premium por TrainingPeaks. SZ Tria Team."
+      content="Sebastián Zamperoni, profesor y entrenador de triatlón, running, ciclismo y natación en Buenos Aires. Planes premium personalizados por TrainingPeaks. SZ Tria Team. Primera consulta gratis."
     />
-    <title>
-      Sebastián Zamperoni | Entrenador · Triatlón · Running · Natación · SZ Tria
-      Team
-    </title>
+
+    <!-- Canonical: reemplazá con tu dominio real -->
+    <link rel="canonical" href="https://www.sztriateam.com.ar/" />
+
+    <!-- =============================================
+         GEO / LOCALIZACIÓN
+    ============================================= -->
+    <meta name="geo.region" content="AR-C" />
+    <meta name="geo.placename" content="Ciudad de Buenos Aires, Argentina" />
+    <meta name="geo.position" content="-34.6037;-58.3816" />
+    <meta name="ICBM" content="-34.6037, -58.3816" />
+
+    <!-- =============================================
+         OPEN GRAPH (Facebook, WhatsApp, LinkedIn)
+    ============================================= -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="SZ Tria Team" />
+    <meta property="og:url" content="https://www.sztriateam.com.ar/" />
+    <meta
+      property="og:title"
+      content="Sebastián Zamperoni | Entrenador de Triatlón, Running y Natación"
+    />
+    <meta
+      property="og:description"
+      content="Preparación en natación, running, ciclismo y triatlón de la mano de un entrenador que entiende tus tiempos. Planes premium por TrainingPeaks. Buenos Aires."
+    />
+    <!-- Reemplazá con una imagen real de 1200×630px -->
+    <meta
+      property="og:image"
+      content="https://www.sztriateam.com.ar/img/og-preview.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Sebastián Zamperoni — Entrenador SZ Tria Team"
+    />
+
+    <!-- =============================================
+         TWITTER / X CARD
+    ============================================= -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Sebastián Zamperoni | Entrenador de Triatlón y Running"
+    />
+    <meta
+      name="twitter:description"
+      content="Preparación en natación, running, ciclismo y triatlón. Planes premium por TrainingPeaks. Buenos Aires."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.sztriateam.com.ar/img/og-preview.jpg"
+    />
+
+    <!-- =============================================
+         FAVICON
+    ============================================= -->
+    <!-- Tu nuevo favicon SVG reutilizando el diseño exacto con comillas y colores corregidos -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 118 122'><text x='5' y='80' font-family='&quot;Cormorant Garamond&quot;,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'>S</text><text x='25' y='95' font-family='&quot;Cormorant Garamond&quot;,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'>Z</text></svg>"
+    />
+
+    <!-- Mantenemos la línea de Apple por compatibilidad con iPhones si se guarda como app de inicio -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png" />
+
+    <!-- =============================================
+         SCHEMA.ORG — DATOS ESTRUCTURADOS
+         Esto genera "rich results" en Google
+    ============================================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://www.sztriateam.com.ar/#person",
+            "name": "Sebastián Zamperoni",
+            "jobTitle": "Profesor y entrenador de triatlón",
+            "description": "Entrenador especializado en natación, running, ciclismo y triatlón con más de 12 años de experiencia. Profe certificado TrainingPeaks. Fundador de SZ Tria Team.",
+            "url": "https://www.sztriateam.com.ar",
+            "image": "https://www.sztriateam.com.ar/img/sebastian.jpg",
+            "telephone": "+5491155550000",
+            "email": "sebastian@sztriateam.com.ar",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ciudad de Buenos Aires",
+              "addressRegion": "Buenos Aires",
+              "addressCountry": "AR"
+            },
+            "sameAs": ["https://www.instagram.com/sz.triateam"],
+            "knowsAbout": [
+              "Triatlón",
+              "Running",
+              "Natación",
+              "Ciclismo",
+              "Endurance",
+              "TrainingPeaks",
+              "Preparación física"
+            ]
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://www.sztriateam.com.ar/#business",
+            "name": "SZ Tria Team — Sebastián Zamperoni",
+            "description": "Entrenamiento de triatlón, running, natación y ciclismo en Buenos Aires. Planes premium personalizados por TrainingPeaks.",
+            "url": "https://www.sztriateam.com.ar",
+            "telephone": "+5491155550000",
+            "email": "sebastian@sztriateam.com.ar",
+            "image": "https://www.sztriateam.com.ar/img/og-preview.jpg",
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ciudad de Buenos Aires",
+              "addressRegion": "Buenos Aires",
+              "addressCountry": "AR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -34.6037,
+              "longitude": -58.3816
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "08:00",
+                "closes": "20:00"
+              }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Planes de entrenamiento",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Endurance Base Plan",
+                    "description": "Plan de base aeróbica de 12 semanas para natación, running o ciclismo."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Preparación Media Distancia 70.3",
+                    "description": "20 a 24 semanas de preparación integral para triatlón media distancia."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Preparación Larga Distancia",
+                    "description": "Plan de 28 a 36 semanas para triatlón de larga distancia."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.sztriateam.com.ar/#website",
+            "url": "https://www.sztriateam.com.ar",
+            "name": "SZ Tria Team",
+            "description": "Entrenador de triatlón, running y natación en Buenos Aires",
+            "inLanguage": "es-AR"
+          }
+        ]
+      }
+    </script>
+
+    <!-- =============================================
+         FONTS Y RECURSOS EXTERNOS
+    ============================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700;1,800&family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+
+    <!-- =============================================
+         CSS DEL PROYECTO
+    ============================================= -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/sobre.css" />
@@ -41,27 +236,27 @@
           <a href="#inicio" class="navbar__logo">
             <svg
               class="navbar__logo-svg"
-              viewBox="0 0 60 56"
+              viewBox="0 0 118 122"
               xmlns="http://www.w3.org/2000/svg"
-              aria-label="SZ Logo"
+              aria-label="SZ"
             >
               <text
-                x="1"
-                y="40"
-                font-family="Georgia,serif"
-                font-size="42"
-                font-weight="900"
+                x="5"
+                y="80"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
                 font-style="italic"
                 fill="#FF44E4"
               >
                 S
               </text>
               <text
-                x="20"
-                y="48"
-                font-family="Georgia,serif"
-                font-size="48"
-                font-weight="900"
+                x="25"
+                y="95"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
                 font-style="italic"
                 fill="#FF44E4"
               >
@@ -99,7 +294,7 @@
       <section class="hero" id="hero">
         <div class="hero__bg">
           <img
-            src="img/Principal.jpeg"
+            src="img/principal2.jpg"
             alt="Atleta corriendo al amanecer"
             class="hero__img"
           />
@@ -120,8 +315,14 @@
           </div>
 
           <h1 class="hero__title">
-            Entrenamiento real<br />
-            <em>para desafíos<br />extraordinarios.</em>
+            <span class="hero__title-seo">
+              Sebastián Zamperoni — Entrenador de triatlón, running y natación
+              en Buenos Aires
+            </span>
+            <span class="hero__title-visual">
+              Entrenamiento real<br />
+              <em>para desafíos<br />extraordinarios.</em>
+            </span>
           </h1>
 
           <p class="hero__subtitle">
@@ -134,35 +335,35 @@
           <!-- Badge SZ Tria Team -->
           <div class="hero__team-badge">
             <svg
-              viewBox="0 0 40 38"
-              width="22"
-              height="22"
+              class="hero__badge-svg"
+              viewBox="0 0 118 122"
               xmlns="http://www.w3.org/2000/svg"
+              aria-label="SZ"
             >
               <text
-                x="0"
-                y="28"
-                font-family="Georgia,serif"
-                font-size="28"
-                font-weight="900"
+                x="5"
+                y="80"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
                 font-style="italic"
                 fill="#FF44E4"
               >
                 S
               </text>
               <text
-                x="14"
-                y="34"
-                font-family="Georgia,serif"
-                font-size="32"
-                font-weight="900"
+                x="25"
+                y="95"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
                 font-style="italic"
                 fill="#FF44E4"
               >
                 Z
               </text>
             </svg>
-            <span>SZ TRIA TEAM</span>
+            <span>TRIA TEAM</span>
           </div>
 
           <div class="hero__ctas">
@@ -170,7 +371,7 @@
               ><i class="bi bi-arrow-right-circle"></i> Ver planes</a
             >
             <a href="#sobre" class="btn btn--ghost"
-              ><i class="bi bi-person-circle"></i> Conocer al coach</a
+              ><i class="bi bi-person-circle"></i> Conocer al profesor</a
             >
           </div>
 
@@ -181,11 +382,11 @@
             </div>
             <div class="hero__stat-sep"></div>
             <div class="hero__stat">
-              <strong>8</strong><span>Finishes larga distancia</span>
+              <strong>15</strong><span>Finishes larga distancia</span>
             </div>
             <div class="hero__stat-sep"></div>
             <div class="hero__stat">
-              <strong>12 años</strong><span>de experiencia</span>
+              <strong>+32 años</strong><span>de experiencia</span>
             </div>
           </div>
         </div>
@@ -215,28 +416,28 @@
                 <!-- Overlay con nombre -->
                 <div class="sobre__img-tag">
                   <svg
-                    viewBox="0 0 40 38"
-                    width="18"
-                    height="18"
+                    class="sobre__tag-svg"
+                    viewBox="0 0 118 122"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-label="SZ"
                   >
                     <text
-                      x="0"
-                      y="28"
-                      font-family="Georgia,serif"
-                      font-size="28"
-                      font-weight="900"
+                      x="5"
+                      y="80"
+                      font-family="'Cormorant Garamond',Georgia,serif"
+                      font-size="120"
+                      font-weight="700"
                       font-style="italic"
                       fill="#FF44E4"
                     >
                       S
                     </text>
                     <text
-                      x="14"
-                      y="34"
-                      font-family="Georgia,serif"
-                      font-size="32"
-                      font-weight="900"
+                      x="25"
+                      y="95"
+                      font-family="'Cormorant Garamond',Georgia,serif"
+                      font-size="120"
+                      font-weight="700"
                       font-style="italic"
                       fill="#FF44E4"
                     >
@@ -262,7 +463,7 @@
                 <div class="sobre__cred">
                   <i class="bi bi-trophy-fill"></i>
                   <div>
-                    <strong>8 finishes en larga distancia</strong>
+                    <strong>+15 finishes en larga distancia</strong>
                     <span
                       >Atleta activo en competencias nacionales e
                       internacionales</span
@@ -282,7 +483,7 @@
                 <div class="sobre__cred">
                   <i class="bi bi-laptop"></i>
                   <div>
-                    <strong>Coach mediante TrainingPeaks</strong>
+                    <strong>Gestión y monitoreo en TrainingPeaks</strong>
                     <span
                       >Plataforma líder en planificación de resistencia</span
                     >
@@ -302,20 +503,21 @@
 
               <p class="sobre__texto">
                 Soy Sebastián Zamperoni, profesor de Educación Física y
-                entrenador con más de 12 años dedicados al deporte de
+                entrenador con más de 32 años dedicados al deporte de
                 resistencia. No solo entreno atletas — compito con ellos. Eso me
                 da una perspectiva real que va más allá de la teoría.
               </p>
               <p class="sobre__texto">
-                A lo largo de mi carrera completé 8 finishes en distancias
+                A lo largo de mi carrera completé 15 finishes en distancias
                 largas, corrí maratones y participé en competencias de natación
                 en aguas abiertas. Sé lo que se siente llegar al kilómetro 35
                 con las piernas vacías, y también sé exactamente cómo evitarlo.
               </p>
               <p class="sobre__texto">
-                Mi método combina periodización científica con acompañamiento
-                humano real. Cada atleta tiene tiempos, contextos y objetivos
-                distintos — mis planes se adaptan a eso, no al revés.
+                Mi método combina planificación basada en datos con
+                acompañamiento humano real. Cada atleta tiene tiempos, contextos
+                y objetivos distintos — mis planes se adaptan a eso, no al
+                revés.
               </p>
 
               <!-- Disciplinas con íconos -->
@@ -363,141 +565,9 @@
             </p>
           </div>
 
-          <!-- 3 planes principales -->
-          <div class="cards-grid">
-            <!-- Plan Natación + Running -->
-            <article class="svc-card" id="svc-base">
-              <div class="svc-card__top">
-                <div class="svc-card__icon">
-                  <i class="bi bi-water"></i>
-                </div>
-                <span class="svc-card__tag">Natación · Running · Ciclismo</span>
-              </div>
-              <h3 class="svc-card__title">Endurance<br />Base Plan</h3>
-              <p class="svc-card__desc">
-                El punto de partida ideal. Un plan de base aeróbica para quien
-                empieza o quiere construir una base sólida en una o más
-                disciplinas de resistencia.
-              </p>
-              <ul class="svc-card__features">
-                <li>
-                  <i class="bi bi-check2-circle"></i> 12 semanas de base
-                  aeróbica
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> 1 o 2 disciplinas a
-                  elección
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Análisis técnico inicial
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Plan PDF + TrainingPeaks
-                </li>
-              </ul>
-              <div class="svc-card__footer">
-                <span class="svc-card__format"
-                  ><i class="bi bi-file-earmark-arrow-down"></i> Plan PDF +
-                  TrainingPeaks</span
-                >
-                <a href="#contacto" class="btn btn--primary svc-card__btn">
-                  <i class="bi bi-send"></i> Consultar
-                </a>
-              </div>
-            </article>
-
-            <!-- Plan Media Distancia — DESTACADO -->
-            <article class="svc-card svc-card--premium" id="svc-media">
-              <div class="svc-card__premium-badge">
-                <i class="bi bi-star-fill"></i> Más elegido
-              </div>
-              <div class="svc-card__top">
-                <div class="svc-card__icon svc-card__icon--gold">
-                  <i class="bi bi-speedometer2"></i>
-                </div>
-                <span class="svc-card__tag"
-                  >Triatlón · 70.3 · Media distancia</span
-                >
-              </div>
-              <h3 class="svc-card__title">Preparación<br />Media Distancia</h3>
-              <p class="svc-card__desc">
-                El plan más elegido. 20 a 24 semanas de preparación integral
-                para completar tu primer 70.3 o mejorar tu marca. Las tres
-                disciplinas integradas con trabajo de transiciones.
-              </p>
-              <ul class="svc-card__features">
-                <li>
-                  <i class="bi bi-check2-circle"></i> Natación + Ciclismo +
-                  Running
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Transiciones T1 y T2
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Nutrición e hidratación en
-                  carrera
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Soporte 5 días / semana
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Análisis de carga semanal
-                  (TSS)
-                </li>
-              </ul>
-              <div class="svc-card__footer">
-                <span class="svc-card__format"
-                  ><i class="bi bi-file-earmark-arrow-down"></i> Plan PDF +
-                  TrainingPeaks</span
-                >
-                <a href="#contacto" class="btn btn--cta svc-card__btn">
-                  <i class="bi bi-lightning-charge-fill"></i> Empezar ahora
-                </a>
-              </div>
-            </article>
-
-            <!-- Plan Larga Distancia -->
-            <article class="svc-card" id="svc-larga">
-              <div class="svc-card__top">
-                <div class="svc-card__icon svc-card__icon--alt">
-                  <i class="bi bi-trophy-fill"></i>
-                </div>
-                <span class="svc-card__tag">Full · Larga distancia</span>
-              </div>
-              <h3 class="svc-card__title">Preparación<br />Larga Distancia</h3>
-              <p class="svc-card__desc">
-                El programa más exigente y completo. Cruzar la meta de una larga
-                distancia requiere planificación anual, experiencia real y
-                acompañamiento permanente.
-              </p>
-              <ul class="svc-card__features">
-                <li>
-                  <i class="bi bi-check2-circle"></i> Plan de 28 a 36 semanas
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Estrategia de carrera
-                  personalizada
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Nutrición + hidratación
-                  completa
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i> Soporte directo 7 días /
-                  semana
-                </li>
-              </ul>
-              <div class="svc-card__footer">
-                <span class="svc-card__format"
-                  ><i class="bi bi-file-earmark-arrow-down"></i> Plan PDF +
-                  TrainingPeaks</span
-                >
-                <a href="#contacto" class="btn btn--primary svc-card__btn">
-                  <i class="bi bi-send"></i> Consultar
-                </a>
-              </div>
-            </article>
-          </div>
+          <!-- planes principales -->
+          <!-- Removidos los 3 <article> estáticos. El JS los va a dibujar de forma dinámica -->
+          <div class="cards-grid" id="planesGrid"></div>
 
           <!-- CTA secundario: "¿No sabés cuál elegir?" -->
           <div class="servicios__cta-sec">
@@ -570,7 +640,7 @@
                     <i class="bi bi-chat-left-dots"></i>
                   </div>
                   <div>
-                    <strong>Feedback directo del coach</strong>
+                    <strong>Feedback directo del profesor</strong>
                     <span
                       >Comentá cada sesión y recibís retroalimentación
                       personalizada.</span
@@ -582,7 +652,7 @@
               <a
                 href="https://www.trainingpeaks.com"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="btn btn--tp"
               >
                 <svg
@@ -765,7 +835,7 @@
       </section>
 
       <!-- =========================================
-         SECCIÓN 5 — TESTIMONIOS
+         SECCIÓN 5 — TESTIMONIOS (Carrusel Dinámico)
     ========================================= -->
       <section class="testimonios" id="testimonios">
         <div class="container">
@@ -774,250 +844,37 @@
             <h2 class="section-title">
               Lo que dicen<br /><em>mis atletas</em>
             </h2>
-            <p class="section-desc">Resultados concretos, historias reales.</p>
-          </div>
-
-          <div class="testimonios__grid">
-            <article class="testi-card">
-              <div class="testi-card__top">
-                <div class="testi-card__avatar">
-                  <img
-                    src="img/juan fernando.png"
-                    alt="Juan Fernando."
-                    loading="lazy"
-                  />
-                </div>
-                <div class="testi-card__meta">
-                  <strong>Juan Fernando</strong>
-                  <span
-                    ><i class="bi bi-trophy"></i> Triatlón · Larga
-                    distancia</span
-                  >
-                </div>
-                <div class="testi-card__stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i>
-                </div>
-              </div>
-              <blockquote class="testi-card__quote">
-                "Llegué a Sebastián con más miedos e impedimentos psicológicos
-                que no me dejaban pasar de nivel. Gracias a su paciencia,
-                enseñanza y su forma de ser, hizo que yo desbloqueara mi cabeza
-                y ya haya hecho 4 triatlones en 4 meses, y ahora apuntando a
-                mucho más."
-              </blockquote>
-              <div class="testi-card__logro">
-                <i class="bi bi-patch-check-fill"></i>
-                <span>Participo de 4 triatlones en 4 meses</span>
-              </div>
-            </article>
-
-            <article class="testi-card testi-card--highlight">
-              <div class="testi-card__top">
-                <div class="testi-card__avatar">
-                  <img src="img/ximena.png" alt="Ximena." loading="lazy" />
-                </div>
-                <div class="testi-card__meta">
-                  <strong>Ximena.</strong>
-                  <span
-                    ><i class="bi bi-person-walking"></i> Running ·
-                    Maratón</span
-                  >
-                </div>
-                <div class="testi-card__stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i>
-                </div>
-              </div>
-              <blockquote class="testi-card__quote">
-                "Vengo del hockey y empecé triatlón en diciembre de 2023. En
-                pocos meses, Sebas logró ver en mí un potencial que yo todavía
-                no podía imaginar, y en abril de 2025 ya estaba cruzando la meta
-                de mi primer Ironman 70.3 en San Juan. Más allá de su
-                planificación profesional impecable, valoro muchísimo su
-                capacidad para acompañar, motivar y sacar lo mejor de cada
-                atleta."
-              </blockquote>
-              <div class="testi-card__logro">
-                <i class="bi bi-patch-check-fill"></i>
-                <span>Finish 70.3 en San Juan</span>
-              </div>
-            </article>
-
-            <article class="testi-card">
-              <div class="testi-card__top">
-                <div class="testi-card__avatar">
-                  <img src="img/alan.png" alt="Alan." loading="lazy" />
-                </div>
-                <div class="testi-card__meta">
-                  <strong>Alan.</strong>
-                  <span
-                    ><i class="bi bi-water"></i> Natación · Aguas abiertas</span
-                  >
-                </div>
-                <div class="testi-card__stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i>
-                </div>
-              </div>
-              <blockquote class="testi-card__quote">
-                "Nos conocemos hace 20 años... yo dejé de entrenar estos últimos
-                8 años y cuando quise volver no dudé en hablarle. Porque sabía
-                que iba a respetar un proceso acorde y porque además de ser un
-                gran entrenador es un excelente persona."
-              </blockquote>
-              <div class="testi-card__logro">
-                <i class="bi bi-patch-check-fill"></i>
-                <span>Aguas abiertas de Nordelta — Febrero 2026</span>
-              </div>
-            </article>
-
-            <article class="testi-card">
-              <div class="testi-card__top">
-                <div class="testi-card__avatar">
-                  <img src="img/nacho.png" alt="Nacho." loading="lazy" />
-                </div>
-                <div class="testi-card__meta">
-                  <strong>Nacho.</strong>
-                  <span><i class="bi bi-diagram-3"></i> Triatlón · 70.3</span>
-                </div>
-                <div class="testi-card__stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i>
-                </div>
-              </div>
-              <blockquote class="testi-card__quote">
-                "Sebastián está siempre pendiente del resultado de los
-                entrenamientos; la consulta y el feedback son permanentes. El
-                resultado es un programa que se adapta a tus necesidades y la
-                seguridad de sentirte acompañado en el proceso."
-              </blockquote>
-              <div class="testi-card__logro">
-                <i class="bi bi-patch-check-fill"></i>
-                <span>Finish 70.3 Cap Cana — Mayo 2026</span>
-              </div>
-            </article>
-            <article class="testi-card">
-              <div class="testi-card__top">
-                <div class="testi-card__avatar">
-                  <img src="img/nacho.png" alt="Nacho." loading="lazy" />
-                </div>
-                <div class="testi-card__meta">
-                  <strong>Felipe.</strong>
-                  <span><i class="bi bi-diagram-3"></i> Triatlón · 70.3</span>
-                </div>
-                <div class="testi-card__stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star-fill"></i>
-                </div>
-              </div>
-              <blockquote class="testi-card__quote">
-                "Gran entrenador y gran persona. De manera súper responsable me
-                llevó de la nada a completar dos 70.3 y tres olímpicos con pocos
-                meses de entrenamiento. Los planes están buenos y, si hay alguna
-                duda, Seba está siempre a mano, respondiendo con toda su
-                experiencia en deportes de resistencia."
-              </blockquote>
-              <div class="testi-card__logro">
-                <i class="bi bi-patch-check-fill"></i>
-                <span>Finish 70.3 Cap Cana — Mayo 2026</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================
-         SECCIÓN 6 — GALERÍA
-    ========================================= -->
-      <section class="galeria" id="galeria">
-        <div class="container">
-          <div class="section-head section-head--light">
-            <p class="eyebrow"><i class="bi bi-images"></i> En acción</p>
-            <h2 class="section-title">El trabajo habla<br />por sí solo</h2>
             <p class="section-desc">
-              Competencias, pileta y detalles del entrenamiento real.
+              Resultados concretos, historias reales. Deslizá para ver más.
             </p>
           </div>
-          <div class="galeria__grid">
-            <figure class="galeria__item galeria__item--wide">
-              <img
-                src="img/galeria/ironman.jpeg"
-                alt="Podio, triatlón"
-                loading="lazy"
-              />
-              <figcaption>
-                <i class="bi bi-trophy"></i> Triatlón · Podio en Ironman 70.3
-              </figcaption>
-            </figure>
-            <figure class="galeria__item">
-              <img
-                src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=500&q=75"
-                alt="Corredor en maratón"
-                loading="lazy"
-              />
-              <figcaption>
-                <i class="bi bi-person-walking"></i> Running · Maratón
-              </figcaption>
-            </figure>
-            <figure class="galeria__item">
-              <img
-                src="img/galeria/ciclismo.jpeg"
-                alt="Ciclista en carrera"
-                loading="lazy"
-              />
-              <figcaption>
-                <i class="bi bi-bicycle"></i> Ciclismo · Gran Fondo
-              </figcaption>
-            </figure>
-            <figure class="galeria__item">
-              <img
-                src="img/galeria/pileta.jpeg"
-                alt="Nadadores en pileta"
-                loading="lazy"
-              />
-              <figcaption>
-                <i class="bi bi-water"></i> Alumnos · Pileta técnica
-              </figcaption>
-            </figure>
-            <figure class="galeria__item">
-              <img
-                src="img/galeria/aguas_abiertas.jpeg"
-                alt="Grupo nadando en lago"
-                loading="lazy"
-              />
-              <figcaption>
-                <i class="bi bi-people"></i> Aguas abiertas · Comunidad
-              </figcaption>
-            </figure>
-            <figure class="galeria__item">
-              <img
-                src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&q=75"
-                alt="Plan de entrenamiento"
-                loading="lazy"
-              />
-              <figcaption>
-                <i class="bi bi-journal-check"></i> Planificación
-              </figcaption>
-            </figure>
-            <figure class="galeria__item">
-              <img
-                src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=500&q=75"
-                alt="Equipamiento de natación"
-                loading="lazy"
-              />
-              <figcaption>
-                <i class="bi bi-stopwatch"></i> Equipamiento · Técnica
-              </figcaption>
-            </figure>
+
+          <!-- Viewport del carrusel -->
+          <div class="testi-carousel">
+            <!-- El JS va a inyectar las tarjetas acá adentro manteniendo tus estilos intactos -->
+            <div class="testi-track" id="testiTrack"></div>
+          </div>
+
+          <!-- Controles: prev · dots · next + contador -->
+          <div class="testi-controls">
+            <button class="testi-btn testi-btn--prev" aria-label="Anterior">
+              <i class="bi bi-arrow-left"></i>
+            </button>
+            <div class="testi-dots"></div>
+            <span class="testi-counter">1 / 5</span>
+            <button class="testi-btn testi-btn--next" aria-label="Siguiente">
+              <i class="bi bi-arrow-right"></i>
+            </button>
           </div>
         </div>
       </section>
+
+      <<!-- =========================================
+             SECCIÓN 6 — GALERÍA (Inyección Dinámica)
+        ========================================= -->
+          <div class="galeria__grid" id="galeriaGrid">
+            <!-- El JavaScript va a renderizar las imágenes acá adentro de forma limpia -->
+          </div>
 
       <!-- =========================================
          SECCIÓN 7 — CONTACTO (simplificado)
@@ -1213,28 +1070,28 @@
         <div class="footer__brand">
           <a href="#inicio" class="navbar__logo">
             <svg
-              viewBox="0 0 60 56"
-              width="38"
-              height="38"
+              class="footer__logo-svg"
+              viewBox="0 0 118 122"
               xmlns="http://www.w3.org/2000/svg"
+              aria-label="SZ"
             >
               <text
-                x="1"
-                y="40"
-                font-family="Georgia,serif"
-                font-size="42"
-                font-weight="900"
+                x="5"
+                y="80"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
                 font-style="italic"
                 fill="#FF44E4"
               >
                 S
               </text>
               <text
-                x="20"
-                y="48"
-                font-family="Georgia,serif"
-                font-size="48"
-                font-weight="900"
+                x="25"
+                y="95"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
                 font-style="italic"
                 fill="#FF44E4"
               >
@@ -1317,17 +1174,34 @@
       </div>
       <div class="footer__bottom">
         <p>
-          © 2025 Sebastián Zamperoni · SZ Tria Team · Todos los derechos
+          © 2026 Sebastián Zamperoni · SZ Tria Team · Todos los derechos
           reservados
         </p>
-        <p>
-          Diseñado con
-          <i class="bi bi-heart-fill" style="color: #ff44e4"></i> para atletas
-          que no se rinden
+        <p style="font-size: 13px; opacity: 0.85">
+          Hecho con <i class="bi bi-heart-fill" style="color: #ff44e4"></i> para
+          atletas por
+          <a
+            href="https://wa.me/5491162229591"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #ff44e4; text-decoration: none; font-weight: bold"
+            >LeaSpi</a
+          >
         </p>
       </div>
     </footer>
-
-    <script src="js/main.js"></script>
+   
+    <!-- Cambiamos esto para habilitar el uso de importaciones limpias -->
+    <script type="module" src="js/main.js"></script>
+    <!-- Botón flotante WhatsApp -->
+    <a
+      href="https://wa.me/5491157463710"
+      target="_blank"
+      rel="noopener"
+      class="whatsapp-float"
+      aria-label="Contactar por WhatsApp"
+    >
+      <i class="bi bi-whatsapp"></i>
+    </a>
   </body>
 </html>

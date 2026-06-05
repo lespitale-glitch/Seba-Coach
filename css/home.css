@@ -1,7 +1,117 @@
 /* ===================================================
    home.css — Navbar + Hero
-   Coach Sebastián Zamperoni
+   Coach Marcos Vidal
 =================================================== */
+
+
+/* ====================================================
+   INTRO SPLASH — Pantalla de entrada SZ
+==================================================== */
+#sz-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #080c14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Líneas de fondo animadas (efecto "pista") */
+#sz-intro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      105deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(30,91,198,0.04) 60px,
+      rgba(30,91,198,0.04) 61px
+    );
+  animation: introLines 1.8s ease forwards;
+}
+
+@keyframes introLines {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Logo central */
+.sz-intro__logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sz-intro__svg {
+  /* SVG inline — fondo transparente, glow solo sobre las letras */
+  width: 200px;
+  height: 200px;
+  overflow: visible;          /* permite que el glow desborde el viewBox */
+  filter: drop-shadow(0 0 0px rgba(255,68,228,0));
+  transition: filter 0.55s ease, opacity 0.5s ease;
+  opacity: 0;
+}
+
+.sz-intro__label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,68,228,0.7);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Glow cuando está completo */
+.sz-intro--glow .sz-intro__svg {
+  /* Glow en capas — ilumina SOLO las letras, sin cuadrado */
+  filter: drop-shadow(0 0 40px rgba(255,68,228,0.8))
+          drop-shadow(0 0 14px rgba(255,68,228,1))
+          drop-shadow(0 0 70px rgba(255,68,228,0.4));
+}
+
+/* Wipe: panel que barre la pantalla hacia arriba */
+.sz-intro__wipe {
+  position: absolute;
+  inset: 0;
+  background: #080c14;
+  transform: translateY(100%);
+  z-index: 3;
+}
+
+/* La animación de salida: el wipe sube y arrastra todo */
+.sz-intro--exit {
+  animation: introExit 0.72s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.sz-intro--exit .sz-intro__wipe {
+  animation: introWipe 0.72s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes introExit {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 1; }
+}
+
+@keyframes introWipe {
+  /* El wipe sube un poco antes para crear la ilusión de barrido */
+  0%   { transform: translateY(100%); }
+  30%  { transform: translateY(0%); }
+  100% { transform: translateY(0%); }
+}
+
+/* Hero entra suavemente después del intro */
+.intro-done .hero__content {
+  animation: heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+}
 
 /* ====================================================
    NAVBAR
@@ -60,12 +170,42 @@
 }
 
 .navbar__logo-text strong { font-weight: 900; }
-/* ---- Logo SVG (SZ monogram) ---- */
-.navbar__logo-svg {
-  width: 44px;
-  height: 40px;
+/* ---- Logo SZ — SVG inline con Cormorant Garamond ---- */
+/* El SVG es transparente por naturaleza: drop-shadow solo ilumina las letras */
+
+/* Navbar y footer */
+.navbar__logo-svg,
+.footer__logo-svg {
+  width: 46px;
+  height: 46px;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 6px rgba(255,68,228,0.4));
+  overflow: visible;        /* permite que el glow salga del viewBox */
+  filter: drop-shadow(0 0 4px rgba(255,68,228,0.3));
+  transition: filter var(--t);
+}
+
+.navbar__logo:hover .navbar__logo-svg,
+a:hover .footer__logo-svg {
+  filter: drop-shadow(0 0 12px rgba(255,68,228,0.8))
+          drop-shadow(0 0 4px rgba(255,68,228,1));
+}
+
+/* Badge "SZ TRIA TEAM" en el hero */
+.hero__badge-svg {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  overflow: visible;
+  filter: drop-shadow(0 0 5px rgba(255,68,228,0.5));
+}
+
+/* Mini logo en la foto "Sobre mí" */
+.sobre__tag-svg {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  overflow: visible;
+  filter: drop-shadow(0 0 4px rgba(255,68,228,0.35));
 }
 
 /* ---- Hero team badge ---- */
@@ -246,8 +386,6 @@
 /* H1 */
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 7vw, 6.5rem);
-  font-weight: 900;
   color: var(--color-white);
   line-height: 0.95;
   text-transform: uppercase;
@@ -365,4 +503,26 @@
 @media (max-width: 390px) {
   .hero__title { font-size: 1.75rem; }
   .hero__content { padding: 5.5rem 1rem 3rem; }
+}
+
+/* Copete SEO — visible pero pequeño */
+.hero__title-seo {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-body);
+}
+
+/* Título visual — el que ya tenías */
+.hero__title-visual {
+  display: block;
+  font-size: clamp(2.2rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
