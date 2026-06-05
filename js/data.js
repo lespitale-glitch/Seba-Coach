@@ -23,48 +23,48 @@ export const testimoniosData = [
         logro: "Ironman 70.3 en San Juan"
     },
     {
-        nombre: "Diego R.",
+        nombre: "Alan",
         disciplina: "Natación · Aguas abiertas",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
+        avatar: "img/testimonios/alan.png",
         estrellas: 5,
         highlight: false,
-        cita: "Nos conocemos hace 20 años. Yo dejé de entrenar estos últimos 8 años y, cuando quise volver, no dudé en hablarle. Porque sabía que iba a respetar un proceso acorde y porque, además de ser un gran entrenador, es una excelente persona.",
-        logro: "Primera competencia aguas abiertas 2K — Tigre 2024"
+        cita: "Nos conocemos desde hace 20 años... Yo dejé de entrenar estos últimos 8 años y, cuando quise volver, no dudé en hablarle. porqué sabía que iba a respetar un proceso acorde y que, además de ser un gran entrenador, es una excelente persona.",
+        logro: "Volvio al triatlón despues de mas de 10 años"
     },
     {
-        nombre: "Valeria M.",
+        nombre: "Nacho",
         disciplina: "Triatlón · 70.3",
-        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
+        avatar: "img/testimonios/nacho.png",
         estrellas: 5,
         highlight: false,
-        cita: "Lo que más me sorprendió fue el trabajo de transiciones y la estrategia de nutrición. Llegué al 70.3 sintiéndome fuerte hasta el final. Eso no pasa por casualidad.",
-        logro: "Finish 70.3 Pucón · 5h12 — Diciembre 2023"
+        cita: "Sebastián está siempre pendiente del resultado de los entrenamientos; la consulta y el feedback son permanentes. El resultado es un programa que se adapta a tus necesidades y la seguridad de sentirte acompañado en el proceso.",
+        logro: "Clasificacion mundial Nisa 2026 - "
     },
     {
-        nombre: "Lucas T.",
+        nombre: "Felipe",
         disciplina: "Ciclismo · Gran Fondo",
-        avatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=80&q=80",
+        avatar: "img/testimonios/felipe.png",
         estrellas: 5,
         highlight: false,
-        cita: "Nunca pensé que a mis 47 años iba a completar un gran fondo de 180km. El trabajo de base que hicimos con Seba fue clave. La periodización que propone es muy inteligente.",
+        cita: "Gran entrenador y gran persona. De manera súper responsable me llevó de la nada a completar dos 70.3 y tres olímpicos con pocos meses de entrenamiento. Los planes están buenos y, si hay alguna duda, Seba está siempre a mano respondiendo con toda su experiencia en deportes de resistencia.",
         logro: "Gran Fondo 180K · Mendoza — Octubre 2024"
     },
     {
-        nombre: "Carolina S.",
-        disciplina: "Running · Media maratón",
-        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80",
+        nombre: "Cristian",
+        disciplina: "Natacion · Aguas abiertas",
+        avatar: "img/testimonios/cristian.png",
         estrellas: 5,
         highlight: true,
-        cita: "Empecé sin poder correr 5km seguidos y 5 meses después terminé mi primera media maratón. Seba supo exactamente cuándo exigirme y cuándo frenarme. Eso es lo que marca la diferencia.",
+        cita: "Mi nombre es Cristian Fernández, soy nadador de aguas abiertas y triatleta. [...] Entreno con Seba desde mediados de 2024 y, desde el principio, hubo muy buena comunicación y conexión. El trabajo que ha hecho Seba ha sido excelente; fui mejorando muchísimo con el correr del tiempo [...]. Siento que evolucioné muchísimo en todas las disciplinas, logrando bajar mis tiempos personales y obteniendo excelentes resultados. Hoy estoy preparando un gran reto: una travesía de 10 km de aguas abiertas [...] y también el gran objetivo del año: bajar las 5 horas en el Ironman 70.3 de Cozumel. ¡Muchas gracias, Seba! ¡Vamos por más!",
         logro: "1ra media maratón 2h04 · Buenos Aires — Agosto 2024"
     },
     {
-        nombre: "Chango Spasiuk.",
+        nombre: "Lucas",
         disciplina: "Running · Media maratón",
-        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80",
+        avatar: "img/testimonios/lucas.png",
         estrellas: 5,
         highlight: true,
-        cita: "Empecé sin poder correr 5km seguidos y 5 meses después terminé mi primera media maratón. Seba supo exactamente cuándo exigirme y cuándo frenarme. Eso es lo que marca la diferencia.",
+        cita: "Entreno con Seba desde hace varios años y siempre logré alcanzar mis objetivos en carreras de calle y triatlones, mejorando año a año los tiempos y sin lesiones. Más allá de su gran predisposición y la calidad de los planes, lo que realmente lo distingue es su interés genuino por la persona detrás del atleta, entendiendo los tiempos y motivaciones de cada alumno para sacar su mejor versión.",
         logro: "1ra media maratón 2h04 · Buenos Aires — Agosto 2024"
     }
 ];
@@ -79,10 +79,11 @@ export const planesData = [
         titulo: "Endurance<br />Base Plan",
         desc: "El punto de partida ideal. Un plan de base aeróbica para quien empieza o quiere construir una base sólida en una o más disciplinas de resistencia.",
         features: [
+            "Un deporte a elección",
             "12 semanas de base aeróbica",
             "1 o 2 disciplinas a elección",
             "Análisis técnico inicial",
-            "Plan PDF + TrainingPeaks"
+            "TrainingPeaks"
         ],
         highlight: false,
         btnText: "Consultar"
@@ -97,7 +98,7 @@ export const planesData = [
         features: [
             "Natación + Ciclismo + Running",
             "Transiciones T1 y T2",
-            "Nutrición e hidratación en carrera",
+            "Orientación en nutrición e hidratación en carrera",
             "Soporte 5 días / semana",
             "Análisis de carga semanal (TSS)"
         ],
