@@ -6,7 +6,7 @@
 export const testimoniosData = [
     {
         nombre: "Juan Fernando",
-        disciplina: "Triatlón · Larga distancia",
+        disciplina: "Triatlón",
         avatar: "img/testimonios/juan_fernando.png",
         estrellas: 5,
         highlight: false,
@@ -15,7 +15,7 @@ export const testimoniosData = [
     },
     {
         nombre: "Ximena",
-        disciplina: "Running · Maratón",
+        disciplina: "Triatlón 70.3 · Maratón",
         avatar: "img/testimonios/ximena.png",
         estrellas: 5,
         highlight: true,
@@ -24,7 +24,7 @@ export const testimoniosData = [
     },
     {
         nombre: "Alan",
-        disciplina: "Natación · Aguas abiertas",
+        disciplina: "Triatón",
         avatar: "img/testimonios/alan.png",
         estrellas: 5,
         highlight: false,
@@ -38,16 +38,16 @@ export const testimoniosData = [
         estrellas: 5,
         highlight: false,
         cita: "Sebastián está siempre pendiente del resultado de los entrenamientos; la consulta y el feedback son permanentes. El resultado es un programa que se adapta a tus necesidades y la seguridad de sentirte acompañado en el proceso.",
-        logro: "Clasificacion mundial Nisa 2026 - "
+        logro: "Clasificación al Mundial de Niza 2026 - 2.º puesto en su categoría en el IRONMAN 70.3 Cap Cana"
     },
     {
         nombre: "Felipe",
-        disciplina: "Ciclismo · Gran Fondo",
+        disciplina: "Triatlón · 70.3",
         avatar: "img/testimonios/felipe.png",
         estrellas: 5,
         highlight: false,
         cita: "Gran entrenador y gran persona. De manera súper responsable me llevó de la nada a completar dos 70.3 y tres olímpicos con pocos meses de entrenamiento. Los planes están buenos y, si hay alguna duda, Seba está siempre a mano respondiendo con toda su experiencia en deportes de resistencia.",
-        logro: "Gran Fondo 180K · Mendoza — Octubre 2024"
+        logro: "dos 70.3 y tres olímpicos con pocos meses de entrenamiento"
     },
     {
         nombre: "Cristian",
@@ -56,16 +56,16 @@ export const testimoniosData = [
         estrellas: 5,
         highlight: true,
         cita: "Mi nombre es Cristian Fernández, soy nadador de aguas abiertas y triatleta. [...] Entreno con Seba desde mediados de 2024 y, desde el principio, hubo muy buena comunicación y conexión. El trabajo que ha hecho Seba ha sido excelente; fui mejorando muchísimo con el correr del tiempo [...]. Siento que evolucioné muchísimo en todas las disciplinas, logrando bajar mis tiempos personales y obteniendo excelentes resultados. Hoy estoy preparando un gran reto: una travesía de 10 km de aguas abiertas [...] y también el gran objetivo del año: bajar las 5 horas en el Ironman 70.3 de Cozumel. ¡Muchas gracias, Seba! ¡Vamos por más!",
-        logro: "1ra media maratón 2h04 · Buenos Aires — Agosto 2024"
+        logro: "Triatlón Olímpico - 3.º puesto Gral."
     },
     {
         nombre: "Lucas",
-        disciplina: "Running · Media maratón",
+        disciplina: "Triatlón · 70.3",
         avatar: "img/testimonios/lucas.png",
         estrellas: 5,
         highlight: true,
         cita: "Entreno con Seba desde hace varios años y siempre logré alcanzar mis objetivos en carreras de calle y triatlones, mejorando año a año los tiempos y sin lesiones. Más allá de su gran predisposición y la calidad de los planes, lo que realmente lo distingue es su interés genuino por la persona detrás del atleta, entendiendo los tiempos y motivaciones de cada alumno para sacar su mejor versión.",
-        logro: "1ra media maratón 2h04 · Buenos Aires — Agosto 2024"
+        logro: "Finisher IRONMAN 70.3"
     }
 ];
 
@@ -125,11 +125,11 @@ export const planesData = [
 
 // En js/data.js
 export const galeriaData = [
-    { src: "img/Principal.jpeg", alt: "Atleta cruzando la meta en triatlón", clase: "galeria__item--wide", caption: "Triatlón · Llegada a meta" },
-    { src: "img/galeria/corredor.png", alt: "Corredor en maratón", clase: "", caption: "Running · Maratón" },
-    { src: "img/galeria/ciclismo1.jpeg", alt: "Ciclista en carrera", clase: "", caption: "Ciclismo · Gran Fondo" },
+    { src: "img/Principal.jpeg", alt: "Atleta cruzando la meta en triatlón", clase: "galeria__item--wide", caption: "Mundial · 70.3" },
+    { src: "img/galeria/corredor.png", alt: "Corredor en maratón", clase: "", caption: "Triatlón · T1" },
+    { src: "img/galeria/ciclismo1.jpeg", alt: "Ciclista en carrera", clase: "", caption: "70.3· San Juán" },
     { src: "img/galeria/pileta.jpg", alt: "Nadadores en pileta", clase: "", caption: "Alumnos · Pileta técnica" },
-    { src: "img/galeria/aguas_abiertas.jpeg", alt: "Grupo nadando en lago", clase: "", caption: "Aguas abiertas · Comunidad" },
+    { src: "img/galeria/aguas_abiertas.jpeg", alt: "Grupo nadando en lago", clase: "", caption: "Saliendo del agua · T1" },
     { src: "img/galeria/planificacion.jpg", alt: "Plan de entrenamiento", clase: "", caption: "Planificación" },
     { src: "img/galeria/equipamiento.jpg", alt: "Equipamiento de natación", clase: "", caption: "Equipamiento · Técnica" }
 ];
