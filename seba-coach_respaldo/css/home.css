@@ -1,6 +1,6 @@
 /* ===================================================
    home.css — Navbar + Hero
-   Coach Sebastián Zamperoni
+   Coach Marcos Vidal
 =================================================== */
 
 
@@ -525,57 +525,4 @@ a:hover .footer__logo-svg {
   line-height: 0.95;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-}
-
-/* ====================================================
-   SELECTOR DE IDIOMAS (ES | EN)
-==================================================== */
-.lang-selector {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-left: 1.5rem;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.lang-btn {
-  background: none;
-  border: none;
-  color: var(--color-muted);
-  cursor: pointer;
-  padding: 2px 4px;
-  transition: color var(--t);
-  font-weight: inherit;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.lang-btn:hover {
-  color: var(--color-white);
-}
-
-.lang-btn.active {
-  color: var(--color-pink);
-  pointer-events: none; /* Evita que se pueda clickear el idioma ya activo */
-}
-
-.lang-divider {
-  color: rgba(255, 255, 255, 0.15);
-  font-weight: 300;
-}
-
-/* Adaptación para dispositivos móviles */
-@media (max-width: 1024px) {
-  .navbar__inner .lang-selector {
-    display: none; /* Oculta el selector horizontal de computadoras */
-  }
-  .navbar__links .lang-selector {
-    margin-left: 0;
-    margin-top: 1.5rem;
-    justify-content: center;
-    width: 100%;
-    font-size: 1.1rem; /* Lo hace más grande y cómodo para tocar con el dedo */
-  }
 }

@@ -1,0 +1,244 @@
+/* ===================================================
+   sobre.css — Sección Sobre Sebastián
+   SZ Tria Team
+=================================================== */
+
+.sobre {
+  padding: var(--sp-xl) 0;
+  background: var(--color-bg-alt);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Layout 2 columnas: visual | contenido */
+.sobre__layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* ====================================================
+   COLUMNA IZQUIERDA — FOTO + CREDENCIALES
+==================================================== */
+.sobre__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Foto con tag superpuesto */
+.sobre__img-wrap {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  /* Marco azul sutil */
+  border: 1px solid rgba(30,91,198,0.2);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+.sobre__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.88);
+  transition: filter var(--t);
+}
+
+.sobre__img-wrap:hover .sobre__img { filter: brightness(0.95); }
+
+/* Overlay diagonal rosado en la esquina */
+.sobre__img-wrap::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(transparent, rgba(8,12,20,0.85));
+  z-index: 1;
+}
+
+/* Tag con nombre dentro de la foto */
+.sobre__img-tag {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(8,12,20,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-md);
+  padding: 0.75rem 1rem;
+}
+
+.sobre__img-tag svg { flex-shrink: 0; }
+
+.sobre__img-tag div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.sobre__img-tag strong {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.03em;
+}
+
+.sobre__img-tag span {
+  font-size: 0.68rem;
+  color: var(--color-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Credenciales — lista vertical con íconos */
+.sobre__creds {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.sobre__cred {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--t);
+}
+
+.sobre__cred:last-child { border-bottom: none; }
+.sobre__cred:hover { background: rgba(30,91,198,0.06); }
+
+.sobre__cred > i {
+  font-size: 1rem;
+  color: var(--color-blue-lt);
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.sobre__cred div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.sobre__cred strong {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+}
+
+.sobre__cred span {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* ====================================================
+   COLUMNA DERECHA — TEXTO
+==================================================== */
+.sobre__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sobre__title {
+  font-size: clamp(1.9rem, 3.5vw, 3.2rem);
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.sobre__title em { color: var(--color-pink); }
+
+/* Párrafos de texto */
+.sobre__texto {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.sobre__texto:last-of-type { margin-bottom: 2rem; }
+
+/* Disciplinas en fila */
+.sobre__disciplinas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  border-left: 3px solid var(--color-blue);
+}
+
+.sobre__disc {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--color-blue-dim);
+  border: 1px solid rgba(30,91,198,0.2);
+  border-radius: var(--r-full);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-blue-lt);
+  transition: all var(--t);
+}
+
+.sobre__disc i { font-size: 0.85rem; }
+
+.sobre__disc:hover {
+  background: var(--color-blue);
+  color: #fff;
+  border-color: var(--color-blue);
+}
+
+/* ====================================================
+   RESPONSIVE — sobre.css
+==================================================== */
+@media (max-width: 1024px) {
+  .sobre__layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* En mobile la foto va primero pero más pequeña */
+  .sobre__img-wrap {
+    aspect-ratio: 16/9;
+    max-height: 380px;
+  }
+
+  .sobre__title { text-align: center; }
+  .sobre__disciplinas { justify-content: center; }
+  .sobre { min-height: auto; }
+}
+
+@media (max-width: 768px) {
+  .sobre { padding: var(--sp-lg) 0; }
+  .sobre__img-wrap { aspect-ratio: 4/3; max-height: 280px; }
+  .sobre__texto { font-size: 0.95rem; }
+}
