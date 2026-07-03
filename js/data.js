@@ -69,54 +69,52 @@ export const testimoniosData = [
     }
 ];
 
-// Nuevo Array de Planes Premium (Mapeado exacto de tu HTML)
+// Nuevo Array de Planes Premium Renovados (3 Pilares directos en Español)
 export const planesData = [
     {
-        id: "svc-base",
-        iconClass: "bi bi-water",
-        iconModifier: "", // Clase vacía para icono normal
-        tag: "Natación · Running · Ciclismo",
-        titulo: "Endurance<br />Base Plan",
-        desc: "El punto de partida ideal. Un plan de base aeróbica para quien empieza o quiere construir una base sólida en una o más disciplinas de resistencia.",
+        id: "svc-natacion",
+        iconClass: "bi-water",
+        iconModifier: "", // Icono normal azul
+        tag: "Técnica · Resistencia · Aguas Abiertas",
+        titulo: "Plan Técnico de<br />Natación",
+        desc: "Diseñado para nadadores de pileta o atletas de aguas abiertas que buscan perfeccionar su brazada, mejorar su eficiencia hidrodinámica y ganar confianza en distancias largas.",
         features: [
-            "Un deporte a elección",
-            "12 semanas de base aeróbica",
-            "1 o 2 disciplinas a elección",
-            "Análisis técnico inicial",
-            "TrainingPeaks"
+            "Análisis biomecánico inicial de brazada",
+            "Entrenamientos estructurados de pileta y aguas abiertas",
+            "Optimización de ritmos críticos (CSS)",
+            "Monitoreo semanal mediante TrainingPeaks"
         ],
         highlight: false,
         btnText: "Consultar"
     },
     {
-        id: "svc-media",
-        iconClass: "bi bi-speedometer2",
-        iconModifier: "svc-card__icon--gold", // Mantiene el color dorado de tu CSS
-        tag: "Triatlón · 70.3 · Media distancia",
-        titulo: "Preparación<br />Media Distancia",
-        desc: "El plan más elegido. 20 a 24 semanas de preparación integral para completar tu primer 70.3 o mejorar tu marca. Las tres disciplinas integradas con trabajo de transiciones.",
+        id: "svc-triatlon",
+        iconClass: "bi-diagram-3",
+        iconModifier: "svc-card__icon--gold", // Mantiene el color rosa/dorado de acento para el plan estrella
+        tag: "Sprint · Short · 70.3 · Full Ironman",
+        titulo: "Preparación<br />Triatlón Integral",
+        desc: "El programa insignia. Planificación unificada de las 3 disciplinas adaptada a tu zona de potencia, umbrales y tiempos disponibles, maximizando la asimilación del estímulo.",
         features: [
-            "Natación + Ciclismo + Running",
-            "Transiciones T1 y T2",
-            "Orientación en nutrición e hidratación en carrera",
-            "Soporte 5 días / semana",
-            "Análisis de carga semanal (TSS)"
+            "Natación, ciclismo y running integrados en un solo bloque",
+            "Transiciones técnicas (T1/T2) y estrategia de carrera",
+            "Gestión avanzada de carga acumulada (TSS)",
+            "Soporte prioritario y análisis de rendimiento diario"
         ],
-        highlight: true, // Activa la tarjeta premium y su badge superior
+        highlight: true, // Activa la tarjeta premium y su de destaque visual
         btnText: "Empezar ahora"
     },
     {
-        id: "svc-larga",
-        iconClass: "bi bi-trophy-fill",
-        iconModifier: "svc-card__icon--alt",
-        tag: "Full · Larga distancia",
-        titulo: "Preparación<br />Larga Distancia",
-        desc: "El programa más exigente y completo. Cruzar la meta de una larga distancia requiere planificación anual, experiencia real y acompañamiento permanente.",
+        id: "svc-running",
+        iconClass: "bi-lightning-charge",
+        iconModifier: "", // Icono normal azul
+        tag: "10K · Media Maratón · Maratón",
+        titulo: "Performance<br />Running Plan",
+        desc: "Pensado para corredores que quieren colgarse su primera medalla o pulverizar sus marcas personales en distancias de calle o trail, estructurando pasadas, fondos y fuerza.",
         features: [
-            "Plan de 28 a 36 semanas",
-            "Estrategia de carrera personalizada",
-            "Nutrición + hidratación completa",
-            "Soporte directo 7 días / semana"
+            "Periodización inteligente basada en tus umbrales de ritmo",
+            "Pasadas de pista, cuestas y fuerza específica",
+            "Estrategia de ritmos milimétrica para el día de la carrera",
+            "Análisis de datos de carrera en TrainingPeaks"
         ],
         highlight: false,
         btnText: "Consultar"

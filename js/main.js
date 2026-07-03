@@ -35,15 +35,14 @@ import { testimoniosData, planesData, galeriaData } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ================================================
-     INYECCIÓN DINÁMICA DE PLANES PREMIUM
+/* ================================================
+     INYECCIÓN DINÁMICA DE PLANES PREMIUM (SIN BADGE "MÁS ELEGIDO")
   ================================================ */
   const planesGrid = document.getElementById('planesGrid');
   
   if (planesGrid) {
     planesGrid.innerHTML = planesData.map(plan => {
       const claseCard = plan.highlight ? 'svc-card svc-card--premium' : 'svc-card';
-      const badgePremium = plan.highlight ? `<div class="svc-card__premium-badge"><i class="bi bi-star-fill"></i> Más elegido</div>` : '';
       const claseBoton = plan.highlight ? 'btn btn--cta svc-card__btn' : 'btn btn--primary svc-card__btn';
       const iconoEspecial = plan.highlight ? '<i class="bi bi-lightning-charge-fill"></i>' : '<i class="bi bi-send"></i>';
 
@@ -53,10 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return `
         <article class="${claseCard}" id="${plan.id}">
-          ${badgePremium}
           <div class="svc-card__top">
             <div class="svc-card__icon ${plan.iconModifier}">
-              <i class="${plan.iconClass}"></i>
+              <i class="bi ${plan.iconClass}"></i>
             </div>
             <span class="svc-card__tag">${plan.tag}</span>
           </div>
@@ -67,7 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
           <div class="svc-card__footer">
             <span class="svc-card__format">
-              <i class="bi bi-file-earmark-arrow-down"></i> Plan PDF + TrainingPeaks
+              <svg viewBox="0 0 22 18" width="14" height="12" style="margin-right: 2px; fill: currentColor; display: inline-block; vertical-align: middle;">
+                <rect x="0" y="4" width="4" height="10" rx="0.8"/>
+                <rect x="6" y="0" width="4" height="18" rx="0.8"/>
+                <rect x="12" y="5" width="4" height="8" rx="0.8"/>
+              </svg>
+              Plan Integrado con TrainingPeaks
             </span>
             <a href="#contacto" class="${claseBoton}">
               ${iconoEspecial} ${plan.btnText}
@@ -129,8 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
 
-  /* ================================================
-     NAVBAR: menú hamburguesa
+/* ================================================
+     NAVBAR: menú hamburguesa (Siempre Visible)
   ================================================ */
   const toggleBtn = document.getElementById('navToggle');
   const navLinks  = document.getElementById('navLinks');
@@ -138,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggleBtn && navLinks) {
     function openMenu() {
       navLinks.classList.add('open');
-      toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
+      toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>'; // Cambia el icono a cruz en el mismo botón de arriba
       const scrollY = window.scrollY;
       document.body.style.position = 'fixed';
       document.body.style.top      = `-${scrollY}px`;
@@ -148,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeMenu() {
       navLinks.classList.remove('open');
-      toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
+      toggleBtn.innerHTML = '<i class="bi bi-list"></i>'; // Vuelve a poner las tres líneas de la hamburguesa
       const scrollY = parseInt(document.body.dataset.scrollY || '0');
       document.body.style.position = '';
       document.body.style.top      = '';
