@@ -925,21 +925,23 @@
               </li>
             </ul>
 
+          <!-- ENLACES DE REDES SOCIALES EN CONTACTO -->
             <div class="contacto__redes">
-              <a href="#" aria-label="Instagram" class="social-btn"
-                ><i class="bi bi-instagram"></i
-              ></a>
-              <a href="#" aria-label="WhatsApp" class="social-btn"
-                ><i class="bi bi-whatsapp"></i
-              ></a>
-              <a href="#" aria-label="YouTube" class="social-btn"
-                ><i class="bi bi-youtube"></i
-              ></a>
-              <a href="#" aria-label="Strava" class="social-btn"
-                ><i class="bi bi-activity"></i
-              ></a>
+              <a href="https://www.instagram.com/sebastianzamperoni" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-btn">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="https://wa.me/5491157463710" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-btn">
+                <i class="bi bi-whatsapp"></i>
+              </a>
+              <!-- YouTube deshabilitado temporalmente de forma elegante -->
+              <a href="javascript:void(0);" onclick="alert('¡Canal de YouTube próximamente!')" aria-label="YouTube" class="social-btn" style="opacity: 0.5; cursor: not-allowed;">
+                <i class="bi bi-youtube"></i>
+              </a>
+              <!-- Icono de actividad apuntando al perfil de Strava (Reemplazá con su link real si lo tenés) -->
+              <a href="https://www.strava.com" target="_blank" rel="noopener noreferrer" aria-label="Strava" class="social-btn">
+                <i class="bi bi-activity"></i>
+              </a>
             </div>
-          </div>
 
           <!-- Panel derecho: formulario simplificado (4 campos + 2 selectores) -->
           <div class="contacto__form-wrap">
@@ -990,10 +992,9 @@
                 />
               </div>
 
-              <div class="form__group">
+  <div class="form__group">
                 <label for="objetivo" class="form__label">
-                  <i class="bi bi-bullseye"></i> ¿Cuál es tu próximo objetivo?
-                  <span>*</span>
+                  <i class="bi bi-bullseye"></i> ¿Cuál es tu próximo objetivo? <span>*</span>
                 </label>
                 <select
                   id="objetivo"
@@ -1002,16 +1003,10 @@
                   required
                 >
                   <option value="" disabled selected>Seleccioná tu meta</option>
-                  <option value="maraton">Maratón / Media maratón</option>
-                  <option value="triatlon-media">
-                    Triatlón media distancia (70.3)
-                  </option>
-                  <option value="triatlon-larga">
-                    Triatlón larga distancia
-                  </option>
-                  <option value="natacion">Natación / Aguas abiertas</option>
-                  <option value="ciclismo">Ciclismo / Gran Fondo</option>
-                  <option value="base">Preparación base general</option>
+                  <option value="svc-natacion">Plan Técnico de Natación / Aguas Abiertas</option>
+                  <option value="svc-triatlon">Preparación Triatlón Integral (Short / 70.3 / Ironman)</option>
+                  <option value="svc-running">Performance Running Plan (Calle / Trail)</option>
+                  <option value="base">Otro objetivo / Consulta general</option>
                 </select>
               </div>
 
@@ -1138,13 +1133,22 @@
             </svg>
             Planes gestionados por TrainingPeaks
           </span>
+         <!-- ENLACES DE REDES SOCIALES EN FOOTER -->
           <div class="footer__redes">
-            <a href="#" aria-label="Instagram"
-              ><i class="bi bi-instagram"></i
-            ></a>
-            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-            <a href="#" aria-label="Strava"><i class="bi bi-activity"></i></a>
+            <a href="https://www.instagram.com/sebastianzamperoni" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://wa.me/5491157463710" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <!-- YouTube deshabilitado temporalmente -->
+            <a href="javascript:void(0);" onclick="alert('¡Canal de YouTube próximamente!')" aria-label="YouTube" style="opacity: 0.5; cursor: not-allowed;">
+              <i class="bi bi-youtube"></i>
+            </a>
+            <!-- Strava -->
+            <a href="https://www.strava.com" target="_blank" rel="noopener noreferrer" aria-label="Strava">
+              <i class="bi bi-activity"></i>
+            </a>
           </div>
         </div>
 

@@ -36,7 +36,7 @@ import { testimoniosData, planesData, galeriaData } from './data.js';
 document.addEventListener('DOMContentLoaded', () => {
 
 /* ================================================
-     INYECCIÓN DINÁMICA DE PLANES PREMIUM (SIN BADGE "MÁS ELEGIDO")
+     INYECCIÓN DINÁMICA DE PLANES PREMIUM (CON AUTO-SELECCIÓN)
   ================================================ */
   const planesGrid = document.getElementById('planesGrid');
   
@@ -72,13 +72,28 @@ document.addEventListener('DOMContentLoaded', () => {
               </svg>
               Plan Integrado con TrainingPeaks
             </span>
-            <a href="#contacto" class="${claseBoton}">
+            <!-- Pasamos el ID del plan como parámetro de datos (data-plan) -->
+            <a href="#contacto" class="${claseBoton}" data-plan="${plan.id}">
               ${iconoEspecial} ${plan.btnText}
             </a>
           </div>
         </article>
       `;
     }).join('');
+
+    // Escuchador de clicks exclusivo para capturar qué tarjeta eligió
+    planesGrid.addEventListener('click', (e) => {
+      const botonPlan = e.target.closest('.svc-card__btn, .btn');
+      if (botonPlan && botonPlan.dataset.plan) {
+        const planSeleccionado = botonPlan.dataset.plan;
+        const selectorObjetivo = document.getElementById('objetivo');
+        
+        if (selectorObjetivo) {
+          // Cambia el valor del select de forma automática antes de que el usuario llegue abajo
+          selectorObjetivo.value = planSeleccionado;
+        }
+      }
+    });
   }
   
   /* ================================================
