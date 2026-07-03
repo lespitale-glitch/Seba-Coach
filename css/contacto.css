@@ -15,9 +15,9 @@
 /* Caja exterior: marco marcado con esquinas decorativas */
 .contacto__layout {
   width: 100%;
-  max-width: 1240px;
+  max-width: 760px; /* Acotamos el ancho para que el formulario no quede gigante o estirado en monitores grandes */
   margin-inline: auto;
-  /* Marco exterior grueso naranja */
+  /* Marco exterior grueso naranja (azul en tu caso) */
   border: 2px solid var(--color-orange);
   border-radius: var(--r-md);
   /* Sombra naranja para "glow" industrial */
@@ -25,10 +25,9 @@
     0 0 0 1px rgba(255,87,34,0.12),
     0 0 40px rgba(255,87,34,0.08),
     0 24px 64px rgba(0,0,0,0.6);
-  /* Grid simétrico 1:1 */
+  /* Cambiamos a una sola columna real */
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Sin gap — la línea divisoria la ponemos con border */
+  grid-template-columns: 1fr; 
   gap: 0;
   overflow: hidden;
   position: relative;
@@ -163,10 +162,15 @@
   background: var(--color-orange-dim);
 }
 
-/* ---- Panel derecho: formulario ---- */
+/* Columna derecha: formulario real */
 .contacto__form-wrap {
-  background: var(--color-bg);
-  padding: 3.5rem 3rem;
+  padding: var(--sp-lg);
+  background: var(--color-surface-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  /* Al ser una sola columna en el layout, le quitamos cualquier propiedad de borde izquierdo divisorio previo */
+  border-left: none; 
 }
 
 .form__title {
