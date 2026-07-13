@@ -233,13 +233,13 @@
        NAVBAR
   ========================================= -->
     <!-- =========================================
-       NAVBAR (Versión Optimizada para Espacio y Mobile)
+       NAVBAR Y HERO (BLOQUE HEADER COMPLETO)
   ========================================= -->
     <header class="header" id="inicio">
       <nav class="navbar" id="navbar">
         <div class="navbar__inner">
           <!-- Logo SZ -->
-          <a href="#inicio" class="navbar__logo">
+          <a href="#hero" class="navbar__logo">
             <svg
               class="navbar__logo-svg"
               viewBox="0 0 118 122"
@@ -269,38 +269,141 @@
                 Z
               </text>
             </svg>
-            <span class="navbar__logo-text">
-              <span data-i18n="navbar.brandFirstName">SEBASTIÁN</span><strong data-i18n="navbar.brandLastName">ZAMPERONI</strong>
-            </span>
+            <span class="navbar__logo-text"><span data-i18n="navbar.brandFirstName">SEBASTIÁN</span><strong data-i18n="navbar.brandLastName">ZAMPERONI</strong></span>
           </a>
 
-          <!-- Enlaces de navegación — El botón de idioma se anida de forma prolija -->
+          <!-- Botón de idioma integrado de forma limpia en el flujo de la barra -->
+          <button id="langToggle" class="lang-btn" data-lang="es">
+            <i class="bi bi-globe"></i>
+            <span id="langLabel" data-i18n="navbar.language">ES</span>
+          </button>
+
+          <!-- Enlaces de navegación — SIN LA CRUZ DE CIERRE ROTA y apuntando a #hero -->
           <ul class="navbar__links" id="navLinks">
-            <li><a href="#inicio" class="navbar__link active" data-i18n="navbar.home">Inicio</a></li>
+            <li><a href="#hero" class="navbar__link active" data-i18n="navbar.home">Inicio</a></li>
             <li><a href="#sobre" class="navbar__link" data-i18n="navbar.about">Sobre mí</a></li>
             <li><a href="#servicios" class="navbar__link" data-i18n="navbar.plans">Planes</a></li>
             <li><a href="#testimonios" class="navbar__link" data-i18n="navbar.testimonials">Opiniones</a></li>
             <li><a href="#contacto" class="navbar__link" data-i18n="navbar.contact">Contacto</a></li>
-            
-            <!-- Botón de idioma integrado al flujo del menú -->
-            <li class="navbar__lang-item">
-              <button id="langToggle" class="lang-btn" data-lang="es">
-                <i class="bi bi-globe"></i>
-                <span id="langLabel" data-i18n="navbar.language">ES</span>
-              </button>
-            </li>
-
             <li>
               <a href="#contacto" class="btn btn--cta navbar__cta" data-i18n="navbar.startNow">Empezá ahora</a>
             </li>
           </ul>
 
-          <!-- Botón Hamburguesa (Mantiene el control visual en móviles) -->
+          <!-- Botón Hamburguesa Móvil (Maneja la apertura y el cambio a "X") -->
           <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú">
             <i class="bi bi-list"></i>
           </button>
         </div>
       </nav>
+
+      <!-- =========================================
+         SECCIÓN 1 — HERO (INTACTA)
+    ========================================= -->
+      <section class="hero" id="hero">
+        <div class="hero__bg">
+          <img
+            src="img/principal2.jpg"
+            alt="Atleta corriendo al amanecer"
+            class="hero__img"
+          />
+          <div class="hero__overlay"></div>
+          <div class="hero__diagonal"></div>
+        </div>
+
+        <div class="hero__content">
+          <!-- Disciplinas -->
+          <div class="hero__disciplines">
+            <span><i class="bi bi-water"></i> <span data-i18n="hero.disciplines.swimming">Natación</span></span>
+            <span class="sep">·</span>
+            <span><i class="bi bi-person-walking"></i> <span data-i18n="hero.disciplines.running">Running</span></span>
+            <span class="sep">·</span>
+            <span><i class="bi bi-bicycle"></i> <span data-i18n="hero.disciplines.cycling">Ciclismo</span></span>
+            <span class="sep">·</span>
+            <span><i class="bi bi-diagram-3"></i> <span data-i18n="hero.disciplines.triathlon">Triatlón</span></span>
+          </div>
+
+          <h1 class="hero__title">
+            <span class="hero__title-seo" data-i18n="hero.seoTitle">
+              Sebastián Zamperoni — Entrenador de triatlón, running y natación
+              en Buenos Aires
+            </span>
+            <span class="hero__title-visual">
+              <span data-i18n="hero.visualTitleLineOne">Entrenamiento real</span><br />
+              <em><span class="hero__title_line" data-i18n="hero.visualTitleEmphasisLineOne" id="hero__title-visual.line">para desafíos</span><br /><span class="hero__title_line" data-i18n="hero.visualTitleEmphasisLineTwo">extraordinarios.</span></em>
+            </span>
+          </h1>
+
+          <p class="hero__subtitle">
+            <span data-i18n="hero.subtitleLineOne">Preparación en natación, running, ciclismo y triatlón</span><br
+              class="hero__br"
+            />
+            <span data-i18n="hero.subtitleLineTwo">de la mano de un entrenador que entiende tus tiempos.</span>
+          </p>
+
+          <!-- Badge SZ Tria Team -->
+          <div class="hero__team-badge">
+            <svg
+              class="hero__badge-svg"
+              viewBox="0 0 118 122"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="SZ"
+            >
+              <text
+                x="5"
+                y="80"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
+                font-style="italic"
+                fill="#FF44E4"
+              >
+                S
+              </text>
+              <text
+                x="25"
+                y="95"
+                font-family="'Cormorant Garamond',Georgia,serif"
+                font-size="120"
+                font-weight="700"
+                font-style="italic"
+                fill="#FF44E4"
+              >
+                Z
+              </text>
+            </svg>
+            <span data-i18n="hero.teamName">TRIA TEAM</span>
+          </div>
+
+          <div class="hero__ctas">
+            <a href="#servicios" class="btn btn--primary"
+              ><i class="bi bi-arrow-right-circle"></i> <span data-i18n="hero.viewPlans">Ver planes</span></a
+            >
+            <a href="#sobre" class="btn btn--ghost"
+              ><i class="bi bi-person-circle"></i> <span data-i18n="hero.meetCoach">Conocer al entrenador</span></a
+            >
+          </div>
+
+          <!-- Stats -->
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <strong data-i18n="hero.stats.athletesValue">+200</strong><span data-i18n="hero.stats.athletesLabel">Atletas entrenados</span>
+            </div>
+            <div class="hero__stat-sep"></div>
+            <div class="hero__stat">
+              <strong data-i18n="hero.stats.finishesValue">+30</strong><span data-i18n="hero.stats.finishesLabel">Finishes larga distancia</span>
+            </div>
+            <div class="hero__stat-sep"></div>
+            <div class="hero__stat">
+              <strong data-i18n="hero.stats.experienceValue">+32 años</strong><span data-i18n="hero.stats.experienceLabel">de experiencia</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#sobre" class="hero__scroll" aria-label="Ver más">
+          <i class="bi bi-chevron-double-down"></i>
+        </a>
+      </section>
     </header>
 
     <main>
