@@ -48,6 +48,10 @@
 
 .tp-title em { color: var(--color-blue-lt); }
 
+.tp-title-line { 
+    display: block;
+}
+
 .tp-desc {
   font-size: 1rem;
   color: var(--color-muted);

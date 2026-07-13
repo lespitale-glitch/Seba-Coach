@@ -183,6 +183,11 @@
   filter: drop-shadow(0 0 4px rgba(255,68,228,0.3));
   transition: filter var(--t);
 }
+/*Footer data profe */
+.footer-data-profe { 
+    display: block;
+    
+}
 
 .navbar__logo:hover .navbar__logo-svg,
 a:hover .footer__logo-svg {
@@ -397,7 +402,12 @@ a:hover .footer__logo-svg {
   margin-bottom: 1.5rem;
 }
 
-.hero__title em {
+.hero__line {
+  display: block;
+ 
+}
+
+.hero__title em.hero__line {
   font-style: italic;
   color: var(--color-pink);
   font-weight: 700;
@@ -522,13 +532,18 @@ a:hover .footer__logo-svg {
 }
 
 /* Título visual — el que ya tenías */
-.hero__title-visual {
+.hero__title-visual  {
   display: block;
   font-size: clamp(2.2rem, 7vw, 6.5rem);
   font-weight: 900;
   line-height: 0.95;
   text-transform: uppercase;
   letter-spacing: -0.02em;
+}
+
+.hero__title_line {
+  color: var(--color-pink)
+  ;
 }
 
 /* ====================================================

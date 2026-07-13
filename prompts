@@ -1,0 +1,14 @@
+Actuá como un desarrollador experto en frontend y SEO. Necesito que revises el siguiente bloque de HTML y añadas atributos `data-i18n` a absolutamente TODO el texto visible para poder estructurar mi sistema multiidioma con JavaScript.
+
+**Reglas críticas de ejecución:**
+1. **Nomenclatura limpia:** Creá nombres descriptivos y estructurados para los valores de `data-i18n` usando camelCase (ejemplo: `navbar.home`, `hero.title`, `planes.natacion.description`).
+
+2. **Aislamiento de iconos (`<i>`, `<svg>`):** Si el texto convive con una etiqueta `<i>` o un `<svg>`, BAJO NINGÚN CONCEPTO metas la etiqueta del icono dentro del elemento que lleva el `data-i18n`. El icono debe quedar afuera. Envolvé ÚNICA Y EXCLUSIVAMENTE el texto plano dentro de un `<span>` con su respectivo `data-i18n`.
+   * *Ejemplo correcto:* <i class="bi bi-instagram"></i> <span data-i18n="navbar.instagram">Instagram</span>
+
+3. **Tratamiento de saltos de línea (`<br>`):** Si el texto original contiene un `<br>`, NO dejes la etiqueta `<br>` dentro del texto a traducir (el JS la borraría). En su lugar, dividí el texto en dos partes usando `<span>` independientes con sus llaves correspondientes. Luego, agregá en el medio un `<span>` vacío con la clase `i18n-br` para simular el salto de línea por CSS, y dejame un comentario en el código recordando la regla CSS necesaria.
+   * *Ejemplo correcto:* <span data-i18n="hero.line1">Entrená con</span>
+     <span class="i18n-br"></span>
+     <span data-i18n="hero.line2">Seba Zamperoni</span>
+
+4. **No alteres la semántica:** Mantené intactas todas las clases CSS existentes (metodología BEM) y la estructura de maquetación actual. Devolvénos únicamente el HTML modificado listo para reemplazar.

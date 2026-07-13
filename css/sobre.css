@@ -242,3 +242,6 @@
   .sobre__img-wrap { aspect-ratio: 4/3; max-height: 280px; }
   .sobre__texto { font-size: 0.95rem; }
 }
+.sobre__title-line {
+  display: block; /* Obliga a cada elemento a ocupar todo su renglón y bajarse */
+}

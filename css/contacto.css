@@ -2,7 +2,11 @@
    contacto.css — Sección Contacto + Footer
    Coach Sebastián Zamperoni — Caja simétrica rediseñada
 =================================================== */
-
+/*----titulo----*/
+.contact-line { 
+    display: block;
+    
+}
 /* ---- Sección contacto ---- */
 .contacto {
   background: var(--color-bg-alt);

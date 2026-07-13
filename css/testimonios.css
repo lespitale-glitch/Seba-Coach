@@ -2,7 +2,10 @@
    testimonios.css — Carrusel de Testimonios
    Sebastián Zamperoni — SZ Tria Team
 =================================================== */
-
+/*TITULO de sección (LS)*/
+.testi-title { 
+    display: block;
+}
 .testimonios {
   padding: var(--sp-xl) 0;
   background: var(--color-bg-alt);
@@ -28,6 +31,7 @@
   will-change: transform;
   /* Sin overflow-visible: el clip lo hace .testi-carousel */
 }
+
 
 /* ====================================================
    CARD

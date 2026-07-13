@@ -1,14 +1,13 @@
 /* ===================================================
-   main.js — Interactividad y Carga Dinámica
+   main.js — Interactividad y Carga Dinámica Seguro
    Sebastián Zamperoni — SZ Tria Team
 =================================================== */
 
-// 1. Importaciones obligatorias desde el módulo de datos
-import { testimoniosData, planesData, galeriaData } from './data.js';
+// 1. Importaciones obligatorias desde el módulo seguro de datos
+import { testimoniosData, planesData, galeriaData, elementosATraducir } from './data.js';
 
 /* ================================================
    INTRO SPLASH — se ejecuta antes de DOMContentLoaded
-   para que el overlay ya esté pintado
 ================================================ */
 (function () {
   const splash = document.createElement('div');
@@ -32,66 +31,136 @@ import { testimoniosData, planesData, galeriaData } from './data.js';
   document.documentElement.appendChild(splash);
 })();
 
+// Estado global del idioma
+let idiomaActual = "ES";
 
 document.addEventListener('DOMContentLoaded', () => {
 
-/* ================================================
-     INYECCIÓN DINÁMICA DE PLANES PREMIUM (CON AUTO-SELECCIÓN)
+  /* ================================================
+     SISTEMA COMPLETO DE TRADUCCIÓN INTERNA
+  ================================================ */
+  function traducirPaginaEstatica(idioma) {
+    const etiquetas = document.querySelectorAll('[data-i18n]');
+    etiquetas.forEach(el => {
+      const clave = el.getAttribute('data-i18n');
+      if (elementosATraducir[idioma] && elementosATraducir[idioma][clave]) {
+        if (el.tagName === "TITLE") {
+          document.title = elementosATraducir[idioma][clave];
+        } else {
+          el.innerHTML = elementosATraducir[idioma][clave];
+        }
+      }
+    });
+
+    const inputsConPlaceholder = document.querySelectorAll('[data-i18n-placeholder]');
+    inputsConPlaceholder.forEach(input => {
+      const clavePH = input.getAttribute('data-i18n-placeholder');
+      if (elementosATraducir[idioma] && elementosATraducir[idioma][clavePH]) {
+        input.placeholder = elementosATraducir[idioma][clavePH];
+      }
+    });
+  }
+
+  /* ================================================
+     ESCUCHADOR DEL BOTÓN SWITCH DE IDIOMAS (langToggle)
+  ================================================ */
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      idiomaActual = (idiomaActual === "ES") ? "EN" : "ES";
+      langToggle.setAttribute('data-lang', idiomaActual.toLowerCase());
+      
+      traducirPaginaEstatica(idiomaActual);
+      
+      if (typeof window.dibujarTarjetasPlanes === 'function') {
+        window.dibujarTarjetasPlanes(idiomaActual);
+      }
+      
+      if (typeof window.dibujarTarjetasTestimonios === 'function') {
+        window.dibujarTarjetasTestimonios(idiomaActual);
+      }
+
+      // === AGREGA ESTA LÍNEA ACÁ PARA TRADUCIR LA GALERÍA ===
+      if (typeof window.dibujarGaleria === 'function') {
+        window.dibujarGaleria(idiomaActual);
+      }
+    });
+  }
+
+  /* ================================================
+     INYECCIÓN DINÁMICA DE PLANES PREMIUM (TRADUCIBLE)
+  ================================================ */
+ /* ================================================
+     INYECCIÓN DINÁMICA DE PLANES PREMIUM (TRADUCIBLE)
   ================================================ */
   const planesGrid = document.getElementById('planesGrid');
-  
   if (planesGrid) {
-    planesGrid.innerHTML = planesData.map(plan => {
-      const claseCard = plan.highlight ? 'svc-card svc-card--premium' : 'svc-card';
-      const claseBoton = plan.highlight ? 'btn btn--cta svc-card__btn' : 'btn btn--primary svc-card__btn';
-      const iconoEspecial = plan.highlight ? '<i class="bi bi-lightning-charge-fill"></i>' : '<i class="bi bi-send"></i>';
+    window.dibujarTarjetasPlanes = function(idioma) {
+      planesGrid.innerHTML = planesData.map(plan => {
+        const claseCard = plan.highlight ? 'svc-card svc-card--premium' : 'svc-card';
+        const claseBoton = plan.highlight ? 'btn btn--cta svc-card__btn' : 'btn btn--primary svc-card__btn';
+        const iconoEspecial = plan.highlight ? '<i class="bi bi-lightning-charge-fill"></i>' : '<i class="bi bi-send"></i>';
 
-      const featuresHTML = plan.features.map(feat => `
-        <li><i class="bi bi-check2-circle"></i> ${feat}</li>
-      `).join('');
+        // Traemos las features dinámicas desde tu objeto seguro de JavaScript
+        const featuresTraducidas = [
+          elementosATraducir[idioma][`${plan.keyPrefix}.f1`],
+          elementosATraducir[idioma][`${plan.keyPrefix}.f2`],
+          elementosATraducir[idioma][`${plan.keyPrefix}.f3`],
+          elementosATraducir[idioma][`${plan.keyPrefix}.f4`]
+        ];
 
-      return `
-        <article class="${claseCard}" id="${plan.id}">
-          <div class="svc-card__top">
-            <div class="svc-card__icon ${plan.iconModifier}">
-              <i class="bi ${plan.iconClass}"></i>
+        const featuresHTML = featuresTraducidas.map(feat => `
+          <li><i class="bi bi-check2-circle"></i> ${feat}</li>
+        `).join('');
+
+        // Traemos título, descripción, copete (tag), pie de tarjeta y botón dinámicos[cite: 1]
+        const tagTraducido = elementosATraducir[idioma][`${plan.keyPrefix}.tag`];
+        const pieTraducido = elementosATraducir[idioma]["plan.global.integrated"];
+        const tituloTraducido = elementosATraducir[idioma][`${plan.keyPrefix}.titulo`];
+        const descTraducida = elementosATraducir[idioma][`${plan.keyPrefix}.desc`];
+        const btnTraducido = elementosATraducir[idioma][`${plan.keyPrefix}.btn`];
+
+        return `
+          <article class="${claseCard}" id="${plan.id}">
+            <div class="svc-card__top">
+              <div class="svc-card__icon ${plan.iconModifier}">
+                <i class="bi ${plan.iconClass}"></i>
+              </div>
+              <!-- COPETA TRADUCIDO -->
+              <span class="svc-card__tag">${tagTraducido}</span>
             </div>
-            <span class="svc-card__tag">${plan.tag}</span>
-          </div>
-          <h3 class="svc-card__title">${plan.titulo}</h3>
-          <p class="svc-card__desc">${plan.desc}</p>
-          <ul class="svc-card__features">
-            ${featuresHTML}
-          </ul>
-          <div class="svc-card__footer">
-            <span class="svc-card__format">
-              <svg viewBox="0 0 22 18" width="14" height="12" style="margin-right: 2px; fill: currentColor; display: inline-block; vertical-align: middle;">
-                <rect x="0" y="4" width="4" height="10" rx="0.8"/>
-                <rect x="6" y="0" width="4" height="18" rx="0.8"/>
-                <rect x="12" y="5" width="4" height="8" rx="0.8"/>
-              </svg>
-              Plan Integrado con TrainingPeaks
-            </span>
-            <!-- Pasamos el ID del plan como parámetro de datos (data-plan) -->
-            <a href="#contacto" class="${claseBoton}" data-plan="${plan.id}">
-              ${iconoEspecial} ${plan.btnText}
-            </a>
-          </div>
-        </article>
-      `;
-    }).join('');
+            <h3 class="svc-card__title">${tituloTraducido}</h3>
+            <p class="svc-card__desc">${descTraducida}</p>
+            <ul class="svc-card__features">
+              ${featuresHTML}
+            </ul>
+            <div class="svc-card__footer">
+              <span class="svc-card__format">
+                <svg viewBox="0 0 22 18" width="14" height="12" style="margin-right: 2px; fill: currentColor; display: inline-block; vertical-align: middle;">
+                  <rect x="0" y="4" width="4" height="10" rx="0.8"/>
+                  <rect x="6" y="0" width="4" height="18" rx="0.8"/>
+                  <rect x="12" y="5" width="4" height="8" rx="0.8"/>
+                </svg>
+                <!-- PIE DE TARJETA TRADUCIDO -->
+                ${pieTraducido}
+              </span>
+              <a href="#contacto" class="${claseBoton}" data-plan="${plan.id}">
+                ${iconoEspecial} ${btnTraducido}
+              </a>
+            </div>
+          </article>
+        `;
+      }).join('');
+    };
 
-    // Escuchador de clicks exclusivo para capturar qué tarjeta eligió
+    window.dibujarTarjetasPlanes(idiomaActual);
+
     planesGrid.addEventListener('click', (e) => {
       const botonPlan = e.target.closest('.svc-card__btn, .btn');
       if (botonPlan && botonPlan.dataset.plan) {
         const planSeleccionado = botonPlan.dataset.plan;
         const selectorObjetivo = document.getElementById('objetivo');
-        
-        if (selectorObjetivo) {
-          // Cambia el valor del select de forma automática antes de que el usuario llegue abajo
-          selectorObjetivo.value = planSeleccionado;
-        }
+        if (selectorObjetivo) selectorObjetivo.value = planSeleccionado;
       }
     });
   }
@@ -99,46 +168,26 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ================================================
      INTRO: secuencia de animación
   ================================================ */
-  const intro     = document.getElementById('sz-intro');
-  const introSVG  = intro ? intro.querySelectorAll('text') : [];
+  const intro = document.getElementById('sz-intro');
   const introLabel = intro ? intro.querySelector('.sz-intro__label') : null;
-  const introWipe  = intro ? intro.querySelector('.sz-intro__wipe') : null;
 
   if (intro) {
     const introImg = intro.querySelector('.sz-intro__svg');
-
-    setTimeout(() => {
-      if (introImg) introImg.style.opacity = '1';
-    }, 120);
-
-    setTimeout(() => {
-      if (introLabel) introLabel.style.opacity = '1';
-    }, 480);
-
-    setTimeout(() => {
-      intro.classList.add('sz-intro--glow');
-    }, 750);
-
-    setTimeout(() => {
-      intro.classList.add('sz-intro--exit');
-    }, 1380);
-
-    setTimeout(() => {
-      intro.remove();
-      document.body.classList.add('intro-done');
-    }, 2120);
+    setTimeout(() => { if (introImg) introImg.style.opacity = '1'; }, 120);
+    setTimeout(() => { if (introLabel) introLabel.style.opacity = '1'; }, 480);
+    setTimeout(() => { intro.classList.add('sz-intro--glow'); }, 750);
+    setTimeout(() => { intro.classList.add('sz-intro--exit'); }, 1380);
+    setTimeout(() => { intro.remove(); document.body.classList.add('intro-done'); }, 2120);
   }
 
-
   /* ================================================
-     NAVBAR: efecto al hacer scroll
+     NAVBAR: efecto de scroll
   ================================================ */
   const navbar = document.getElementById('navbar');
   const footer = document.querySelector('.footer');
 
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
-    
     if (footer) {
         const footerTop = footer.getBoundingClientRect().top;
         navbar.style.opacity = footerTop < window.innerHeight ? '0' : '1';
@@ -146,9 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-
-/* ================================================
-     NAVBAR: menú hamburguesa (Siempre Visible)
+  /* ================================================
+     NAVBAR: menú hamburguesa móvil
   ================================================ */
   const toggleBtn = document.getElementById('navToggle');
   const navLinks  = document.getElementById('navLinks');
@@ -156,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggleBtn && navLinks) {
     function openMenu() {
       navLinks.classList.add('open');
-      toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>'; // Cambia el icono a cruz en el mismo botón de arriba
+      toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
       const scrollY = window.scrollY;
       document.body.style.position = 'fixed';
       document.body.style.top      = `-${scrollY}px`;
@@ -166,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeMenu() {
       navLinks.classList.remove('open');
-      toggleBtn.innerHTML = '<i class="bi bi-list"></i>'; // Vuelve a poner las tres líneas de la hamburguesa
+      toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
       const scrollY = parseInt(document.body.dataset.scrollY || '0');
       document.body.style.position = '';
       document.body.style.top      = '';
@@ -181,15 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.querySelectorAll('.navbar__link, .navbar__cta').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
-    });
   }
 
-
   /* ================================================
-     NAVBAR: link activo según sección
+     NAVBAR: observador de secciones activas
   ================================================ */
   const navItems = document.querySelectorAll('.navbar__link');
   const sections = document.querySelectorAll('section[id], header[id]');
@@ -198,10 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         navItems.forEach(link => {
-          link.classList.toggle(
-            'active',
-            link.getAttribute('href') === `#${entry.target.id}`
-          );
+          link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
         });
       }
     });
@@ -209,9 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(s => sectionObserver.observe(s));
 
-
   /* ================================================
-     CARRUSEL DE TESTIMONIOS (Dinámico e Interactivo)
+     CARRUSEL DE TESTIMONIOS
   ================================================ */
   const carousel = document.querySelector('.testi-carousel');
   const track    = document.getElementById('testiTrack');
@@ -220,61 +259,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnNext  = document.querySelector('.testi-btn--next');
   const counter  = document.querySelector('.testi-counter');
 
+  let current = 0;
+  let autoTimer = null;
+  let isAnimating = false;
+  let touchStartX = 0;
+
   if (carousel && track) {
     
-    track.innerHTML = testimoniosData.map(item => {
-      let estrellasHTML = '';
-      const enteras = Math.floor(item.estrellas);
-      const tieneMitad = item.estrellas % 1 !== 0;
+    window.dibujarTarjetasTestimonios = function(idioma) {
+      track.innerHTML = testimoniosData.map(item => {
+        let estrellasHTML = '';
+        const enteras = Math.floor(item.estrellas);
+        const tieneMitad = item.estrellas % 1 !== 0;
 
-      for (let i = 0; i < enteras; i++) {
-        estrellasHTML += '<i class="bi bi-star-fill"></i>';
-      }
-      if (tieneMitad) {
-        estrellasHTML += '<i class="bi bi-star-half"></i>';
-      }
+        for (let i = 0; i < enteras; i++) { estrellasHTML += '<i class="bi bi-star-fill"></i>'; }
+        if (tieneMitad) { estrellasHTML += '<i class="bi bi-star-half"></i>'; }
 
-      const claseCard = item.highlight ? 'testi-card testi-card--highlight' : 'testi-card';
+        const claseCard = item.highlight ? 'testi-card testi-card--highlight' : 'testi-card';
 
-      return `
-        <article class="${claseCard}">
-          <div class="testi-card__top">
-            <div class="testi-card__avatar">
-              <img src="${item.avatar}" alt="${item.nombre}" loading="lazy" width="80" height="80" />
+        const disciplinaTraducida = elementosATraducir[idioma][`testi.${item.id}.disciplina`] || item.disciplina;
+        const citaTraducida = elementosATraducir[idioma][`testi.${item.id}.cita`] || item.cita;
+        const logroTraducido = elementosATraducir[idioma][`testi.${item.id}.logro`] || item.logro;
+
+        return `
+          <article class="${claseCard}">
+            <div class="testi-card__top">
+              <div class="testi-card__avatar">
+                <img src="${item.avatar}" alt="${item.nombre}" loading="lazy" width="80" height="80" />
+              </div>
+              <div class="testi-card__meta">
+                <strong>${item.nombre}</strong>
+                <span><i class="bi bi-trophy"></i> ${disciplinaTraducida}</span>
+              </div>
+              <div class="testi-card__stars">
+                ${estrellasHTML}
+              </div>
             </div>
-            <div class="testi-card__meta">
-              <strong>${item.nombre}</strong>
-              <span><i class="bi bi-trophy"></i> ${item.disciplina}</span>
+            <blockquote class="testi-card__quote">
+              "${citaTraducida}"
+            </blockquote>
+            <div class="testi-card__logro">
+              <i class="bi bi-patch-check-fill"></i>
+              <span>${logroTraducido}</span>
             </div>
-            <div class="testi-card__stars">
-              ${estrellasHTML}
-            </div>
-          </div>
-          <blockquote class="testi-card__quote">
-            "${item.cita}"
-          </blockquote>
-          <div class="testi-card__logro">
-            <i class="bi bi-patch-check-fill"></i>
-            <span>${item.logro}</span>
-          </div>
-        </article>
-      `;
-    }).join('');
+          </article>
+        `;
+      }).join('');
+      
+      goTo(current);
+    };
 
-    const cards = track.querySelectorAll('.testi-card');
-    let current     = 0;
-    let autoTimer   = null;
-    let isAnimating = false;
-    let touchStartX = 0;
-
-    function getVisible() {
-      if (window.innerWidth >= 1024) return 2;
-      return 1;
-    }
-
-    function totalSlides() {
-      return cards.length - getVisible() + 1;
-    }
+    function getVisible() { return (window.innerWidth >= 1024) ? 2 : 1; }
+    function totalSlides() { return track.querySelectorAll('.testi-card').length - getVisible() + 1; }
 
     function buildDots() {
       if (!dotsWrap) return;
@@ -290,9 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateDots() {
       if (!dotsWrap) return;
-      dotsWrap.querySelectorAll('.testi-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
+      dotsWrap.querySelectorAll('.testi-dot').forEach((d, i) => { d.classList.toggle('active', i === current); });
     }
 
     function updateCounter() {
@@ -306,9 +340,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function goTo(index) {
-      if (isAnimating || !cards.length) return;
-      isAnimating = true;
-
+      const cards = track.querySelectorAll('.testi-card');
+      if (!cards.length) return;
+      
       const total = totalSlides();
       current = Math.max(0, Math.min(index, total - 1));
 
@@ -320,12 +354,10 @@ document.addEventListener('DOMContentLoaded', () => {
       updateDots();
       updateCounter();
       updateButtons();
-      updateActiveCards();
-
-      setTimeout(() => { isAnimating = false; }, 500);
+      updateActiveCards(cards);
     }
 
-    function updateActiveCards() {
+    function updateActiveCards(cards) {
       const visible = getVisible();
       cards.forEach((card, i) => {
         const isActive = i >= current && i < current + visible;
@@ -345,9 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 5000);
     }
 
-    function stopAuto() {
-      if (autoTimer) clearInterval(autoTimer);
-    }
+    function stopAuto() { if (autoTimer) clearInterval(autoTimer); }
 
     if (btnPrev) btnPrev.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
     if (btnNext) btnNext.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
@@ -355,97 +385,90 @@ document.addEventListener('DOMContentLoaded', () => {
     carousel.addEventListener('mouseenter', stopAuto);
     carousel.addEventListener('mouseleave', startAuto);
 
-    track.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-
+    track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', (e) => {
       const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) {
-        diff > 0 ? next() : prev();
-        stopAuto(); startAuto();
-      }
+      if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); stopAuto(); startAuto(); }
     });
 
-    let resizeTimer;
     window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        buildDots();
-        current = Math.min(current, totalSlides() - 1);
-        goTo(current);
-      }, 200);
+      buildDots();
+      current = Math.min(current, totalSlides() - 1);
+      goTo(current);
     });
 
+    window.dibujarTarjetasTestimonios(idiomaActual);
     buildDots();
     updateCounter();
     updateButtons();
-    updateActiveCards();
     startAuto();
   }
-
 
   /* ================================================
      INYECCIÓN DINÁMICA DE LA GALERÍA + LIGHTBOX
   ================================================ */
+ /* ================================================
+     INYECCIÓN DINÁMICA DE LA GALERÍA (TRADUCIBLE)
+  ================================================ */
   const galeriaGrid = document.getElementById('galeriaGrid');
-
   if (galeriaGrid) {
-    galeriaGrid.innerHTML = galeriaData.map(item => {
-      const claseEspecial = item.clase ? ` ${item.clase}` : '';
+    window.dibujarGaleria = function(idioma) {
+      galeriaGrid.innerHTML = galeriaData.map(item => {
+        const claseEspecial = item.clase ? ` ${item.clase}` : '';
+        // Buscamos el texto dinámicamente en nuestro diccionario seguro
+        const captionTraducido = elementosATraducir[idioma][`galeria.caption.${item.id}`];
 
-      return `
-        <figure class="galeria__item${claseEspecial}">
-          <img 
-            src="${item.src}" 
-            alt="${item.alt}" 
-            loading="lazy" 
-            width="600" 
-            height="450" 
-          />
-          <figcaption>
-            <i class="bi bi-camera-fill"></i> ${item.caption}
-          </figcaption>
-        </figure>
-      `;
-    }).join('');
+        return `
+          <figure class="galeria__item${claseEspecial}">
+            <img src="${item.src}" alt="${item.alt}" loading="lazy" width="600" height="450" />
+            <figcaption><i class="bi bi-camera-fill"></i> ${captionTraducido}</figcaption>
+          </figure>
+        `;
+      }).join('');
 
-    // Activación del Lightbox integrado para elementos dinámicos
-    galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const overlay = document.createElement('div');
-        overlay.className = 'lightbox-overlay';
-
-        const bigImg = document.createElement('img');
-        bigImg.src = img.src.replace(/w=\d+/, 'w=1400').replace(/q=\d+/, 'q=90');
-        bigImg.alt = img.alt;
-        bigImg.style.cursor = 'default';
-
-        overlay.appendChild(bigImg);
-        document.body.appendChild(overlay);
-        document.body.style.overflow = 'hidden';
-
-        overlay.addEventListener('click', closeLightbox);
-        const handleKey = (e) => {
-          if (e.key === 'Escape') { closeLightbox(); document.removeEventListener('keydown', handleKey); }
-        };
-        document.addEventListener('keydown', handleKey);
-
-        function closeLightbox() {
-          overlay.style.opacity    = '0';
-          overlay.style.transition = 'opacity 0.2s ease';
-          setTimeout(() => { overlay.remove(); document.body.style.overflow = ''; }, 200);
-        }
+      // Reactivación del Lightbox para las imágenes dinámicas
+      galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
+        img.style.cursor = 'zoom-in';
+        // Removemos oyentes viejos para evitar duplicación de clics
+        img.replaceWith(img.cloneNode(true));
       });
-    });
+
+      galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
+        img.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const overlay = document.createElement('div');
+          overlay.className = 'lightbox-overlay';
+
+          const bigImg = document.createElement('img');
+          bigImg.src = img.src.replace(/w=\d+/, 'w=1400').replace(/q=\d+/, 'q=90');
+          bigImg.alt = img.alt;
+
+          overlay.appendChild(bigImg);
+          document.body.appendChild(overlay);
+          document.body.style.overflow = 'hidden';
+
+          overlay.addEventListener('click', closeLightbox);
+          
+          const handleKey = (e) => {
+            if (e.key === 'Escape') { closeLightbox(); document.removeEventListener('keydown', handleKey); }
+          };
+          document.addEventListener('keydown', handleKey);
+
+          function closeLightbox() {
+            overlay.style.opacity = '0';
+            overlay.style.transition = 'opacity 0.2s ease';
+            setTimeout(() => { overlay.remove(); document.body.style.overflow = ''; }, 200);
+          }
+        });
+      });
+    };
+
+    // Ejecución inicial de la galería en español
+    window.dibujarGaleria(idiomaActual);
   }
 
-
   /* ================================================
-     FORMULARIO: envío simulado
+     FORMULARIO: envío simulado funcional
   ================================================ */
   const form = document.getElementById('coachForm');
   if (form) {
@@ -465,9 +488,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
   /* ================================================
-     SCROLL REVEAL — animaciones de entrada
+     SCROLL REVEAL
   ================================================ */
   const revealEls = document.querySelectorAll(
     '.svc-card, .galeria__item, .contacto__info, .contacto__form-wrap, .sobre__visual, .sobre__content, .tp-box, .testi-card'
@@ -497,4 +519,3 @@ document.addEventListener('DOMContentLoaded', () => {
   revealEls.forEach(el => revealObserver.observe(el));
 
 });
-

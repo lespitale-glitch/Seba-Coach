@@ -1,7 +1,11 @@
+
 /* ===================================================
-   main.js — Interactividad
+   main.js — Interactividad y Carga Dinámica
    Sebastián Zamperoni — SZ Tria Team
 =================================================== */
+
+// 1. Importaciones obligatorias desde el módulo de datos
+import { testimoniosData, planesData, galeriaData } from './data_original.js';
 
 /* ================================================
    INTRO SPLASH — se ejecuta antes de DOMContentLoaded
@@ -10,20 +14,19 @@
 (function () {
   const splash = document.createElement('div');
   splash.id = 'sz-intro';
-  // SVG inline — transparente, glow limpio solo sobre las letras
   splash.innerHTML = `
     <div class="sz-intro__logo">
-      <svg class="sz-intro__svg" viewBox="0 0 118 122" xmlns="http://www.w3.org/2000/svg" aria-label="SZ Tria Team">
-        <text x="2" y="70"
+      <svg class="sz-intro__svg" viewBox="0 0 108 112" xmlns="http://www.w3.org/2000/svg" aria-label="SZ Tria Team">
+        <text x="27" y="90"
               font-family="'Cormorant Garamond',Georgia,serif"
-              font-size="73" font-weight="700" font-style="italic"
-              fill="#FF44E4">S</text>
-        <text x="16" y="106"
-              font-family="'Cormorant Garamond',Georgia,serif"
-              font-size="100" font-weight="700" font-style="italic"
+              font-size="130" font-weight="700" font-style="italic"
               fill="#FF44E4">Z</text>
+        <text x="5" y="80"
+              font-family="'Cormorant Garamond',Georgia,serif"
+              font-size="130" font-weight="700" font-style="italic"
+              fill="#FF44E4">S</text>
       </svg>
-      <span class="sz-intro__label">SZ TRIA TEAM</span>
+      <span class="sz-intro__label">TRIA TEAM</span>
     </div>
     <div class="sz-intro__wipe"></div>
   `;
@@ -33,6 +36,67 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+/* ================================================
+     INYECCIÓN DINÁMICA DE PLANES PREMIUM (CON AUTO-SELECCIÓN)
+  ================================================ */
+  const planesGrid = document.getElementById('planesGrid');
+  
+  if (planesGrid) {
+    planesGrid.innerHTML = planesData.map(plan => {
+      const claseCard = plan.highlight ? 'svc-card svc-card--premium' : 'svc-card';
+      const claseBoton = plan.highlight ? 'btn btn--cta svc-card__btn' : 'btn btn--primary svc-card__btn';
+      const iconoEspecial = plan.highlight ? '<i class="bi bi-lightning-charge-fill"></i>' : '<i class="bi bi-send"></i>';
+
+      const featuresHTML = plan.features.map(feat => `
+        <li><i class="bi bi-check2-circle"></i> ${feat}</li>
+      `).join('');
+
+      return `
+        <article class="${claseCard}" id="${plan.id}">
+          <div class="svc-card__top">
+            <div class="svc-card__icon ${plan.iconModifier}">
+              <i class="bi ${plan.iconClass}"></i>
+            </div>
+            <span class="svc-card__tag">${plan.tag}</span>
+          </div>
+          <h3 class="svc-card__title">${plan.titulo}</h3>
+          <p class="svc-card__desc">${plan.desc}</p>
+          <ul class="svc-card__features">
+            ${featuresHTML}
+          </ul>
+          <div class="svc-card__footer">
+            <span class="svc-card__format">
+              <svg viewBox="0 0 22 18" width="14" height="12" style="margin-right: 2px; fill: currentColor; display: inline-block; vertical-align: middle;">
+                <rect x="0" y="4" width="4" height="10" rx="0.8"/>
+                <rect x="6" y="0" width="4" height="18" rx="0.8"/>
+                <rect x="12" y="5" width="4" height="8" rx="0.8"/>
+              </svg>
+              Plan Integrado con TrainingPeaks
+            </span>
+            <!-- Pasamos el ID del plan como parámetro de datos (data-plan) -->
+            <a href="#contacto" class="${claseBoton}" data-plan="${plan.id}">
+              ${iconoEspecial} ${plan.btnText}
+            </a>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    // Escuchador de clicks exclusivo para capturar qué tarjeta eligió
+    planesGrid.addEventListener('click', (e) => {
+      const botonPlan = e.target.closest('.svc-card__btn, .btn');
+      if (botonPlan && botonPlan.dataset.plan) {
+        const planSeleccionado = botonPlan.dataset.plan;
+        const selectorObjetivo = document.getElementById('objetivo');
+        
+        if (selectorObjetivo) {
+          // Cambia el valor del select de forma automática antes de que el usuario llegue abajo
+          selectorObjetivo.value = planSeleccionado;
+        }
+      }
+    });
+  }
+  
   /* ================================================
      INTRO: secuencia de animación
   ================================================ */
@@ -44,27 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (intro) {
     const introImg = intro.querySelector('.sz-intro__svg');
 
-    // Paso 1: imagen aparece con fade-in suave
     setTimeout(() => {
-      if (introImg)   introImg.style.opacity   = '1';
+      if (introImg) introImg.style.opacity = '1';
     }, 120);
 
-    // Paso 2: label aparece
     setTimeout(() => {
       if (introLabel) introLabel.style.opacity = '1';
     }, 480);
 
-    // Paso 3: glow pulsante sobre la imagen
     setTimeout(() => {
       intro.classList.add('sz-intro--glow');
     }, 750);
 
-    // Paso 4: wipe de salida
     setTimeout(() => {
       intro.classList.add('sz-intro--exit');
     }, 1380);
 
-    // Paso 5: remover del DOM
     setTimeout(() => {
       intro.remove();
       document.body.classList.add('intro-done');
@@ -76,23 +135,29 @@ document.addEventListener('DOMContentLoaded', () => {
      NAVBAR: efecto al hacer scroll
   ================================================ */
   const navbar = document.getElementById('navbar');
+  const footer = document.querySelector('.footer');
 
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
+    
+    if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        navbar.style.opacity = footerTop < window.innerHeight ? '0' : '1';
+        navbar.style.pointerEvents = footerTop < window.innerHeight ? 'none' : 'auto';
+    }
   }, { passive: true });
 
 
-  /* ================================================
-     NAVBAR: menú hamburguesa
+/* ================================================
+     NAVBAR: menú hamburguesa (Siempre Visible)
   ================================================ */
   const toggleBtn = document.getElementById('navToggle');
   const navLinks  = document.getElementById('navLinks');
 
   if (toggleBtn && navLinks) {
-
     function openMenu() {
       navLinks.classList.add('open');
-      toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
+      toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>'; // Cambia el icono a cruz en el mismo botón de arriba
       const scrollY = window.scrollY;
       document.body.style.position = 'fixed';
       document.body.style.top      = `-${scrollY}px`;
@@ -102,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeMenu() {
       navLinks.classList.remove('open');
-      toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
+      toggleBtn.innerHTML = '<i class="bi bi-list"></i>'; // Vuelve a poner las tres líneas de la hamburguesa
       const scrollY = parseInt(document.body.dataset.scrollY || '0');
       document.body.style.position = '';
       document.body.style.top      = '';
@@ -147,24 +212,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ================================================
-     CARRUSEL DE TESTIMONIOS
+     CARRUSEL DE TESTIMONIOS (Dinámico e Interactivo)
   ================================================ */
-  const carousel   = document.querySelector('.testi-carousel');
-  const track      = document.querySelector('.testi-track');
-  const cards      = document.querySelectorAll('.testi-card');
-  const dotsWrap   = document.querySelector('.testi-dots');
-  const btnPrev    = document.querySelector('.testi-btn--prev');
-  const btnNext    = document.querySelector('.testi-btn--next');
-  const counter    = document.querySelector('.testi-counter');
+  const carousel = document.querySelector('.testi-carousel');
+  const track    = document.getElementById('testiTrack');
+  const dotsWrap = document.querySelector('.testi-dots');
+  const btnPrev  = document.querySelector('.testi-btn--prev');
+  const btnNext  = document.querySelector('.testi-btn--next');
+  const counter  = document.querySelector('.testi-counter');
 
-  if (carousel && track && cards.length) {
+  if (carousel && track) {
+    
+    track.innerHTML = testimoniosData.map(item => {
+      let estrellasHTML = '';
+      const enteras = Math.floor(item.estrellas);
+      const tieneMitad = item.estrellas % 1 !== 0;
 
-    let current      = 0;
-    let autoTimer    = null;
-    let isAnimating  = false;
-    let touchStartX  = 0;
+      for (let i = 0; i < enteras; i++) {
+        estrellasHTML += '<i class="bi bi-star-fill"></i>';
+      }
+      if (tieneMitad) {
+        estrellasHTML += '<i class="bi bi-star-half"></i>';
+      }
 
-    // Calcular cuántas cards se ven según el ancho
+      const claseCard = item.highlight ? 'testi-card testi-card--highlight' : 'testi-card';
+
+      return `
+        <article class="${claseCard}">
+          <div class="testi-card__top">
+            <div class="testi-card__avatar">
+              <img src="${item.avatar}" alt="${item.nombre}" loading="lazy" width="80" height="80" />
+            </div>
+            <div class="testi-card__meta">
+              <strong>${item.nombre}</strong>
+              <span><i class="bi bi-trophy"></i> ${item.disciplina}</span>
+            </div>
+            <div class="testi-card__stars">
+              ${estrellasHTML}
+            </div>
+          </div>
+          <blockquote class="testi-card__quote">
+            "${item.cita}"
+          </blockquote>
+          <div class="testi-card__logro">
+            <i class="bi bi-patch-check-fill"></i>
+            <span>${item.logro}</span>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    const cards = track.querySelectorAll('.testi-card');
+    let current     = 0;
+    let autoTimer   = null;
+    let isAnimating = false;
+    let touchStartX = 0;
+
     function getVisible() {
       if (window.innerWidth >= 1024) return 2;
       return 1;
@@ -174,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return cards.length - getVisible() + 1;
     }
 
-    // Crear dots dinámicamente
     function buildDots() {
       if (!dotsWrap) return;
       dotsWrap.innerHTML = '';
@@ -205,15 +307,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function goTo(index) {
-      if (isAnimating) return;
+      if (isAnimating || !cards.length) return;
       isAnimating = true;
 
       const total = totalSlides();
       current = Math.max(0, Math.min(index, total - 1));
 
-      // Calcular el desplazamiento por card
       const cardW = cards[0].getBoundingClientRect().width;
-      const gap   = 20; // gap en px definido en CSS
+      const gap   = 20; 
       const shift = current * (cardW + gap);
       track.style.transform = `translateX(-${shift}px)`;
 
@@ -225,21 +326,18 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { isAnimating = false; }, 500);
     }
 
-    // Marca como activas las cards visibles en el slide actual
     function updateActiveCards() {
       const visible = getVisible();
       cards.forEach((card, i) => {
         const isActive = i >= current && i < current + visible;
         card.classList.toggle('testi-card--active', isActive);
       });
-      // Agregar clase al carousel para atenuar las no activas
       carousel.classList.add('has-active');
     }
 
     function next() { goTo(current + 1); }
     function prev() { goTo(current - 1); }
 
-    // Auto-play
     function startAuto() {
       stopAuto();
       autoTimer = setInterval(() => {
@@ -252,15 +350,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (autoTimer) clearInterval(autoTimer);
     }
 
-    // Eventos de flechas
     if (btnPrev) btnPrev.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
     if (btnNext) btnNext.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
 
-    // Pausa al hover
     carousel.addEventListener('mouseenter', stopAuto);
     carousel.addEventListener('mouseleave', startAuto);
 
-    // Swipe touch (mobile)
     track.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].clientX;
     }, { passive: true });
@@ -273,19 +368,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Reconstruir en resize
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         buildDots();
-        // Clamp current al nuevo total
         current = Math.min(current, totalSlides() - 1);
         goTo(current);
       }, 200);
     });
 
-    // Init
     buildDots();
     updateCounter();
     updateButtons();
@@ -295,38 +387,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ================================================
-     GALERÍA: Lightbox
+     INYECCIÓN DINÁMICA DE LA GALERÍA + LIGHTBOX
   ================================================ */
-  document.querySelectorAll('.galeria__item img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', (e) => {
-      e.stopPropagation();
+  const galeriaGrid = document.getElementById('galeriaGrid');
 
-      const overlay = document.createElement('div');
-      overlay.className = 'lightbox-overlay';
+  if (galeriaGrid) {
+    galeriaGrid.innerHTML = galeriaData.map(item => {
+      const claseEspecial = item.clase ? ` ${item.clase}` : '';
 
-      const bigImg = document.createElement('img');
-      bigImg.src = img.src.replace(/w=\d+/, 'w=1400').replace(/q=\d+/, 'q=90');
-      bigImg.alt = img.alt;
-      bigImg.style.cursor = 'default';
+      return `
+        <figure class="galeria__item${claseEspecial}">
+          <img 
+            src="${item.src}" 
+            alt="${item.alt}" 
+            loading="lazy" 
+            width="600" 
+            height="450" 
+          />
+          <figcaption>
+            <i class="bi bi-camera-fill"></i> ${item.caption}
+          </figcaption>
+        </figure>
+      `;
+    }).join('');
 
-      overlay.appendChild(bigImg);
-      document.body.appendChild(overlay);
-      document.body.style.overflow = 'hidden';
+    // Activación del Lightbox integrado para elementos dinámicos
+    galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
 
-      overlay.addEventListener('click', closeLightbox);
-      const handleKey = (e) => {
-        if (e.key === 'Escape') { closeLightbox(); document.removeEventListener('keydown', handleKey); }
-      };
-      document.addEventListener('keydown', handleKey);
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
 
-      function closeLightbox() {
-        overlay.style.opacity    = '0';
-        overlay.style.transition = 'opacity 0.2s ease';
-        setTimeout(() => { overlay.remove(); document.body.style.overflow = ''; }, 200);
-      }
+        const bigImg = document.createElement('img');
+        bigImg.src = img.src.replace(/w=\d+/, 'w=1400').replace(/q=\d+/, 'q=90');
+        bigImg.alt = img.alt;
+        bigImg.style.cursor = 'default';
+
+        overlay.appendChild(bigImg);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        overlay.addEventListener('click', closeLightbox);
+        const handleKey = (e) => {
+          if (e.key === 'Escape') { closeLightbox(); document.removeEventListener('keydown', handleKey); }
+        };
+        document.addEventListener('keydown', handleKey);
+
+        function closeLightbox() {
+          overlay.style.opacity    = '0';
+          overlay.style.transition = 'opacity 0.2s ease';
+          setTimeout(() => { overlay.remove(); document.body.style.overflow = ''; }, 200);
+        }
+      });
     });
-  });
+  }
 
 
   /* ================================================

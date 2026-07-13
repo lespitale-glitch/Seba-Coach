@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow" />
 
     <!-- Título y descripción optimizados para SEO -->
-    <title data-i18n="meta-title">
+    <title data-i18n="metaTitle">
       Sebastián Zamperoni | Entrenador de Triatlón, Running y Natación — Buenos
       Aires
     </title>
@@ -80,7 +80,10 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 118 122'><text x='5' y='80' font-family='&quot;Cormorant Garamond&quot;,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'>S</text><text x='25' y='95' font-family='&quot;Cormorant Garamond&quot;,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'>Z</text></svg>"
+      <link
+  rel="icon"
+  type="image/svg+xml"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 118 122'%3E%3Ctext x='5' y='80' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3ES%3C/text%3E%3Ctext x='25' y='95' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3EZ%3C/text%3E%3C/svg%3E"
     />
 
     <!-- Mantenemos la línea de Apple por compatibilidad con iPhones si se guarda como app de inicio -->
@@ -232,7 +235,6 @@
     <header class="header" id="inicio">
       <nav class="navbar" id="navbar">
         <div class="navbar__inner">
-          
           <!-- Logo SZ -->
           <a href="#inicio" class="navbar__logo">
             <svg
@@ -264,12 +266,11 @@
                 Z
               </text>
             </svg>
-            <span class="navbar__logo-text"
-              >SEBASTIÁN<strong>ZAMPERONI</strong></span
-            >
-          </a><button id="langToggle" class="lang-btn" data-lang="es">
+            <span class="navbar__logo-text"><span data-i18n="navbar.brandFirstName">SEBASTIÁN</span><strong data-i18n="navbar.brandLastName">ZAMPERONI</strong></span>
+          </a>
+          <button id="langToggle" class="lang-btn" data-lang="es">
   <i class="bi bi-globe"></i>
-  <span id="langLabel">ES</span>
+            <span id="langLabel" data-i18n="navbar.language">ES</span>
 </button>
 
          <!-- Enlaces de navegación — Actualizado con Botón de Cierre Flotante -->
@@ -279,13 +280,13 @@
               <i class="bi bi-x-lg"></i>
             </button>
 
-            <li><a href="#inicio" class="navbar__link active">Inicio</a></li>
-            <li><a href="#sobre" class="navbar__link">Sobre mí</a></li>
-            <li><a href="#servicios" class="navbar__link">Planes</a></li>
-            <li><a href="#testimonios" class="navbar__link">Opiniones</a></li>
-            <li><a href="#contacto" class="navbar__link">Contacto</a></li>
+            <li><a href="#inicio" class="navbar__link active" data-i18n="navbar.home">Inicio</a></li>
+            <li><a href="#sobre" class="navbar__link" data-i18n="navbar.about">Sobre mí</a></li>
+            <li><a href="#servicios" class="navbar__link" data-i18n="navbar.plans">Planes</a></li>
+            <li><a href="#testimonios" class="navbar__link" data-i18n="navbar.testimonials">Opiniones</a></li>
+            <li><a href="#contacto" class="navbar__link" data-i18n="navbar.contact">Contacto</a></li>
             <li>
-              <a href="#contacto" class="btn btn--cta navbar__cta">Empezá ahora</a>
+              <a href="#contacto" class="btn btn--cta navbar__cta" data-i18n="navbar.startNow">Empezá ahora</a>
             </li>
           </ul>
 
@@ -312,31 +313,31 @@
         <div class="hero__content">
           <!-- Disciplinas -->
           <div class="hero__disciplines">
-            <span><i class="bi bi-water"></i> Natación</span>
+            <span><i class="bi bi-water"></i> <span data-i18n="hero.disciplines.swimming">Natación</span></span>
             <span class="sep">·</span>
-            <span><i class="bi bi-person-walking"></i> Running</span>
+            <span><i class="bi bi-person-walking"></i> <span data-i18n="hero.disciplines.running">Running</span></span>
             <span class="sep">·</span>
-            <span><i class="bi bi-bicycle"></i> Ciclismo</span>
+            <span><i class="bi bi-bicycle"></i> <span data-i18n="hero.disciplines.cycling">Ciclismo</span></span>
             <span class="sep">·</span>
-            <span><i class="bi bi-diagram-3"></i> Triatlón</span>
+            <span><i class="bi bi-diagram-3"></i> <span data-i18n="hero.disciplines.triathlon">Triatlón</span></span>
           </div>
 
           <h1 class="hero__title">
-            <span class="hero__title-seo">
+            <span class="hero__title-seo" data-i18n="hero.seoTitle">
               Sebastián Zamperoni — Entrenador de triatlón, running y natación
               en Buenos Aires
             </span>
             <span class="hero__title-visual">
-              Entrenamiento real<br />
-              <em>para desafíos<br />extraordinarios.</em>
+              <span data-i18n="hero.visualTitleLineOne">Entrenamiento real</span><br />
+              <em><span class="hero__title_line" data-i18n="hero.visualTitleEmphasisLineOne" id="hero__title-visual.line">para desafíos</span><br /><span class="hero__title_line" data-i18n="hero.visualTitleEmphasisLineTwo">extraordinarios.</span></em>
             </span>
           </h1>
 
           <p class="hero__subtitle">
-            Preparación en natación, running, ciclismo y triatlón<br
+            <span data-i18n="hero.subtitleLineOne">Preparación en natación, running, ciclismo y triatlón</span><br
               class="hero__br"
             />
-            de la mano de un entrenador que entiende tus tiempos.
+            <span data-i18n="hero.subtitleLineTwo">de la mano de un entrenador que entiende tus tiempos.</span>
           </p>
 
           <!-- Badge SZ Tria Team -->
@@ -370,30 +371,30 @@
                 Z
               </text>
             </svg>
-            <span>TRIA TEAM</span>
+            <span data-i18n="hero.teamName">TRIA TEAM</span>
           </div>
 
           <div class="hero__ctas">
             <a href="#servicios" class="btn btn--primary"
-              ><i class="bi bi-arrow-right-circle"></i> Ver planes</a
+              ><i class="bi bi-arrow-right-circle"></i> <span data-i18n="hero.viewPlans">Ver planes</span></a
             >
             <a href="#sobre" class="btn btn--ghost"
-              ><i class="bi bi-person-circle"></i> Conocer al entrenador</a
+              ><i class="bi bi-person-circle"></i> <span data-i18n="hero.meetCoach">Conocer al entrenador</span></a
             >
           </div>
 
           <!-- Stats -->
           <div class="hero__stats">
             <div class="hero__stat">
-              <strong>+200</strong><span>Atletas entrenados</span>
+              <strong data-i18n="hero.stats.athletesValue">+200</strong><span data-i18n="hero.stats.athletesLabel">Atletas entrenados</span>
             </div>
             <div class="hero__stat-sep"></div>
             <div class="hero__stat">
-              <strong>+30</strong><span>Finishes larga distancia</span>
+              <strong data-i18n="hero.stats.finishesValue">+30</strong><span data-i18n="hero.stats.finishesLabel">Finishes larga distancia</span>
             </div>
             <div class="hero__stat-sep"></div>
             <div class="hero__stat">
-              <strong>+32 años</strong><span>de experiencia</span>
+              <strong data-i18n="hero.stats.experienceValue">+32 años</strong><span data-i18n="hero.stats.experienceLabel">de experiencia</span>
             </div>
           </div>
         </div>
@@ -452,8 +453,8 @@
                     </text>
                   </svg>
                   <div>
-                    <strong>Sebastián Zamperoni</strong>
-                    <span>Profesor y entrenador · SZ Tria Team</span>
+                    <strong data-i18n="about.imageTag.name">Sebastián Zamperoni</strong>
+                    <span data-i18n="about.imageTag.role">Profesor y entrenador · SZ Tria Team</span>
                   </div>
                 </div>
               </div>
@@ -463,16 +464,16 @@
                 <div class="sobre__cred">
                   <i class="bi bi-award-fill"></i>
                   <div>
-                    <strong>Entrenador certificado</strong>
-                    <span>Especialización en deportes de resistencia</span>
+                    <strong data-i18n="about.credentials.certified.title">Entrenador certificado</strong>
+                    <span data-i18n="about.credentials.certified.description">Especialización en deportes de resistencia</span>
                   </div>
                 </div>
                 <div class="sobre__cred">
                   <i class="bi bi-trophy-fill"></i>
                   <div>
-                    <strong>+30 finishes en larga distancia</strong>
+                    <strong data-i18n="about.credentials.finishes.title">+30 finishes en larga distancia</strong>
                     <span
-                      >Atleta activo en competencias nacionales e
+                      data-i18n="about.credentials.finishes.description">Atleta activo en competencias nacionales e
                       internacionales</span
                     >
                   </div>
@@ -480,9 +481,9 @@
                 <div class="sobre__cred">
                   <i class="bi bi-people-fill"></i>
                   <div>
-                    <strong>+200 atletas entrenados</strong>
+                    <strong data-i18n="about.credentials.athletes.title">+200 atletas entrenados</strong>
                     <span
-                      >Desde principiantes hasta competidores de élite
+                      data-i18n="about.credentials.athletes.description">Desde principiantes hasta competidores de élite
                       amateur</span
                     >
                   </div>
@@ -490,9 +491,9 @@
                 <div class="sobre__cred">
                   <i class="bi bi-laptop"></i>
                   <div>
-                    <strong>Gestión y monitoreo en TrainingPeaks</strong>
+                    <strong data-i18n="about.credentials.trainingPeaks.title">Gestión y monitoreo en TrainingPeaks</strong>
                     <span
-                      >Plataforma líder en planificación de resistencia</span
+                      data-i18n="about.credentials.trainingPeaks.description">Plataforma líder en planificación de resistencia</span
                     >
                   </div>
                 </div>
@@ -502,19 +503,19 @@
             <!-- Columna derecha: texto -->
             <div class="sobre__content">
               <p class="eyebrow">
-                <i class="bi bi-person-circle"></i> Sobre mí
+                <i class="bi bi-person-circle"></i> <span data-i18n="about.eyebrow">Sobre mí</span>
               </p>
               <h2 class="section-title sobre__title">
-                Un entrenador que<br /><em>compite y entiende.</em>
+                <span data-i18n="about.titleLineOne">Un entrenador que</span><br /><em data-i18n="about.titleEmphasis">compite y entiende.</em>
               </h2>
 
-              <p class="sobre__texto">
+              <p class="sobre__texto" data-i18n="about.paragraphOne">
                 Soy Sebastián Zamperoni, profesor y
                 entrenador certificado con más de 32 años dedicados al deporte de
                 resistencia. No solo entreno atletas — compito con ellos. Eso me
                 da una perspectiva real que va más allá de la teoría..
               </p>
-              <p class="sobre__texto">
+              <p class="sobre__texto" data-i18n="about.paragraphTwo">
                 A lo largo de mi carrera como entrenador y atleta, participé en
                 innumerables triatlones de todas las distancias, tanto
                 nacionales como internacionales, logrando podios y posiciones en
@@ -522,7 +523,7 @@
                 abiertas. Sé lo que se siente llegar al kilómetro 35 con las
                 piernas vacías, y también sé exactamente cómo evitarlo.
               </p>
-              <p class="sobre__texto">
+              <p class="sobre__texto" data-i18n="about.paragraphThree">
                 Mi método combina planificación basada en datos con
                 acompañamiento humano real. Cada atleta tiene tiempos, contextos
                 y objetivos distintos — mis planes se adaptan a eso, no al
@@ -533,24 +534,24 @@
               <div class="sobre__disciplinas">
                 <div class="sobre__disc">
                   <i class="bi bi-water"></i>
-                  <span>Natación</span>
+                  <span data-i18n="about.disciplines.swimming">Natación</span>
                 </div>
                 <div class="sobre__disc">
                   <i class="bi bi-person-walking"></i>
-                  <span>Running</span>
+                  <span data-i18n="about.disciplines.running">Running</span>
                 </div>
                 <div class="sobre__disc">
                   <i class="bi bi-bicycle"></i>
-                  <span>Ciclismo</span>
+                  <span data-i18n="about.disciplines.cycling">Ciclismo</span>
                 </div>
                 <div class="sobre__disc">
                   <i class="bi bi-diagram-3"></i>
-                  <span>Triatlón</span>
+                  <span data-i18n="about.disciplines.triathlon">Triatlón</span>
                 </div>
               </div>
 
               <a href="#servicios" class="btn btn--primary">
-                <i class="bi bi-collection"></i> Ver mis planes
+                <i class="bi bi-collection"></i> <span data-i18n="about.viewPlans">Ver mis planes</span>
               </a>
             </div>
           </div>
@@ -564,10 +565,10 @@
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">
-              <i class="bi bi-collection"></i> Programas de entrenamiento
+              <i class="bi bi-collection"></i> <span data-i18n="plans.eyebrow">Programas de entrenamiento</span>
             </p>
-            <h2 class="section-title">Planes premium</h2>
-            <p class="section-desc">
+            <h2 class="section-title" data-i18n="plans.title">Planes premium</h2>
+            <p class="section-desc" data-i18n="plans.description">
               Programas estructurados y personalizados, entregados por
               TrainingPeaks. Cada plan es una hoja de ruta completa hacia tu
               objetivo.
@@ -580,9 +581,9 @@
 
           <!-- CTA secundario: "¿No sabés cuál elegir?" -->
           <div class="servicios__cta-sec">
-            <p>¿No sabés cuál plan se adapta mejor a vos?</p>
+            <p data-i18n="plans.ctaQuestion">¿No sabés cuál plan se adapta mejor a vos?</p>
             <a href="#contacto" class="btn btn--ghost">
-              <i class="bi bi-chat-dots"></i> Consultame gratis
+              <i class="bi bi-chat-dots"></i> <span data-i18n="plans.ctaButton">Consultame gratis</span>
             </a>
           </div>
         </div>
@@ -597,16 +598,16 @@
             <!-- Columna izquierda: texto -->
             <div class="tp-content">
               <p class="eyebrow">
-                <i class="bi bi-laptop"></i> Plataforma oficial
+                <i class="bi bi-laptop"></i> <span data-i18n="trainingPeaks.eyebrow">Plataforma oficial</span>
               </p>
               <h2 class="section-title tp-title">
-                Entrenamos con<br /><em>TrainingPeaks</em>
+                <span data-i18n="trainingPeaks.titleLineOne">Entrenamos con</span><br /><em data-i18n="trainingPeaks.titleEmphasis">TrainingPeaks</em>
               </h2>
               <p class="tp-desc">
-                Todos mis planes se gestionan a través de
-                <strong>TrainingPeaks</strong>, la plataforma web y móvil líder
+                <span data-i18n="trainingPeaks.description.prefix">Todos mis planes se gestionan a través de</span>
+                <strong data-i18n="trainingPeaks.description.brand">TrainingPeaks</strong><span data-i18n="trainingPeaks.description.suffix">, la plataforma web y móvil líder
                 mundial diseñada para que atletas y entrenadores planifiquen,
-                analicen y sigan entrenamientos de resistencia.
+                analicen y sigan entrenamientos de resistencia.</span>
               </p>
 
               <ul class="tp-features">
@@ -615,8 +616,8 @@
                     <i class="bi bi-calendar2-check"></i>
                   </div>
                   <div>
-                    <strong>Planificación estructurada</strong>
-                    <span
+                    <strong data-i18n="trainingPeaks.features.planning.title">Planificación estructurada</strong>
+                    <span data-i18n="trainingPeaks.features.planning.description"
                       >Tu plan semana a semana con cada sesión detallada:
                       duración, zonas, métricas y objetivos.</span
                     >
@@ -627,8 +628,8 @@
                     <i class="bi bi-bar-chart-line"></i>
                   </div>
                   <div>
-                    <strong>Análisis de rendimiento</strong>
-                    <span
+                    <strong data-i18n="trainingPeaks.features.analysis.title">Análisis de rendimiento</strong>
+                    <span data-i18n="trainingPeaks.features.analysis.description"
                       >Métricas avanzadas de carga, TSS, CTL y ATL para entender
                       tu progreso real.</span
                     >
@@ -637,8 +638,8 @@
                 <li>
                   <div class="tp-feat-icon"><i class="bi bi-phone"></i></div>
                   <div>
-                    <strong>App móvil siempre disponible</strong>
-                    <span
+                    <strong data-i18n="trainingPeaks.features.mobile.title">App móvil siempre disponible</strong>
+                    <span data-i18n="trainingPeaks.features.mobile.description"
                       >Accedé desde el celular y sincronizá con Garmin, Wahoo,
                       Polar y más.</span
                     >
@@ -649,8 +650,8 @@
                     <i class="bi bi-chat-left-dots"></i>
                   </div>
                   <div>
-                    <strong>Feedback directo del entrenador</strong>
-                    <span
+                    <strong data-i18n="trainingPeaks.features.feedback.title">Feedback directo del entrenador</strong>
+                    <span data-i18n="trainingPeaks.features.feedback.description"
                       >Comentá cada sesión y recibís retroalimentación
                       personalizada.</span
                     >
@@ -695,7 +696,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                Conocer TrainingPeaks
+                <span data-i18n="trainingPeaks.learnMore">Conocer TrainingPeaks</span>
               </a>
             </div>
 
@@ -738,82 +739,82 @@
                         fill="#1E5BC6"
                       />
                     </svg>
-                    TrainingPeaks · Dashboard
+                    <span data-i18n="trainingPeaks.dashboard.title">TrainingPeaks · Dashboard</span>
                   </span>
                 </div>
                 <div class="tp-mockup__body">
                   <div class="tp-metrics">
                     <div class="tp-metric">
-                      <span class="tp-metric__label">CTL (Forma)</span>
-                      <span class="tp-metric__val tp-metric__val--blue"
+                      <span class="tp-metric__label" data-i18n="trainingPeaks.dashboard.metrics.ctlLabel">CTL (Forma)</span>
+                      <span class="tp-metric__val tp-metric__val--blue" data-i18n="trainingPeaks.dashboard.metrics.ctlValue"
                         >82</span
                       >
                     </div>
                     <div class="tp-metric">
-                      <span class="tp-metric__label">ATL (Fatiga)</span>
-                      <span class="tp-metric__val tp-metric__val--pink"
+                      <span class="tp-metric__label" data-i18n="trainingPeaks.dashboard.metrics.atlLabel">ATL (Fatiga)</span>
+                      <span class="tp-metric__val tp-metric__val--pink" data-i18n="trainingPeaks.dashboard.metrics.atlValue"
                         >94</span
                       >
                     </div>
                     <div class="tp-metric">
-                      <span class="tp-metric__label">TSB (Estado)</span>
-                      <span class="tp-metric__val tp-metric__val--white"
+                      <span class="tp-metric__label" data-i18n="trainingPeaks.dashboard.metrics.tsbLabel">TSB (Estado)</span>
+                      <span class="tp-metric__val tp-metric__val--white" data-i18n="trainingPeaks.dashboard.metrics.tsbValue"
                         >−12</span
                       >
                     </div>
                   </div>
                   <div class="tp-week">
-                    <p class="tp-week__label">Carga semanal — Semana 14</p>
+                    <p class="tp-week__label" data-i18n="trainingPeaks.dashboard.weeklyLoad">Carga semanal — Semana 14</p>
                     <div class="tp-bars">
                       <div class="tp-bar">
                         <div class="tp-bar__fill" style="height: 55%"></div>
-                        <span>L</span>
+                        <span data-i18n="trainingPeaks.dashboard.days.monday">L</span>
                       </div>
                       <div class="tp-bar">
                         <div
                           class="tp-bar__fill tp-bar__fill--rest"
                           style="height: 10%"
                         ></div>
-                        <span>M</span>
+                        <span data-i18n="trainingPeaks.dashboard.days.tuesday">M</span>
                       </div>
                       <div class="tp-bar">
                         <div class="tp-bar__fill" style="height: 80%"></div>
-                        <span>Mi</span>
+                        <span data-i18n="trainingPeaks.dashboard.days.wednesday">Mi</span>
                       </div>
                       <div class="tp-bar">
                         <div class="tp-bar__fill" style="height: 65%"></div>
-                        <span>J</span>
+                        <span data-i18n="trainingPeaks.dashboard.days.thursday">J</span>
                       </div>
                       <div class="tp-bar">
                         <div
                           class="tp-bar__fill tp-bar__fill--rest"
                           style="height: 15%"
                         ></div>
-                        <span>V</span>
+                        <span data-i18n="trainingPeaks.dashboard.days.friday">V</span>
                       </div>
                       <div class="tp-bar">
                         <div
                           class="tp-bar__fill tp-bar__fill--long"
                           style="height: 100%"
                         ></div>
-                        <span>S</span>
+                        <span data-i18n="trainingPeaks.dashboard.days.saturday">S</span>
                       </div>
                       <div class="tp-bar">
                         <div
                           class="tp-bar__fill tp-bar__fill--rest"
                           style="height: 5%"
                         ></div>
-                        <span>D</span>
+                        <span data-i18n="trainingPeaks.dashboard.days.sunday">D</span>
                       </div>
                     </div>
                   </div>
                   <div class="tp-today">
                     <div class="tp-today__header">
                       <i class="bi bi-calendar-check"></i>
-                      <span>Sesión de hoy</span>
-                      <span class="tp-today__badge">Natación</span>
+                      <span data-i18n="trainingPeaks.dashboard.today.title">Sesión de hoy</span>
+                      <span class="tp-today__badge" data-i18n="trainingPeaks.dashboard.today.discipline">Natación</span>
                     </div>
-                    <p class="tp-today__desc">
+                    <p class="tp-today__desc" data-i18n="trainingPeaks.dashboard.today.description">
                       Técnica de brazada · 2.400m · Zona 2 · 65 min
                     </p>
                     <div class="tp-today__progress">
@@ -821,21 +822,21 @@
                     </div>
                     <div class="tp-today__meta">
                       <span
-                        ><i class="bi bi-clock"></i> 44 min completados</span
+                      ><i class="bi bi-clock"></i> <span data-i18n="trainingPeaks.dashboard.today.completed">44 min completados</span></span
                       >
-                      <span class="tp-today__pct">68%</span>
+                      <span class="tp-today__pct" data-i18n="trainingPeaks.dashboard.today.progress">68%</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="tp-badges">
-                <span class="tp-badge"><i class="bi bi-watch"></i> Garmin</span>
-                <span class="tp-badge"><i class="bi bi-phone"></i> Wahoo</span>
+                <span class="tp-badge"><i class="bi bi-watch"></i> <span data-i18n="trainingPeaks.integrations.garmin">Garmin</span></span>
+                <span class="tp-badge"><i class="bi bi-phone"></i> <span data-i18n="trainingPeaks.integrations.wahoo">Wahoo</span></span>
                 <span class="tp-badge"
-                  ><i class="bi bi-heart-pulse"></i> Polar</span
+                  ><i class="bi bi-heart-pulse"></i> <span data-i18n="trainingPeaks.integrations.polar">Polar</span></span
                 >
                 <span class="tp-badge"
-                  ><i class="bi bi-activity"></i> Strava</span
+                  ><i class="bi bi-activity"></i> <span data-i18n="trainingPeaks.integrations.strava">Strava</span></span
                 >
               </div>
             </div>
@@ -849,11 +850,11 @@
       <section class="testimonios" id="testimonios">
         <div class="container">
           <div class="section-head section-head--light">
-            <p class="eyebrow"><i class="bi bi-chat-quote"></i> Voces reales</p>
+            <p class="eyebrow"><i class="bi bi-chat-quote"></i> <span data-i18n="testimonials.eyebrow">Voces reales</span></p>
             <h2 class="section-title">
-              Lo que dicen<br /><em>mis atletas</em>
+              <span data-i18n="testimonials.titleLineOne">Lo que dicen</span><br /><em data-i18n="testimonials.titleEmphasis">mis atletas</em>
             </h2>
-            <p class="section-desc">
+            <p class="section-desc" data-i18n="testimonials.description">
               Resultados concretos, historias reales. Deslizá para ver más.
             </p>
           </div>
@@ -870,7 +871,7 @@
               <i class="bi bi-arrow-left"></i>
             </button>
             <div class="testi-dots"></div>
-            <span class="testi-counter">1 / 5</span>
+            <span class="testi-counter" data-i18n="testimonials.counter">1 / 5</span>
             <button class="testi-btn testi-btn--next" aria-label="Siguiente">
               <i class="bi bi-arrow-right"></i>
             </button>
@@ -878,7 +879,7 @@
         </div>
       </section>
 
-      <<!-- =========================================
+      <!-- =========================================
              SECCIÓN 6 — GALERÍA (Inyección Dinámica)
         ========================================= -->
       <div class="galeria__grid" id="galeriaGrid">
@@ -893,13 +894,13 @@
           <!-- Panel izquierdo -->
           <div class="contacto__info">
             <div class="contacto__info-top">
-              <p class="eyebrow"><i class="bi bi-send-check"></i> Hablemos</p>
+              <p class="eyebrow"><i class="bi bi-send-check"></i> <span data-i18n="contact.eyebrow">Hablemos</span></p>
               <h2 class="section-title">
-                Tu próximo<br /><em>desafío empieza acá.</em>
+                <span data-i18n="contact.titleLineOne">Tu próximo</span><br /><em data-i18n="contact.titleEmphasis">desafío empieza acá.</em>
               </h2>
               <p class="contacto__desc">
-                Completá el formulario y te respondo en menos de 24hs.<br />
-                La primera consulta es siempre gratuita.
+                <span data-i18n="contact.descriptionLineOne">Completá el formulario y te respondo en menos de 24hs.</span><br />
+                <span data-i18n="contact.descriptionLineTwo">La primera consulta es siempre gratuita.</span>
               </p>
             </div>
 
@@ -907,25 +908,25 @@
               <li>
                 <i class="bi bi-geo-alt-fill"></i>
                 <div>
-                  <strong>Ubicación</strong
-                  ><span>Ciudad de Buenos Aires, Argentina</span>
+                  <strong data-i18n="contact.details.location.label">Ubicación</strong
+                  ><span data-i18n="contact.details.location.value">Ciudad de Buenos Aires, Argentina</span>
                 </div>
               </li>
               <li>
                 <i class="bi bi-whatsapp"></i>
                 <div>
-                  <strong>WhatsApp</strong><span>+54 9 11 5746 3710</span>
+                  <strong data-i18n="contact.details.whatsapp.label">WhatsApp</strong><span data-i18n="contact.details.whatsapp.value">+54 9 11 5746 3710</span>
                 </div>
               </li>
               <li>
                 <i class="bi bi-envelope-fill"></i>
                 <div>
-                  <strong>Email</strong><span>sebaszampe@gmail.com</span>
+                  <strong data-i18n="contact.details.email.label">Email</strong><span data-i18n="contact.details.email.value">sebaszampe@gmail.com</span>
                 </div>
               </li>
               <li>
                 <i class="bi bi-instagram"></i>
-                <div><strong>Instagram</strong><span>@sebastianzamperoni</span></div>
+                <div><strong data-i18n="contact.details.instagram.label">Instagram</strong><span data-i18n="contact.details.instagram.value">@sebastianzamperoni</span></div>
               </li>
             </ul>
 
@@ -950,25 +951,25 @@
           <!-- Panel derecho: formulario simplificado (4 campos + 2 selectores) -->
           <div class="contacto__form-wrap">
             <form class="form" id="coachForm">
-              <h3 class="form__title">Enviá tu consulta</h3>
+              <h3 class="form__title" data-i18n="contact.form.title">Enviá tu consulta</h3>
 
               <div class="form__row">
                 <div class="form__group">
                   <label for="nombre" class="form__label">
-                    <i class="bi bi-person"></i> Nombre <span>*</span>
+                    <i class="bi bi-person"></i> <span data-i18n="contact.form.nameLabel">Nombre</span> <span>*</span>
                   </label>
                   <input
                     type="text"
                     id="nombre"
                     name="nombre"
                     class="form__input"
-                    placeholder="Juan Pérez"
+                    placeholder="Juan Pérez" data-i18n-placeholder="contact.form.namePlaceholder"
                     required
                   />
                 </div>
                 <div class="form__group">
                   <label for="contacto_via" class="form__label">
-                    <i class="bi bi-phone"></i> WhatsApp / Teléfono
+                    <i class="bi bi-phone"></i> <span data-i18n="contact.form.phoneLabel">WhatsApp / Teléfono</span>
                     <span>*</span>
                   </label>
                   <input
@@ -976,7 +977,7 @@
                     id="contacto_via"
                     name="contacto_via"
                     class="form__input"
-                    placeholder="+54 11 1234-5678"
+                    placeholder="+54 11 1234-5678" data-i18n-placeholder="contact.form.phonePlaceholder"
                     required
                   />
                 </div>
@@ -984,21 +985,21 @@
 
               <div class="form__group">
                 <label for="email" class="form__label">
-                  <i class="bi bi-envelope"></i> Email <span>*</span>
+                  <i class="bi bi-envelope"></i> <span data-i18n="contact.form.emailLabel">Email</span> <span>*</span>
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   class="form__input"
-                  placeholder="juan@email.com"
+                  placeholder="juan@email.com" data-i18n-placeholder="contact.form.emailPlaceholder"
                   required
                 />
               </div>
 
   <div class="form__group">
                 <label for="objetivo" class="form__label">
-                  <i class="bi bi-bullseye"></i> ¿Cuál es tu próximo objetivo? <span>*</span>
+                  <i class="bi bi-bullseye"></i> <span data-i18n="contact.form.goalLabel">¿Cuál es tu próximo objetivo?</span> <span>*</span>
                 </label>
                 <select
                   id="objetivo"
@@ -1006,58 +1007,58 @@
                   class="form__input form__select"
                   required
                 >
-                  <option value="" disabled selected>Seleccioná tu meta</option>
-                  <option value="svc-natacion">Plan Técnico de Natación / Aguas Abiertas</option>
-                  <option value="svc-triatlon">Preparación Triatlón Integral (Short / 70.3 / Ironman)</option>
-                  <option value="svc-running">Performance Running Plan (Calle / Trail)</option>
-                  <option value="base">Otro objetivo / Consulta general</option>
+                  <option value="" disabled selected data-i18n="contact.form.goalOptions.placeholder">Seleccioná tu meta</option>
+                  <option value="svc-natacion" data-i18n="contact.form.goalOptions.swimming">Plan Técnico de Natación / Aguas Abiertas</option>
+                  <option value="svc-triatlon" data-i18n="contact.form.goalOptions.triathlon">Preparación Triatlón Integral (Short / 70.3 / Ironman)</option>
+                  <option value="svc-running" data-i18n="contact.form.goalOptions.running">Performance Running Plan (Calle / Trail)</option>
+                  <option value="base" data-i18n="contact.form.goalOptions.other">Otro objetivo / Consulta general</option>
                 </select>
               </div>
 
               <!-- Radio: ¿Entrenás actualmente? -->
               <fieldset class="form__fieldset">
                 <legend class="form__label">
-                  <i class="bi bi-activity"></i> ¿Entrenás actualmente?
+                  <i class="bi bi-activity"></i> <span data-i18n="contact.form.currentTrainingLabel">¿Entrenás actualmente?</span>
                 </legend>
                 <div class="form__radios form__radios--row">
                   <label class="form__radio-label">
                     <input type="radio" name="entrena" value="si" />
                     <span class="form__radio-custom"></span>
-                    <span>Sí</span>
+                    <span data-i18n="contact.form.trainingOptions.yes">Sí</span>
                   </label>
                   <label class="form__radio-label">
                     <input type="radio" name="entrena" value="no" />
                     <span class="form__radio-custom"></span>
-                    <span>No, quiero empezar</span>
+                    <span data-i18n="contact.form.trainingOptions.no">No, quiero empezar</span>
                   </label>
                   <label class="form__radio-label">
                     <input type="radio" name="entrena" value="irregular" />
                     <span class="form__radio-custom"></span>
-                    <span>Irregular</span>
+                    <span data-i18n="contact.form.trainingOptions.irregular">Irregular</span>
                   </label>
                 </div>
               </fieldset>
 
               <div class="form__group">
                 <label for="comentario" class="form__label">
-                  <i class="bi bi-chat-left-text"></i> ¿Algo más que quieras
-                  contarme?
+                  <i class="bi bi-chat-left-text"></i> <span data-i18n="contact.form.commentLabel">¿Algo más que quieras
+                  contarme?</span>
                 </label>
                 <textarea
                   id="comentario"
                   name="comentario"
                   class="form__input form__textarea"
                   rows="3"
-                  placeholder="Experiencia previa, disponibilidad horaria, lesiones..."
+                  placeholder="Experiencia previa, disponibilidad horaria, lesiones..." data-i18n-placeholder="contact.form.commentPlaceholder"
                 ></textarea>
               </div>
 
               <div class="form__actions">
                 <button type="submit" class="btn btn--cta btn--submit">
-                  <i class="bi bi-send-fill"></i> Enviar consulta
+                  <i class="bi bi-send-fill"></i> <span data-i18n="contact.form.submit">Enviar consulta</span>
                 </button>
                 <button type="reset" class="btn btn--ghost">
-                  <i class="bi bi-arrow-counterclockwise"></i> Limpiar
+                  <i class="bi bi-arrow-counterclockwise"></i> <span data-i18n="contact.form.reset">Limpiar</span>
                 </button>
               </div>
             </form>
@@ -1103,12 +1104,12 @@
               </text>
             </svg>
             <span class="navbar__logo-text"
-              >SEBASTIÁN<strong>ZAMPERONI</strong></span
+              ><span data-i18n="footer.brandFirstName">SEBASTIÁN</span><strong data-i18n="footer.brandLastName">ZAMPERONI</strong></span
             >
           </a>
           <p>
-            Profesor y entrenador · SZ Tria Team<br />Natación · Running ·
-            Ciclismo · Triatlón
+            <span data-i18n="footer.descriptionLineOne">Profesor y entrenador · SZ Tria Team</span><br /><span data-i18n="footer.descriptionLineTwo">Natación · Running ·
+            Ciclismo · Triatlón</span>
           </p>
           <span class="footer__tp-note">
             <svg
@@ -1135,7 +1136,7 @@
                 fill="#1E5BC6"
               />
             </svg>
-            Planes gestionados por TrainingPeaks
+            <span data-i18n="footer.trainingPeaksNote">Planes gestionados por TrainingPeaks</span>
           </span>
          <!-- ENLACES DE REDES SOCIALES EN FOOTER -->
           <div class="footer__redes">
@@ -1157,49 +1158,48 @@
         </div>
 
         <div class="footer__col">
-          <h4>Navegación</h4>
+          <h4 data-i18n="footer.navigation.title">Navegación</h4>
           <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobre">Sobre mí</a></li>
-            <li><a href="#servicios">Planes</a></li>
-            <li><a href="#trainingpeaks">TrainingPeaks</a></li>
-            <li><a href="#testimonios">Opiniones</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#inicio" data-i18n="footer.navigation.home">Inicio</a></li>
+            <li><a href="#sobre" data-i18n="footer.navigation.about">Sobre mí</a></li>
+            <li><a href="#servicios" data-i18n="footer.navigation.plans">Planes</a></li>
+            <li><a href="#trainingpeaks" data-i18n="footer.navigation.trainingPeaks">TrainingPeaks</a></li>
+            <li><a href="#testimonios" data-i18n="footer.navigation.testimonials">Opiniones</a></li>
+            <li><a href="#contacto" data-i18n="footer.navigation.contact">Contacto</a></li>
           </ul>
         </div>
 
         <div class="footer__col">
-          <h4>Planes</h4>
+          <h4 data-i18n="footer.plans.title">Planes</h4>
           <ul>
-            <li><a href="#contacto" data-plan="svc-natacion">Plan Técnico de Natación</a></li>
-            <li><a href="#contacto" data-plan="svc-triatlon">Preparación Triatlón Integral</a></li>
-            <li><a href="#contacto" data-plan="svc-running">Performance Running Plan</a></li>
-            <li><a href="#contacto">Consulta gratuita</a></li>
+            <li><a href="#contacto" data-plan="svc-natacion" data-i18n="footer.plans.swimming">Plan Técnico de Natación</a></li>
+            <li><a href="#contacto" data-plan="svc-triatlon" data-i18n="footer.plans.triathlon">Preparación Triatlón Integral</a></li>
+            <li><a href="#contacto" data-plan="svc-running" data-i18n="footer.plans.running">Performance Running Plan</a></li>
+            <li><a href="#contacto" data-i18n="footer.plans.freeConsultation">Consulta gratuita</a></li>
           </ul>
         </div>
 
         <div class="footer__cta">
-          <p class="footer__cta-text">¿Listo para el próximo desafío?</p>
+          <p class="footer__cta-text" data-i18n="footer.ctaQuestion">¿Listo para el próximo desafío?</p>
           <a href="#contacto" class="btn btn--cta">
-            <i class="bi bi-lightning-charge-fill"></i> Empezá hoy
+            <i class="bi bi-lightning-charge-fill"></i> <span data-i18n="footer.ctaButton">Empezá hoy</span>
           </a>
         </div>
       </div>
       <div class="footer__bottom">
-        <p>
+        <p data-i18n="footer.copyright">
           © 2026 Sebastián Zamperoni · SZ Tria Team · Todos los derechos
           reservados
         </p>
         <p style="font-size: 13px; opacity: 0.85">
-          Diseñado con <i class="bi bi-heart-fill" style="color: #ff44e4"></i> para
-          atletas que no se rinden x
+          <span data-i18n="footer.designedWithPrefix">Diseñado con</span> <i class="bi bi-heart-fill" style="color: #ff44e4"></i> <span data-i18n="footer.designedWithSuffix">para
+          atletas que no se rinden x</span>
           <a
             href="https://wa.me/5491162229591"
             target="_blank"
             rel="noopener noreferrer"
             style="color: #ff44e4; text-decoration: none; font-weight: bold"
-            >LeaSpi</a
-          >
+            data-i18n="footer.designer">LeaSpi</a>
         </p>
       </div>
     </footer>
