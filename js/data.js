@@ -8,7 +8,7 @@ export const elementosATraducir = {
     // Navbar
     "navbar.brandFirstName": "SEBASTIÁN",
     "navbar.brandLastName": "ZAMPERONI",
-    "navbar.language": "ES",
+    "navbar.language": "EN",
     "navbar.home": "Inicio",
     "navbar.about": "Sobre mí",
     "navbar.plans": "Planes",
@@ -244,7 +244,7 @@ export const elementosATraducir = {
     // Navbar
     "navbar.brandFirstName": "SEBASTIAN",
     "navbar.brandLastName": "ZAMPERONI",
-    "navbar.language": "EN",
+    "navbar.language": "ES",
     "navbar.home": "Home",
     "navbar.about": "About Me",
     "navbar.plans": "Plans",
