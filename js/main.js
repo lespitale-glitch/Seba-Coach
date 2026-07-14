@@ -31,10 +31,18 @@ import { testimoniosData, planesData, galeriaData, elementosATraducir } from './
   document.documentElement.appendChild(splash);
 })();
 
-// Estado global del idioma
+// === DETECCIÓN AUTOMÁTICA DE IDIOMA ===
 let idiomaActual = "ES";
+const usuarioLang = (navigator.language || navigator.userLanguage).toLowerCase();
+
+// Si el navegador del usuario NO está en español, seteamos inglés por defecto
+if (!usuarioLang.startsWith('es')) {
+  idiomaActual = "EN";
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Ajustamos el atributo lang del HTML para SEO de entrada
+  document.documentElement.setAttribute('lang', idiomaActual.toLowerCase());
 
   /* ================================================
      SISTEMA COMPLETO DE TRADUCCIÓN INTERNA
@@ -69,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
     langToggle.addEventListener('click', () => {
       idiomaActual = (idiomaActual === "ES") ? "EN" : "ES";
       langToggle.setAttribute('data-lang', idiomaActual.toLowerCase());
-      
+
       traducirPaginaEstatica(idiomaActual);
-      
+
       if (typeof window.dibujarTarjetasPlanes === 'function') {
         window.dibujarTarjetasPlanes(idiomaActual);
       }
-      
+
       if (typeof window.dibujarTarjetasTestimonios === 'function') {
         window.dibujarTarjetasTestimonios(idiomaActual);
       }
@@ -88,14 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ================================================
-     INYECCIÓN DINÁMICA DE PLANES PREMIUM (TRADUCIBLE)
-  ================================================ */
- /* ================================================
-     INYECCIÓN DINÁMICA DE PLANES PREMIUM (TRADUCIBLE)
-  ================================================ */
+      INYECCIÓN DINÁMICA DE PLANES PREMIUM (TRADUCIBLE)
+   ================================================ */
   const planesGrid = document.getElementById('planesGrid');
   if (planesGrid) {
-    window.dibujarTarjetasPlanes = function(idioma) {
+    window.dibujarTarjetasPlanes = function (idioma) {
       planesGrid.innerHTML = planesData.map(plan => {
         const claseCard = plan.highlight ? 'svc-card svc-card--premium' : 'svc-card';
         const claseBoton = plan.highlight ? 'btn btn--cta svc-card__btn' : 'btn btn--primary svc-card__btn';
@@ -164,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-  
+
   /* ================================================
      INTRO: secuencia de animación
   ================================================ */
@@ -189,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
     if (footer) {
-        const footerTop = footer.getBoundingClientRect().top;
-        navbar.style.opacity = footerTop < window.innerHeight ? '0' : '1';
-        navbar.style.pointerEvents = footerTop < window.innerHeight ? 'none' : 'auto';
+      const footerTop = footer.getBoundingClientRect().top;
+      navbar.style.opacity = footerTop < window.innerHeight ? '0' : '1';
+      navbar.style.pointerEvents = footerTop < window.innerHeight ? 'none' : 'auto';
     }
   }, { passive: true });
 
@@ -199,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
      NAVBAR: menú hamburguesa móvil
   ================================================ */
   const toggleBtn = document.getElementById('navToggle');
-  const navLinks  = document.getElementById('navLinks');
+  const navLinks = document.getElementById('navLinks');
 
   if (toggleBtn && navLinks) {
     function openMenu() {
@@ -207,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
       const scrollY = window.scrollY;
       document.body.style.position = 'fixed';
-      document.body.style.top      = `-${scrollY}px`;
-      document.body.style.width    = '100%';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       document.body.dataset.scrollY = scrollY;
     }
 
@@ -217,8 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
       const scrollY = parseInt(document.body.dataset.scrollY || '0');
       document.body.style.position = '';
-      document.body.style.top      = '';
-      document.body.style.width    = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       window.scrollTo(0, scrollY);
     }
 
@@ -253,11 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
      CARRUSEL DE TESTIMONIOS
   ================================================ */
   const carousel = document.querySelector('.testi-carousel');
-  const track    = document.getElementById('testiTrack');
+  const track = document.getElementById('testiTrack');
   const dotsWrap = document.querySelector('.testi-dots');
-  const btnPrev  = document.querySelector('.testi-btn--prev');
-  const btnNext  = document.querySelector('.testi-btn--next');
-  const counter  = document.querySelector('.testi-counter');
+  const btnPrev = document.querySelector('.testi-btn--prev');
+  const btnNext = document.querySelector('.testi-btn--next');
+  const counter = document.querySelector('.testi-counter');
 
   let current = 0;
   let autoTimer = null;
@@ -265,8 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let touchStartX = 0;
 
   if (carousel && track) {
-    
-    window.dibujarTarjetasTestimonios = function(idioma) {
+
+    window.dibujarTarjetasTestimonios = function (idioma) {
       track.innerHTML = testimoniosData.map(item => {
         let estrellasHTML = '';
         const enteras = Math.floor(item.estrellas);
@@ -305,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </article>
         `;
       }).join('');
-      
+
       goTo(current);
     };
 
@@ -342,12 +347,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function goTo(index) {
       const cards = track.querySelectorAll('.testi-card');
       if (!cards.length) return;
-      
+
       const total = totalSlides();
       current = Math.max(0, Math.min(index, total - 1));
 
       const cardW = cards[0].getBoundingClientRect().width;
-      const gap   = 20; 
+      const gap = 20;
       const shift = current * (cardW + gap);
       track.style.transform = `translateX(-${shift}px)`;
 
@@ -407,12 +412,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ================================================
      INYECCIÓN DINÁMICA DE LA GALERÍA + LIGHTBOX
   ================================================ */
- /* ================================================
-     INYECCIÓN DINÁMICA DE LA GALERÍA (TRADUCIBLE)
-  ================================================ */
+  /* ================================================
+      INYECCIÓN DINÁMICA DE LA GALERÍA (TRADUCIBLE)
+   ================================================ */
   const galeriaGrid = document.getElementById('galeriaGrid');
   if (galeriaGrid) {
-    window.dibujarGaleria = function(idioma) {
+    window.dibujarGaleria = function (idioma) {
       galeriaGrid.innerHTML = galeriaData.map(item => {
         const claseEspecial = item.clase ? ` ${item.clase}` : '';
         // Buscamos el texto dinámicamente en nuestro diccionario seguro
@@ -448,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.body.style.overflow = 'hidden';
 
           overlay.addEventListener('click', closeLightbox);
-          
+
           const handleKey = (e) => {
             if (e.key === 'Escape') { closeLightbox(); document.removeEventListener('keydown', handleKey); }
           };
@@ -496,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   revealEls.forEach(el => {
-    el.style.opacity   = '0';
+    el.style.opacity = '0';
     el.style.transform = 'translateY(28px)';
     el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
   });
@@ -508,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ? Array.from(entry.target.parentElement.children).indexOf(entry.target) * 0.12
           : 0;
         setTimeout(() => {
-          entry.target.style.opacity   = '1';
+          entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
         }, delay * 1000);
         revealObserver.unobserve(entry.target);

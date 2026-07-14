@@ -8,18 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
-    <!-- Título y descripción optimizados para SEO -->
-    <title data-i18n="metaTitle">
-      Sebastián Zamperoni | Entrenador de Triatlón, Running y Natación — Buenos
-      Aires
+    <!-- Título y descripción optimizados para SEO (Traducibles por JS) -->
+    <title data-i18n="hero.seoTitle">
+      Sebastián Zamperoni | Entrenador de Triatlón, Running y Natación — Buenos Aires
     </title>
     <meta
       name="description"
-      content="Sebastián Zamperoni, profesor y entrenador de triatlón, running, ciclismo y natación en Buenos Aires. Planes premium personalizados por TrainingPeaks. SZ Tria Team. Primera consulta gratis."
+      content="Sebastián Zamperoni, profesor y entrenador certificado de triatlón, running, ciclismo y natación en Buenos Aires. Planes premium personalizados por TrainingPeaks. SZ Tria Team."
     />
 
-    <!-- Canonical: reemplazá con tu dominio real -->
+    <!-- Canonical y etiquetas de Idioma Alternativo (Hreflang) para Google -->
     <link rel="canonical" href="https://www.sztriateam.com.ar/" />
+    <link rel="alternate" hreflang="es" href="https://www.sztriateam.com.ar/" />
+    <link rel="alternate" hreflang="en" href="https://www.sztriateam.com.ar/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.sztriateam.com.ar/" />
 
     <!-- =============================================
          GEO / LOCALIZACIÓN
@@ -30,10 +32,11 @@
     <meta name="ICBM" content="-34.6037, -58.3816" />
 
     <!-- =============================================
-         OPEN GRAPH (Facebook, WhatsApp, LinkedIn)
+         OPEN GRAPH (Facebook, WhatsApp, Instagram)
     ============================================= -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:site_name" content="SZ Tria Team" />
     <meta property="og:url" content="https://www.sztriateam.com.ar/" />
     <meta
@@ -42,12 +45,11 @@
     />
     <meta
       property="og:description"
-      content="Preparación en natación, running, ciclismo y triatlón de la mano de un entrenador que entiende tus tiempos. Planes premium por TrainingPeaks. Buenos Aires."
+      content="Preparación en natación, running, ciclismo y triatlón de la mano de un entrenador que entiende tus tiempos. Planes premium por TrainingPeaks."
     />
-    <!-- Reemplazá con una imagen real de 1200×630px -->
     <meta
       property="og:image"
-      content="https://www.sztriateam.com.ar/img/og-preview.jpg"
+      content="https://www.sztriateam.com.ar/img/principal2.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -62,7 +64,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Sebastián Zamperoni | Entrenador de Triatlón y Running"
+      content="Sebastián Zamperoni | Entrenador de Triatlón, Running y Natación"
     />
     <meta
       name="twitter:description"
@@ -70,28 +72,21 @@
     />
     <meta
       name="twitter:image"
-      content="https://www.sztriateam.com.ar/img/og-preview.jpg"
+      content="https://www.sztriateam.com.ar/img/principal2.jpg"
     />
 
     <!-- =============================================
-         FAVICON
+         FAVICON (Corregido el error de duplicación)
     ============================================= -->
-    <!-- Tu nuevo favicon SVG reutilizando el diseño exacto con comillas y colores corregidos -->
     <link
       rel="icon"
       type="image/svg+xml"
-      <link
-  rel="icon"
-  type="image/svg+xml"
-  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 118 122'%3E%3Ctext x='5' y='80' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3ES%3C/text%3E%3Ctext x='25' y='95' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3EZ%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 118 122'%3E%3Ctext x='5' y='80' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3ES%3C/text%3E%3Ctext x='25' y='95' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3EZ%3C/text%3E%3C/svg%3E"
     />
-
-    <!-- Mantenemos la línea de Apple por compatibilidad con iPhones si se guarda como app de inicio -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png" />
 
     <!-- =============================================
-         SCHEMA.ORG — DATOS ESTRUCTURADOS
-         Esto genera "rich results" en Google
+         SCHEMA.ORG — DATOS ESTRUCTURADOS OPTIMIZADOS
     ============================================= -->
     <script type="application/ld+json">
       {
@@ -104,7 +99,7 @@
             "jobTitle": "Profesor y entrenador de triatlón certificado",
             "description": "Entrenador especializado en natación, running, ciclismo y triatlón con más de 32 años de experiencia. Gestión y monitoreo en TrainingPeaks. Fundador de SZ Tria Team.",
             "url": "https://www.sztriateam.com.ar",
-            "image": "https://www.sztriateam.com.ar/img/sebastian.jpg",
+            "image": "https://www.sztriateam.com.ar/img/Seba1.jpg",
             "telephone": "+5491157463710",
             "email": "sebaszampe@gmail.com",
             "address": {
@@ -113,7 +108,10 @@
               "addressRegion": "Buenos Aires",
               "addressCountry": "AR"
             },
-            "sameAs": ["https://www.instagram.com/sebastianzamperoni"],
+            "sameAs": [
+              "https://www.instagram.com/sebastianzamperoni",
+              "https://wa.me/5491157463710"
+            ],
             "knowsAbout": [
               "Triatlón",
               "Running",
@@ -130,9 +128,9 @@
             "name": "SZ Tria Team — Sebastián Zamperoni",
             "description": "Entrenamiento de triatlón, running, natación y ciclismo en Buenos Aires. Planes premium personalizados por TrainingPeaks.",
             "url": "https://www.sztriateam.com.ar",
-            "telephone": "+5491155550000",
-            "email": "sebastian@sztriateam.com.ar",
-            "image": "https://www.sztriateam.com.ar/img/og-preview.jpg",
+            "telephone": "+5491157463710",
+            "email": "sebaszampe@gmail.com",
+            "image": "https://www.sztriateam.com.ar/img/principal2.jpg",
             "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
@@ -167,24 +165,24 @@
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Endurance Base Plan",
-                    "description": "Plan de base aeróbica de 12 semanas para natación, running o ciclismo."
+                    "name": "Plan Técnico de Natación",
+                    "description": "Análisis biomecánico de brazada, entrenamientos estructurados y optimización de ritmos en TrainingPeaks."
                   }
                 },
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Preparación Media Distancia 70.3",
-                    "description": "20 a 24 semanas de preparación integral para triatlón media distancia."
+                    "name": "Preparación Triatlón Integral",
+                    "description": "Planificación unificada de las 3 disciplinas adaptada a zonas de potencia y umbrales."
                   }
                 },
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Preparación Larga Distancia",
-                    "description": "Plan de 28 a 36 semanas para triatlón de larga distancia."
+                    "name": "Performance Running Plan",
+                    "description": "Periodización inteligente basada en ritmos y umbrales para calle y trail."
                   }
                 }
               ]
@@ -196,7 +194,7 @@
             "url": "https://www.sztriateam.com.ar",
             "name": "SZ Tria Team",
             "description": "Entrenador de triatlón, running y natación en Buenos Aires",
-            "inLanguage": "es-AR"
+            "inLanguage": ["es-AR", "en-US"]
           }
         ]
       }
