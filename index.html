@@ -229,16 +229,13 @@
     <link rel="stylesheet" href="css/contacto.css" />
   </head>
   <body>
-    <!-- =========================================
-       NAVBAR
-  ========================================= -->
-    <!-- =========================================
+  <!-- =========================================
        NAVBAR Y HERO (BLOQUE HEADER COMPLETO)
   ========================================= -->
     <header class="header" id="inicio">
       <nav class="navbar" id="navbar">
         <div class="navbar__inner">
-          <!-- Logo SZ -->
+          <!-- Logo SZ (Apuntando a #hero para consistencia) -->
           <a href="#hero" class="navbar__logo">
             <svg
               class="navbar__logo-svg"
@@ -269,28 +266,33 @@
                 Z
               </text>
             </svg>
-            <span class="navbar__logo-text"><span data-i18n="navbar.brandFirstName">SEBASTIÁN</span><strong data-i18n="navbar.brandLastName">ZAMPERONI</strong></span>
+            <span class="navbar__logo-text">
+              <span data-i18n="navbar.brandFirstName">SEBASTIÁN</span><strong data-i18n="navbar.brandLastName">ZAMPERONI</strong>
+            </span>
           </a>
 
-          <!-- Botón de idioma integrado de forma limpia en el flujo de la barra -->
-          <button id="langToggle" class="lang-btn" data-lang="es">
-            <i class="bi bi-globe"></i>
-            <span id="langLabel" data-i18n="navbar.language">ES</span>
-          </button>
-
-          <!-- Enlaces de navegación — SIN LA CRUZ DE CIERRE ROTA y apuntando a #hero -->
+          <!-- Enlaces de navegación — Con el botón de idioma adentro y apuntando a #hero -->
           <ul class="navbar__links" id="navLinks">
             <li><a href="#hero" class="navbar__link active" data-i18n="navbar.home">Inicio</a></li>
             <li><a href="#sobre" class="navbar__link" data-i18n="navbar.about">Sobre mí</a></li>
             <li><a href="#servicios" class="navbar__link" data-i18n="navbar.plans">Planes</a></li>
             <li><a href="#testimonios" class="navbar__link" data-i18n="navbar.testimonials">Opiniones</a></li>
             <li><a href="#contacto" class="navbar__link" data-i18n="navbar.contact">Contacto</a></li>
+            
+            <!-- Botón de idioma integrado al flujo del menú -->
+            <li class="navbar__lang-item">
+              <button id="langToggle" class="lang-btn" data-lang="es">
+                <i class="bi bi-globe"></i>
+                <span id="langLabel" data-i18n="navbar.language">ES</span>
+              </button>
+            </li>
+
             <li>
               <a href="#contacto" class="btn btn--cta navbar__cta" data-i18n="navbar.startNow">Empezá ahora</a>
             </li>
           </ul>
 
-          <!-- Botón Hamburguesa Móvil (Maneja la apertura y el cambio a "X") -->
+          <!-- Botón Hamburguesa (Mantiene el control visual en móviles) -->
           <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú">
             <i class="bi bi-list"></i>
           </button>
@@ -298,7 +300,7 @@
       </nav>
 
       <!-- =========================================
-         SECCIÓN 1 — HERO (INTACTA)
+         SECCIÓN 1 — HERO (CONEXIÓN PERFECTA)
     ========================================= -->
       <section class="hero" id="hero">
         <div class="hero__bg">
