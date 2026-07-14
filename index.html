@@ -951,7 +951,14 @@
 
           <!-- Panel derecho: formulario simplificado (4 campos + 2 selectores) -->
           <div class="contacto__form-wrap">
-            <form class="form" id="coachForm">
+            <form class="form" id="coachForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdyzix7unUBRbHrC9EQbK43lVUBIkTLqDwbPFy06sqRkhYv7A/formResponse" method="POST">
+              
+              <!-- TRAMPA PARA BOTS (HONEYPOT): Completamente invisible para humanos, autocomplete desactivado para evitar falsos positivos -->
+              <div style="display:none; overflow:hidden;" aria-hidden="true">
+                <label for="campo_trampa">No llenar este campo:</label>
+                <input type="text" id="campo_trampa" name="campo_trampa" tabindex="-1" autocomplete="new-password" value="" />
+              </div>
+
               <h3 class="form__title" data-i18n="contact.form.title">Enviá tu consulta</h3>
 
               <div class="form__row">
@@ -962,7 +969,7 @@
                   <input
                     type="text"
                     id="nombre"
-                    name="nombre"
+                    name="entry.824078581"
                     class="form__input"
                     placeholder="Juan Pérez" data-i18n-placeholder="contact.form.namePlaceholder"
                     required
@@ -976,7 +983,7 @@
                   <input
                     type="tel"
                     id="contacto_via"
-                    name="contacto_via"
+                    name="entry.1918407955"
                     class="form__input"
                     placeholder="+54 11 1234-5678" data-i18n-placeholder="contact.form.phonePlaceholder"
                     required
@@ -991,28 +998,29 @@
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  name="entry.3278625"
                   class="form__input"
                   placeholder="juan@email.com" data-i18n-placeholder="contact.form.emailPlaceholder"
                   required
                 />
               </div>
 
-  <div class="form__group">
+              <div class="form__group">
                 <label for="objetivo" class="form__label">
                   <i class="bi bi-bullseye"></i> <span data-i18n="contact.form.goalLabel">¿Cuál es tu próximo objetivo?</span> <span>*</span>
                 </label>
                 <select
                   id="objetivo"
-                  name="objetivo"
+                  name="entry.1327758608"
                   class="form__input form__select"
                   required
                 >
                   <option value="" disabled selected data-i18n="contact.form.goalOptions.placeholder">Seleccioná tu meta</option>
-                  <option value="svc-natacion" data-i18n="contact.form.goalOptions.swimming">Plan Técnico de Natación / Aguas Abiertas</option>
-                  <option value="svc-triatlon" data-i18n="contact.form.goalOptions.triathlon">Preparación Triatlón Integral (Short / 70.3 / Ironman)</option>
-                  <option value="svc-running" data-i18n="contact.form.goalOptions.running">Performance Running Plan (Calle / Trail)</option>
-                  <option value="base" data-i18n="contact.form.goalOptions.other">Otro objetivo / Consulta general</option>
+                  <!-- Cambiamos los valores de los values para que viaje texto real legible a Google Sheets -->
+                  <option value="Plan Técnico de Natación / Aguas Abiertas" data-i18n="contact.form.goalOptions.swimming">Plan Técnico de Natación / Aguas Abiertas</option>
+                  <option value="Preparación Triatlón Integral (Short / 70.3 / Ironman)" data-i18n="contact.form.goalOptions.triathlon">Preparación Triatlón Integral (Short / 70.3 / Ironman)</option>
+                  <option value="Performance Running Plan (Calle / Trail)" data-i18n="contact.form.goalOptions.running">Performance Running Plan (Calle / Trail)</option>
+                  <option value="Otro objetivo / Consulta general" data-i18n="contact.form.goalOptions.other">Otro objetivo / Consulta general</option>
                 </select>
               </div>
 
@@ -1023,17 +1031,17 @@
                 </legend>
                 <div class="form__radios form__radios--row">
                   <label class="form__radio-label">
-                    <input type="radio" name="entrena" value="si" />
+                    <input type="radio" name="entry.2087449932" value="Sí" required />
                     <span class="form__radio-custom"></span>
                     <span data-i18n="contact.form.trainingOptions.yes">Sí</span>
                   </label>
                   <label class="form__radio-label">
-                    <input type="radio" name="entrena" value="no" />
+                    <input type="radio" name="entry.2087449932" value="No, quiero empezar" required />
                     <span class="form__radio-custom"></span>
                     <span data-i18n="contact.form.trainingOptions.no">No, quiero empezar</span>
                   </label>
                   <label class="form__radio-label">
-                    <input type="radio" name="entrena" value="irregular" />
+                    <input type="radio" name="entry.2087449932" value="Irregular" required />
                     <span class="form__radio-custom"></span>
                     <span data-i18n="contact.form.trainingOptions.irregular">Irregular</span>
                   </label>
@@ -1042,12 +1050,11 @@
 
               <div class="form__group">
                 <label for="comentario" class="form__label">
-                  <i class="bi bi-chat-left-text"></i> <span data-i18n="contact.form.commentLabel">¿Algo más que quieras
-                  contarme?</span>
+                  <i class="bi bi-chat-left-text"></i> <span data-i18n="contact.form.commentLabel">¿Algo más que quieras contarme?</span>
                 </label>
                 <textarea
                   id="comentario"
-                  name="comentario"
+                  name="entry.555635125"
                   class="form__input form__textarea"
                   rows="3"
                   placeholder="Experiencia previa, disponibilidad horaria, lesiones..." data-i18n-placeholder="contact.form.commentPlaceholder"

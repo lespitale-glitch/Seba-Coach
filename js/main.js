@@ -447,25 +447,74 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dibujarGaleria(idiomaActual);
   }
 
-  /* ================================================
-     FORMULARIO: envío simulado funcional
+/* ================================================
+     FORMULARIO: PRUEBA DE CONEXIÓN CON LOGS DE CONTROL
   ================================================ */
   const form = document.getElementById('coachForm');
   if (form) {
+    console.log("Formulario detectado en el DOM correctamente."); // CONTROL 1
+
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
+      e.preventDefault(); 
+      console.log("Evento submit disparado."); // CONTROL 2
+
       const btn = form.querySelector('[type="submit"]');
       const orig = btn.innerHTML;
-      btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Enviando...';
-      btn.disabled = true;
-      btn.style.background = '#444';
-      setTimeout(() => {
+
+      // 1. CONTROL ANTI-SPAM (Honeypot)
+      const trampa = document.getElementById('campo_trampa');
+      console.log("Valor de la trampa anti-spam:", trampa ? trampa.value : "No existe el input"); // CONTROL 3
+      
+      if (trampa && trampa.value !== "") {
+        console.warn("¡ENVÍO BLOQUEADO POR TRAMPA SENSORA! El campo oculto contenía texto."); // CONTROL 4
         btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Mensaje enviado!';
         btn.style.background = '#2e7d32';
         form.reset();
-        setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 3500);
-      }, 1400);
+        return;
+      }
+
+      // 2. Animación de carga
+      btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Enviando...';
+      btn.disabled = true;
+      btn.style.background = '#444';
+
+      // 3. Captura y visualización de lo que viaja
+      const formData = new FormData(form);
+      console.log("Datos capturados para enviar:"); // CONTROL 5
+      for (let [key, value] of formData.entries()) {
+        console.log(`- ${key}: ${value}`);
+      }
+
+      const actionURL = form.action;
+      console.log("Enviando a la URL:", actionURL); // CONTROL 6
+
+      // 4. Intento de envío real
+      fetch(actionURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      })
+      .then(() => {
+        console.log("¡FETCH EXITOSO! Google aceptó la petición."); // CONTROL 7
+        btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Mensaje enviado!';
+        btn.style.background = '#2e7d32';
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("¡FALLÓ EL FETCH! Error de conexión de red:", error); // CONTROL 8
+        btn.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i> Error al enviar';
+        btn.style.background = '#d32f2f';
+      })
+      .finally(() => {
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      });
     });
+  } else {
+    console.error("ERROR CRÍTICO: No se encontró ningún elemento con ID 'coachForm' en el DOM."); // CONTROL EXTRA
   }
 
   /* ================================================
