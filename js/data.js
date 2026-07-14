@@ -494,7 +494,7 @@ export const planesData = [
 
 // 4. Estructuras para la galería
 export const galeriaData = [
-    { id: "principal", src: "img/principal_m.png", alt: "Atleta cruzando la meta en triatlón", clase: "galeria__item--wide" },
+    { id: "principal", src: "img/principal_m.jpeg", alt: "Atleta cruzando la meta en triatlón", clase: "galeria__item--wide" },
     { id: "corredor", src: "img/galeria/corredor.png", alt: "Corredor en maratón", clase: "" },
     { id: "ciclismo", src: "img/galeria/ciclismo1.jpeg", alt: "Ciclista en carrera", clase: "" },
     { id: "pileta", src: "img/galeria/pileta.jpg", alt: "Nadadores en pileta", clase: "" },
