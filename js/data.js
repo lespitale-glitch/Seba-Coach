@@ -237,7 +237,16 @@ export const elementosATraducir = {
     "galeria.caption.pileta": "Alumnos · Pileta técnica",
     "galeria.caption.aguas": "Saliendo del agua · T1",
     "galeria.caption.plan": "Planificación",
-    "galeria.caption.equipamiento": "Equipamiento · Técnica"  
+    "galeria.caption.equipamiento": "Equipamiento · Técnica",
+     
+    // NUEVO - ALT TRADUCIDOS EN ESPAÑOL
+    "galeria.alt.principal": "Atleta cruzando la meta en triatlón",
+    "galeria.alt.corredor": "Corredor en maratón",
+    "galeria.alt.ciclismo": "Ciclista en carrera",
+    "galeria.alt.pileta": "Nadadores en pileta",
+    "galeria.alt.aguas": "Grupo nadando en lago",
+    "galeria.alt.plan": "Plan de entrenamiento",
+    "galeria.alt.equipamiento": "Equipamiento de natación"
 },
   
   EN: {
@@ -470,7 +479,16 @@ export const elementosATraducir = {
     "galeria.caption.pileta": "Students · Technical Pool",
     "galeria.caption.aguas": "Exiting Water · T1",
     "galeria.caption.plan": "Planning",
-    "galeria.caption.equipamiento": "Equipment · Technique"
+    "galeria.caption.equipamiento": "Equipment · Technique",
+
+    // ALT TRADUCIDOS EN INGLES - TRADUCCIÓN LITERAL SIN AGREGADOS
+    "galeria.alt.principal": "Athlete crossing the finish line in a triathlon",
+    "galeria.alt.corredor": "Runner in a marathon",
+    "galeria.alt.ciclismo": "Cyclist in a race",
+    "galeria.alt.pileta": "Swimmers in a pool",
+    "galeria.alt.aguas": "Group swimming in a lake",
+    "galeria.alt.plan": "Training plan",
+    "galeria.alt.equipamiento": "Swimming equipment"
   }
 };
 

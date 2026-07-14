@@ -69,31 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ================================================
-     ESCUCHADOR DEL BOTÓN SWITCH DE IDIOMAS (langToggle)
-  ================================================ */
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', () => {
-      idiomaActual = (idiomaActual === "ES") ? "EN" : "ES";
-      langToggle.setAttribute('data-lang', idiomaActual.toLowerCase());
-
-      traducirPaginaEstatica(idiomaActual);
-
-      if (typeof window.dibujarTarjetasPlanes === 'function') {
-        window.dibujarTarjetasPlanes(idiomaActual);
-      }
-
-      if (typeof window.dibujarTarjetasTestimonios === 'function') {
-        window.dibujarTarjetasTestimonios(idiomaActual);
-      }
-
-      // === AGREGA ESTA LÍNEA ACÁ PARA TRADUCIR LA GALERÍA ===
-      if (typeof window.dibujarGaleria === 'function') {
-        window.dibujarGaleria(idiomaActual);
-      }
-    });
-  }
 
   /* ================================================
       INYECCIÓN DINÁMICA DE PLANES PREMIUM (TRADUCIBLE)
@@ -409,23 +384,24 @@ document.addEventListener('DOMContentLoaded', () => {
     startAuto();
   }
 
-  /* ================================================
-     INYECCIÓN DINÁMICA DE LA GALERÍA + LIGHTBOX
-  ================================================ */
-  /* ================================================
+/* ================================================
       INYECCIÓN DINÁMICA DE LA GALERÍA (TRADUCIBLE)
    ================================================ */
   const galeriaGrid = document.getElementById('galeriaGrid');
   if (galeriaGrid) {
     window.dibujarGaleria = function (idioma) {
+      console.log("DIBUJANDO GALERÍA EN:", idioma); // <--- AGREGAMOS ESTO PARA RASTREAR
+
       galeriaGrid.innerHTML = galeriaData.map(item => {
         const claseEspecial = item.clase ? ` ${item.clase}` : '';
-        // Buscamos el texto dinámicamente en nuestro diccionario seguro
         const captionTraducido = elementosATraducir[idioma][`galeria.caption.${item.id}`];
+        
+        // Lee el alt traducido o usa el original si no existe
+        const altTraducido = elementosATraducir[idioma][`galeria.alt.${item.id}`] || item.alt;
 
         return `
           <figure class="galeria__item${claseEspecial}">
-            <img src="${item.src}" alt="${item.alt}" loading="lazy" width="600" height="450" />
+            <img src="${item.src}" alt="${altTraducido}" loading="lazy" width="600" height="450" />
             <figcaption><i class="bi bi-camera-fill"></i> ${captionTraducido}</figcaption>
           </figure>
         `;
@@ -434,7 +410,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Reactivación del Lightbox para las imágenes dinámicas
       galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
         img.style.cursor = 'zoom-in';
-        // Removemos oyentes viejos para evitar duplicación de clics
         img.replaceWith(img.cloneNode(true));
       });
 
@@ -446,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const bigImg = document.createElement('img');
           bigImg.src = img.src.replace(/w=\d+/, 'w=1400').replace(/q=\d+/, 'q=90');
-          bigImg.alt = img.alt;
+          bigImg.alt = img.alt; // Copia el alt de la imagen chica que ya fue traducido
 
           overlay.appendChild(bigImg);
           document.body.appendChild(overlay);
@@ -522,5 +497,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
 
   revealEls.forEach(el => revealObserver.observe(el));
+
+/* ================================================
+     ESCUCHADOR DEL BOTÓN SWITCH DE IDIOMAS (UNIFICADO AL FINAL)
+  ================================================ */
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      idiomaActual = (idiomaActual === "ES") ? "EN" : "ES";
+      langToggle.setAttribute('data-lang', idiomaActual.toLowerCase());
+      document.documentElement.setAttribute('lang', idiomaActual.toLowerCase());
+      
+      const label = document.getElementById('langLabel');
+      if (label) label.textContent = (idiomaActual === "ES") ? "ES" : "EN";
+
+      // Disparadores dinámicos en orden de carga
+      traducirPaginaEstatica(idiomaActual);
+      if (typeof window.dibujarTarjetasPlanes === 'function') window.dibujarTarjetasPlanes(idiomaActual);
+      if (typeof window.dibujarTarjetasTestimonios === 'function') window.dibujarTarjetasTestimonios(idiomaActual);
+      if (typeof window.dibujarGaleria === 'function') window.dibujarGaleria(idiomaActual);
+    });
+  }
+
+
 
 });
