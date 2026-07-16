@@ -1,0 +1,8 @@
+**/.DS_Store
+cat << 'EOF' > .gitignore
+**/.DS_Store
+node_modules/
+package-lock.json
+package.json
+analizador.js
+EOF

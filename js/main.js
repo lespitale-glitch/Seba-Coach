@@ -175,6 +175,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
+/*===== SOLUCIÓN DEFINITIVA PARA VOLVER ARRIBA ========*/
+const btnVolverArriba = document.getElementById('btnVolverArriba');
+
+if (btnVolverArriba) {
+  btnVolverArriba.addEventListener('click', (e) => {
+    e.preventDefault(); 
+    e.stopPropagation(); 
+
+    // 1. Apagamos momentáneamente el observador del menú para que no interfiera en la subida
+    if (typeof sectionObserver !== 'undefined') {
+      sections.forEach(s => sectionObserver.unobserve(s));
+    }
+
+    // 2. Realizamos la subida absoluta a la coordenada cero
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    // 3. Volvemos a encender el observador una vez que terminó de subir la página
+    setTimeout(() => {
+      if (typeof sectionObserver !== 'undefined') {
+        sections.forEach(s => sectionObserver.observe(s));
+        
+        // Forzamos manualmente que el menú active únicamente la sección "Inicio"
+        const navItems = document.querySelectorAll('.navbar__link');
+        navItems.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#inicio');
+        });
+      }
+    }, 800); // 800 milisegundos es el tiempo promedio que tarda en completarse el scroll suave
+  });
+}
+
+
+
+
   /* ================================================
      NAVBAR: menú hamburguesa móvil
   ================================================ */
