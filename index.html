@@ -19,13 +19,13 @@
     />
 
     <!-- Canonical y etiquetas de Idioma Alternativo (Hreflang) para Google -->
-    <link rel="canonical" href="https://www.sztriateam.com.ar/" />
-    <link rel="alternate" hreflang="es" href="https://www.sztriateam.com.ar/" />
-    <link rel="alternate" hreflang="en" href="https://www.sztriateam.com.ar/" />
+    <link rel="canonical" href="https://www.sztriateam.com/" />
+    <link rel="alternate" hreflang="es" href="https://www.sztriateam.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.sztriateam.com/" />
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://www.sztriateam.com.ar/"
+      href="https://www.sztriateam.com/"
     />
 
     <!-- =============================================
@@ -43,7 +43,7 @@
     <meta property="og:locale" content="es_AR" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:site_name" content="SZ Tria Team" />
-    <meta property="og:url" content="https://www.sztriateam.com.ar/" />
+    <meta property="og:url" content="https://www.sztriateam.com/" />
     <meta
       property="og:title"
       content="Sebastián Zamperoni | Entrenador de Triatlón, Running y Natación"
@@ -77,18 +77,27 @@
     />
     <meta
       name="twitter:image"
-      content="https://www.sztriateam.com.ar/img/principal2.jpg"
+      content="https://www.sztriateam.com/img/principal2.jpg"
     />
 
     <!-- =============================================
-         FAVICON (Corregido el error de duplicación)
+         FAVICON — Google Search y navegadores
+
+         Reemplazá estas rutas por las de tu logo final si usás otra carpeta.
+         Los archivos deben ser PNG cuadrados con el logo SZ centrado:
+         - /img/favicon-48.png  → 48 × 48 px (recomendado para Google)
+         - /img/favicon-192.png → 192 × 192 px
+         - /img/apple-touch-icon.png → 180 × 180 px (iPhone/iPad)
+         - /favicon.ico → archivo ICO opcional de respaldo en la raíz del sitio
     ============================================= -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 118 122'%3E%3Ctext x='5' y='80' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3ES%3C/text%3E%3Ctext x='25' y='95' font-family='Cormorant%20Garamond,Georgia,serif' font-size='100' font-weight='700' font-style='italic' fill='%23FF44E4'%3EZ%3C/text%3E%3C/svg%3E"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/img/apple-touch-icon.png"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png" />
 
     <!-- =============================================
          SCHEMA.ORG — DATOS ESTRUCTURADOS OPTIMIZADOS
@@ -99,12 +108,12 @@
         "@graph": [
           {
             "@type": "Person",
-            "@id": "https://www.sztriateam.com.ar/#person",
+            "@id": "https://www.sztriateam.com/#person",
             "name": "Sebastián Zamperoni",
             "jobTitle": "Profesor y entrenador de triatlón certificado",
             "description": "Entrenador especializado en natación, running, ciclismo y triatlón con más de 32 años de experiencia. Gestión y monitoreo en TrainingPeaks. Fundador de SZ Tria Team.",
-            "url": "https://www.sztriateam.com.ar",
-            "image": "https://www.sztriateam.com.ar/img/Seba1.jpg",
+            "url": "https://www.sztriateam.com",
+            "image": "https://www.sztriateam.com/img/Seba1.jpg",
             "telephone": "+5491157463710",
             "email": "sebaszampe@gmail.com",
             "address": {
@@ -129,13 +138,13 @@
           },
           {
             "@type": "LocalBusiness",
-            "@id": "https://www.sztriateam.com.ar/#business",
+            "@id": "https://www.sztriateam.com/#business",
             "name": "SZ Tria Team — Sebastián Zamperoni",
             "description": "Entrenamiento de triatlón, running, natación y ciclismo en Buenos Aires. Planes premium personalizados por TrainingPeaks.",
-            "url": "https://www.sztriateam.com.ar",
+            "url": "https://www.sztriateam.com",
             "telephone": "+5491157463710",
             "email": "sebaszampe@gmail.com",
-            "image": "https://www.sztriateam.com.ar/img/principal2.jpg",
+            "image": "https://www.sztriateam.com/img/principal2.jpg",
             "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
@@ -195,8 +204,8 @@
           },
           {
             "@type": "WebSite",
-            "@id": "https://www.sztriateam.com.ar/#website",
-            "url": "https://www.sztriateam.com.ar",
+            "@id": "https://www.sztriateam.com/#website",
+            "url": "https://www.sztriateam.com",
             "name": "SZ Tria Team",
             "description": "Entrenador de triatlón, running y natación en Buenos Aires",
             "inLanguage": ["es-AR", "en-US"]
