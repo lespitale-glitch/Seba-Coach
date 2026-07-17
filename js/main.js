@@ -175,43 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-/*===== SOLUCIÓN DEFINITIVA PARA VOLVER ARRIBA ========*/
-const btnVolverArriba = document.getElementById('btnVolverArriba');
-
-if (btnVolverArriba) {
-  btnVolverArriba.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    e.stopPropagation(); 
-
-    // 1. Apagamos momentáneamente el observador del menú para que no interfiera en la subida
-    if (typeof sectionObserver !== 'undefined') {
-      sections.forEach(s => sectionObserver.unobserve(s));
-    }
-
-    // 2. Realizamos la subida absoluta a la coordenada cero
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
-    // 3. Volvemos a encender el observador una vez que terminó de subir la página
-    setTimeout(() => {
-      if (typeof sectionObserver !== 'undefined') {
-        sections.forEach(s => sectionObserver.observe(s));
-        
-        // Forzamos manualmente que el menú active únicamente la sección "Inicio"
-        const navItems = document.querySelectorAll('.navbar__link');
-        navItems.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === '#inicio');
-        });
-      }
-    }, 800); // 800 milisegundos es el tiempo promedio que tarda en completarse el scroll suave
-  });
-}
-
-
-
-
   /* ================================================
      NAVBAR: menú hamburguesa móvil
   ================================================ */
@@ -236,15 +199,29 @@ if (btnVolverArriba) {
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
+      document.documentElement.style.scrollBehavior = 'auto';
       window.scrollTo(0, scrollY);
+      document.documentElement.style.scrollBehavior = '';
     }
-
     toggleBtn.addEventListener('click', () => {
       navLinks.classList.contains('open') ? closeMenu() : openMenu();
     });
+    navLinks.querySelectorAll('.navbar__link, .navbar__cta').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (link.getAttribute('href') === '#inicio') {
+          event.preventDefault();
 
-    navLinks.querySelectorAll('.navbar__link, .navbar__cta').forEach(link => {
-      link.addEventListener('click', closeMenu);
+          if (navLinks.classList.contains('open')) {
+            closeMenu();
+          }
+          setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 50);
+          return;
+        }
+
+        closeMenu();
+      });
     });
   }
 
@@ -421,9 +398,9 @@ if (btnVolverArriba) {
     startAuto();
   }
 
-/* ================================================
-      INYECCIÓN DINÁMICA DE LA GALERÍA (TRADUCIBLE)
-   ================================================ */
+  /* ================================================
+        INYECCIÓN DINÁMICA DE LA GALERÍA (TRADUCIBLE)
+     ================================================ */
   const galeriaGrid = document.getElementById('galeriaGrid');
   if (galeriaGrid) {
     window.dibujarGaleria = function (idioma) {
@@ -432,7 +409,7 @@ if (btnVolverArriba) {
       galeriaGrid.innerHTML = galeriaData.map(item => {
         const claseEspecial = item.clase ? ` ${item.clase}` : '';
         const captionTraducido = elementosATraducir[idioma][`galeria.caption.${item.id}`];
-        
+
         // Lee el alt traducido o usa el original si no existe
         const altTraducido = elementosATraducir[idioma][`galeria.alt.${item.id}`] || item.alt;
 
@@ -484,15 +461,15 @@ if (btnVolverArriba) {
     window.dibujarGaleria(idiomaActual);
   }
 
-/* ================================================
-     FORMULARIO: PRUEBA DE CONEXIÓN CON LOGS DE CONTROL
-  ================================================ */
+  /* ================================================
+       FORMULARIO: PRUEBA DE CONEXIÓN CON LOGS DE CONTROL
+    ================================================ */
   const form = document.getElementById('coachForm');
   if (form) {
     console.log("Formulario detectado en el DOM correctamente."); // CONTROL 1
 
     form.addEventListener('submit', (e) => {
-      e.preventDefault(); 
+      e.preventDefault();
       console.log("Evento submit disparado."); // CONTROL 2
 
       const btn = form.querySelector('[type="submit"]');
@@ -501,7 +478,7 @@ if (btnVolverArriba) {
       // 1. CONTROL ANTI-SPAM (Honeypot)
       const trampa = document.getElementById('campo_trampa');
       console.log("Valor de la trampa anti-spam:", trampa ? trampa.value : "No existe el input"); // CONTROL 3
-      
+
       if (trampa && trampa.value !== "") {
         console.warn("¡ENVÍO BLOQUEADO POR TRAMPA SENSORA! El campo oculto contenía texto."); // CONTROL 4
         btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Mensaje enviado!';
@@ -531,24 +508,24 @@ if (btnVolverArriba) {
         mode: 'no-cors',
         body: formData
       })
-      .then(() => {
-        console.log("¡FETCH EXITOSO! Google aceptó la petición."); // CONTROL 7
-        btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Mensaje enviado!';
-        btn.style.background = '#2e7d32';
-        form.reset();
-      })
-      .catch((error) => {
-        console.error("¡FALLÓ EL FETCH! Error de conexión de red:", error); // CONTROL 8
-        btn.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i> Error al enviar';
-        btn.style.background = '#d32f2f';
-      })
-      .finally(() => {
-        setTimeout(() => {
-          btn.innerHTML = orig;
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 4000);
-      });
+        .then(() => {
+          console.log("¡FETCH EXITOSO! Google aceptó la petición."); // CONTROL 7
+          btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Mensaje enviado!';
+          btn.style.background = '#2e7d32';
+          form.reset();
+        })
+        .catch((error) => {
+          console.error("¡FALLÓ EL FETCH! Error de conexión de red:", error); // CONTROL 8
+          btn.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i> Error al enviar';
+          btn.style.background = '#d32f2f';
+        })
+        .finally(() => {
+          setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        });
     });
   } else {
     console.error("ERROR CRÍTICO: No se encontró ningún elemento con ID 'coachForm' en el DOM."); // CONTROL EXTRA
@@ -584,16 +561,16 @@ if (btnVolverArriba) {
 
   revealEls.forEach(el => revealObserver.observe(el));
 
-/* ================================================
-     ESCUCHADOR DEL BOTÓN SWITCH DE IDIOMAS (UNIFICADO AL FINAL)
-  ================================================ */
+  /* ================================================
+       ESCUCHADOR DEL BOTÓN SWITCH DE IDIOMAS (UNIFICADO AL FINAL)
+    ================================================ */
   const langToggle = document.getElementById('langToggle');
   if (langToggle) {
     langToggle.addEventListener('click', () => {
       idiomaActual = (idiomaActual === "ES") ? "EN" : "ES";
       langToggle.setAttribute('data-lang', idiomaActual.toLowerCase());
       document.documentElement.setAttribute('lang', idiomaActual.toLowerCase());
-      
+
       const label = document.getElementById('langLabel');
       if (label) label.textContent = (idiomaActual === "ES") ? "ES" : "EN";
 
