@@ -299,7 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
           </article>
         `;
       }).join('');
-
+      buildDots();                                     // 🟢 1. REEMPLAZO: Reconstruye los puntos navegables
+      current = Math.min(current, totalSlides() - 1); // 🟢 2. REEMPLAZO: Evita un índice fuera de rango
       goTo(current);
     };
 
@@ -340,8 +341,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = totalSlides();
       current = Math.max(0, Math.min(index, total - 1));
 
+      // Solución recomendada dentro de goTo(index):
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
       const cardW = cards[0].getBoundingClientRect().width;
-      const gap = 20;
       const shift = current * (cardW + gap);
       track.style.transform = `translateX(-${shift}px)`;
 
@@ -378,6 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     carousel.addEventListener('mouseenter', stopAuto);
     carousel.addEventListener('mouseleave', startAuto);
+    carousel.addEventListener('touchstart', stopAuto, { passive: true });
 
     track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', (e) => {

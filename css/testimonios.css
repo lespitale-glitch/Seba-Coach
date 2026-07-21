@@ -36,11 +36,10 @@
 /* ====================================================
    CARD
 ==================================================== */
+/* Por defecto en celulares (1 sola tarjeta a la vez) */
 .testi-card {
-  /* Ancho: en desktop 2 cards visibles, en mobile 1 */
-  flex: 0 0 calc(50% - 10px);   /* (100% - 1 gap de 20px) / 2 */
+  flex: 0 0 100%;
   min-width: 0;
-
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--r-md);
@@ -51,6 +50,12 @@
   position: relative;
   overflow: hidden;
   transition: border-color var(--t), box-shadow var(--t);
+}
+/* A partir de tablets y computadoras (2 tarjetas visibles) */
+@media (min-width: 768px) {
+  .testi-card {
+    flex: 0 0 calc(50% - 10px);
+  }
 }
 
 /* Comilla decorativa de fondo */

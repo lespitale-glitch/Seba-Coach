@@ -8,7 +8,10 @@
   background: var(--color-bg-alt);
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column; /* <-- AGREGAR: para que los elementos se apilen verticalmente */
+  justify-content: center; /* <-- AGREGAR: centra verticalmente */
+  align-items: center;    /* <-- AGREGAR: centra horizontalmente todo el contenido */
+  width: 100%;
 }
 
 /* Línea de acento superior */
@@ -28,6 +31,12 @@
   grid-auto-rows: 1fr;   /* todas las filas igual altura */
   gap: 1.5rem;
   align-items: stretch;
+  /* ---- CORRECCIONES DE CENTRADO ---- */
+  width: 100%;
+  max-width: 1200px;      /* Limita el ancho en pantallas gigantes */
+  margin: 0 auto;         /* Centra el bloque exacto en la página */
+  padding: 0 1.5rem;      /* Mantiene un margen de seguridad a los lados */
+  box-sizing: border-box;
 }
 
 /* ---- Card base ---- */
