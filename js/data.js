@@ -494,13 +494,13 @@ export const elementosATraducir = {
 
 // 2. Estructuras físicas invariables para los Testimonios
 export const testimoniosData = [
-    { id: "juan", nombre: "Juan Fernando", avatar: "img/testimonios/juan_fernando.png", estrellas: 5, highlight: false },
-    { id: "ximena", nombre: "Ximena", avatar: "img/testimonios/ximena.png", estrellas: 5, highlight: true },
-    { id: "alan", nombre: "Alan", avatar: "img/testimonios/alan.png", estrellas: 5, highlight: false },
-    { id: "nacho", nombre: "Nacho", avatar: "img/testimonios/nacho.png", estrellas: 5, highlight: false },
-    { id: "felipe", nombre: "Felipe", avatar: "img/testimonios/felipe.png", estrellas: 5, highlight: false },
-    { id: "cristian", nombre: "Cristian", avatar: "img/testimonios/cristian.png", estrellas: 5, highlight: true },
-    { id: "lucas", nombre: "Lucas", avatar: "img/testimonios/lucas.png", estrellas: 5, highlight: true }
+    { id: "juan", nombre: "Juan Fernando", avatar: "img/testimonios/juan_fernando.webp", estrellas: 5, highlight: false },
+    { id: "ximena", nombre: "Ximena", avatar: "img/testimonios/ximena.webp", estrellas: 5, highlight: true },
+    { id: "alan", nombre: "Alan", avatar: "img/testimonios/alan.webp", estrellas: 5, highlight: false },
+    { id: "nacho", nombre: "Nacho", avatar: "img/testimonios/nacho.webp", estrellas: 5, highlight: false },
+    { id: "felipe", nombre: "Felipe", avatar: "img/testimonios/felipe.webp", estrellas: 5, highlight: false },
+    { id: "cristian", nombre: "Cristian", avatar: "img/testimonios/cristian.webp", estrellas: 5, highlight: true },
+    { id: "lucas", nombre: "Lucas", avatar: "img/testimonios/lucas.webp", estrellas: 5, highlight: true }
 ];
 
 // 3. Estructuras físicas invariables para los Planes Premium
@@ -512,11 +512,11 @@ export const planesData = [
 
 // 4. Estructuras para la galería
 export const galeriaData = [
-    { id: "principal", src: "img/principal_m.jpeg", alt: "Atleta cruzando la meta en triatlón", clase: "galeria__item--wide" },
-    { id: "corredor", src: "img/galeria/corredor.png", alt: "Corredor en maratón", clase: "" },
-    { id: "ciclismo", src: "img/galeria/ciclismo1.jpeg", alt: "Ciclista en carrera", clase: "" },
-    { id: "pileta", src: "img/galeria/pileta.jpg", alt: "Nadadores en pileta", clase: "" },
-    { id: "aguas", src: "img/galeria/aguas_abiertas.jpeg", alt: "Grupo nadando en lago", clase: "" },
-    { id: "plan", src: "img/galeria/planificacion.jpg", alt: "Plan de entrenamiento", clase: "" },
-    { id: "equipamiento", src: "img/galeria/equipamiento.jpg", alt: "Equipamiento de natación", clase: "" }
+    { id: "principal", src: "img/principal_m.webp", alt: "Atleta cruzando la meta en triatlón", clase: "galeria__item--wide" },
+    { id: "corredor", src: "img/galeria/corredor.webp", alt: "Corredor en maratón", clase: "" },
+    { id: "ciclismo", src: "img/galeria/ciclismo1.webp", alt: "Ciclista en carrera", clase: "" },
+    { id: "pileta", src: "img/galeria/pileta.webp", alt: "Nadadores en pileta", clase: "" },
+    { id: "aguas", src: "img/galeria/aguas_abiertas.webp", alt: "Grupo nadando en lago", clase: "" },
+    { id: "plan", src: "img/galeria/planificacion.webp", alt: "Plan de entrenamiento", clase: "" },
+    { id: "equipamiento", src: "img/galeria/equipamiento.webp", alt: "Equipamiento de natación", clase: "" }
 ];
