@@ -584,6 +584,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ================================================
+       CARTEL "VIEW IN ENGLISH?" (solo navegadores no hispanos)
+       No cambia el idioma solo: Google sigue viendo la página en español.
+    ================================================ */
+  mostrarSugerenciaIngles();
 
+  function mostrarSugerenciaIngles() {
+    const navLang = (navigator.language || 'es').toLowerCase();
+    if (navLang.startsWith('es')) return;
+
+    let yaCerrado = false;
+    try { yaCerrado = localStorage.getItem('sz-lang-sugerido') === '1'; } catch (e) {}
+    if (yaCerrado) {
+      console.log('[i18n] Sugerencia de inglés ya cerrada antes, no se muestra');
+      return;
+    }
+
+    const aviso = document.createElement('div');
+    aviso.className = 'lang-suggest';
+    aviso.setAttribute('role', 'dialog');
+    aviso.setAttribute('aria-label', 'Language suggestion');
+    aviso.setAttribute('data-nosnippet', ''); // Que Google no lo use en el resultado
+    aviso.innerHTML = `
+      <span class="lang-suggest__text">View this site in English?</span>
+      <button type="button" class="lang-suggest__yes">English</button>
+      <button type="button" class="lang-suggest__close" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    `;
+    document.body.appendChild(aviso);
+    console.log('[i18n] Navegador en', navLang, '→ muestro sugerencia de inglés');
+
+    const cerrar = () => {
+      try { localStorage.setItem('sz-lang-sugerido', '1'); } catch (e) {}
+      aviso.remove();
+    };
+
+    aviso.querySelector('.lang-suggest__yes').addEventListener('click', () => {
+      if (idiomaActual !== 'EN' && langToggle) langToggle.click();
+      console.log('[i18n] Usuario eligió inglés desde el cartel');
+      cerrar();
+    });
+    aviso.querySelector('.lang-suggest__close').addEventListener('click', cerrar);
+  }
 
 });
