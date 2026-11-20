@@ -4,7 +4,7 @@
 =================================================== */
 
 // 1. Importaciones obligatorias desde el módulo seguro de datos
-import { testimoniosData, planesData, galeriaData, elementosATraducir } from './data.js';
+import { elementosATraducir } from './data.js';
 
 /* ================================================
    INTRO SPLASH — se ejecuta antes de DOMContentLoaded
@@ -46,94 +46,55 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ================================================
      SISTEMA COMPLETO DE TRADUCCIÓN INTERNA
   ================================================ */
+  // El español es el texto original del HTML: lo guardamos la primera vez
+  // y lo restauramos al volver a ES. data.js solo hace falta para el inglés.
+  const originales = new Map();
+
+  function textoPara(el, clave, idioma, tipo) {
+    if (!originales.has(el)) {
+      originales.set(el, {
+        html: el.innerHTML,
+        placeholder: el.getAttribute('placeholder'),
+        alt: el.getAttribute('alt'),
+        title: document.title
+      });
+    }
+    if (idioma === 'ES') return originales.get(el)[tipo];
+    const traducido = elementosATraducir[idioma] && elementosATraducir[idioma][clave];
+    if (!traducido) console.warn(`[i18n] Falta traducción ${idioma}: "${clave}"`);
+    return traducido || null;
+  }
+
   function traducirPaginaEstatica(idioma) {
-    const etiquetas = document.querySelectorAll('[data-i18n]');
-    etiquetas.forEach(el => {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
       const clave = el.getAttribute('data-i18n');
-      if (elementosATraducir[idioma] && elementosATraducir[idioma][clave]) {
-        if (el.tagName === "TITLE") {
-          document.title = elementosATraducir[idioma][clave];
-        } else {
-          el.innerHTML = elementosATraducir[idioma][clave];
-        }
+      if (el.tagName === 'TITLE') {
+        const t = textoPara(el, clave, idioma, 'title');
+        if (t) document.title = t.trim();
+      } else {
+        const t = textoPara(el, clave, idioma, 'html');
+        if (t !== null) el.innerHTML = t;
       }
     });
 
-    const inputsConPlaceholder = document.querySelectorAll('[data-i18n-placeholder]');
-    inputsConPlaceholder.forEach(input => {
-      const clavePH = input.getAttribute('data-i18n-placeholder');
-      if (elementosATraducir[idioma] && elementosATraducir[idioma][clavePH]) {
-        input.placeholder = elementosATraducir[idioma][clavePH];
-      }
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(input => {
+      const t = textoPara(input, input.getAttribute('data-i18n-placeholder'), idioma, 'placeholder');
+      if (t) input.placeholder = t;
     });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(img => {
+      const t = textoPara(img, img.getAttribute('data-i18n-alt'), idioma, 'alt');
+      if (t) img.alt = t;
+    });
+    console.log('[i18n] Página traducida a', idioma);
   }
 
 
   /* ================================================
-      INYECCIÓN DINÁMICA DE PLANES PREMIUM (TRADUCIBLE)
+      PLANES (están en el HTML): clic en "Consultar" preselecciona el plan
    ================================================ */
   const planesGrid = document.getElementById('planesGrid');
   if (planesGrid) {
-    window.dibujarTarjetasPlanes = function (idioma) {
-      planesGrid.innerHTML = planesData.map(plan => {
-        const claseCard = plan.highlight ? 'svc-card svc-card--premium' : 'svc-card';
-        const claseBoton = plan.highlight ? 'btn btn--cta svc-card__btn' : 'btn btn--primary svc-card__btn';
-        const iconoEspecial = plan.highlight ? '<i class="bi bi-lightning-charge-fill"></i>' : '<i class="bi bi-send"></i>';
-
-        // Traemos las features dinámicas desde tu objeto seguro de JavaScript
-        const featuresTraducidas = [
-          elementosATraducir[idioma][`${plan.keyPrefix}.f1`],
-          elementosATraducir[idioma][`${plan.keyPrefix}.f2`],
-          elementosATraducir[idioma][`${plan.keyPrefix}.f3`],
-          elementosATraducir[idioma][`${plan.keyPrefix}.f4`]
-        ];
-
-        const featuresHTML = featuresTraducidas.map(feat => `
-          <li><i class="bi bi-check2-circle"></i> ${feat}</li>
-        `).join('');
-
-        // Traemos título, descripción, copete (tag), pie de tarjeta y botón dinámicos[cite: 1]
-        const tagTraducido = elementosATraducir[idioma][`${plan.keyPrefix}.tag`];
-        const pieTraducido = elementosATraducir[idioma]["plan.global.integrated"];
-        const tituloTraducido = elementosATraducir[idioma][`${plan.keyPrefix}.titulo`];
-        const descTraducida = elementosATraducir[idioma][`${plan.keyPrefix}.desc`];
-        const btnTraducido = elementosATraducir[idioma][`${plan.keyPrefix}.btn`];
-
-        return `
-          <article class="${claseCard}" id="${plan.id}">
-            <div class="svc-card__top">
-              <div class="svc-card__icon ${plan.iconModifier}">
-                <i class="bi ${plan.iconClass}"></i>
-              </div>
-              <!-- COPETA TRADUCIDO -->
-              <span class="svc-card__tag">${tagTraducido}</span>
-            </div>
-            <h3 class="svc-card__title">${tituloTraducido}</h3>
-            <p class="svc-card__desc">${descTraducida}</p>
-            <ul class="svc-card__features">
-              ${featuresHTML}
-            </ul>
-            <div class="svc-card__footer">
-              <span class="svc-card__format">
-                <svg viewBox="0 0 22 18" width="14" height="12" style="margin-right: 2px; fill: currentColor; display: inline-block; vertical-align: middle;">
-                  <rect x="0" y="4" width="4" height="10" rx="0.8"/>
-                  <rect x="6" y="0" width="4" height="18" rx="0.8"/>
-                  <rect x="12" y="5" width="4" height="8" rx="0.8"/>
-                </svg>
-                <!-- PIE DE TARJETA TRADUCIDO -->
-                ${pieTraducido}
-              </span>
-              <a href="#contacto" class="${claseBoton}" data-plan="${plan.id}">
-                ${iconoEspecial} ${btnTraducido}
-              </a>
-            </div>
-          </article>
-        `;
-      }).join('');
-    };
-
-    window.dibujarTarjetasPlanes(idiomaActual);
-
     planesGrid.addEventListener('click', (e) => {
       const botonPlan = e.target.closest('.svc-card__btn, .btn');
       if (botonPlan && botonPlan.dataset.plan) {
@@ -259,47 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (carousel && track) {
 
-    window.dibujarTarjetasTestimonios = function (idioma) {
-      track.innerHTML = testimoniosData.map(item => {
-        let estrellasHTML = '';
-        const enteras = Math.floor(item.estrellas);
-        const tieneMitad = item.estrellas % 1 !== 0;
-
-        for (let i = 0; i < enteras; i++) { estrellasHTML += '<i class="bi bi-star-fill"></i>'; }
-        if (tieneMitad) { estrellasHTML += '<i class="bi bi-star-half"></i>'; }
-
-        const claseCard = item.highlight ? 'testi-card testi-card--highlight' : 'testi-card';
-
-        const disciplinaTraducida = elementosATraducir[idioma][`testi.${item.id}.disciplina`] || item.disciplina;
-        const citaTraducida = elementosATraducir[idioma][`testi.${item.id}.cita`] || item.cita;
-        const logroTraducido = elementosATraducir[idioma][`testi.${item.id}.logro`] || item.logro;
-
-        return `
-          <article class="${claseCard}">
-            <div class="testi-card__top">
-              <div class="testi-card__avatar">
-                <img src="${item.avatar}" alt="${item.nombre}" loading="lazy" width="80" height="80" />
-              </div>
-              <div class="testi-card__meta">
-                <strong>${item.nombre}</strong>
-                <span><i class="bi bi-trophy"></i> ${disciplinaTraducida}</span>
-              </div>
-              <div class="testi-card__stars">
-                ${estrellasHTML}
-              </div>
-            </div>
-            <blockquote class="testi-card__quote">
-              "${citaTraducida}"
-            </blockquote>
-            <div class="testi-card__logro">
-              <i class="bi bi-patch-check-fill"></i>
-              <span>${logroTraducido}</span>
-            </div>
-          </article>
-        `;
-      }).join('');
-      buildDots();                                     // 🟢 1. REEMPLAZO: Reconstruye los puntos navegables
-      current = Math.min(current, totalSlides() - 1); // 🟢 2. REEMPLAZO: Evita un índice fuera de rango
+    // Recalcula posición al cambiar de idioma (los textos cambian de largo)
+    window.reajustarTestimonios = function () {
+      buildDots();
+      current = Math.min(current, totalSlides() - 1);
       goTo(current);
     };
 
@@ -393,74 +317,43 @@ document.addEventListener('DOMContentLoaded', () => {
       goTo(current);
     });
 
-    window.dibujarTarjetasTestimonios(idiomaActual);
     buildDots();
-    updateCounter();
-    updateButtons();
+    goTo(0);
     startAuto();
+    console.log('[testimonios] Slider listo con', track.querySelectorAll('.testi-card').length, 'tarjetas');
   }
 
   /* ================================================
-        INYECCIÓN DINÁMICA DE LA GALERÍA (TRADUCIBLE)
+        GALERÍA (está en el HTML): lightbox al tocar una foto
      ================================================ */
   const galeriaGrid = document.getElementById('galeriaGrid');
   if (galeriaGrid) {
-    window.dibujarGaleria = function (idioma) {
-      console.log("DIBUJANDO GALERÍA EN:", idioma); // <--- AGREGAMOS ESTO PARA RASTREAR
+    galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
 
-      galeriaGrid.innerHTML = galeriaData.map(item => {
-        const claseEspecial = item.clase ? ` ${item.clase}` : '';
-        const captionTraducido = elementosATraducir[idioma][`galeria.caption.${item.id}`];
+        const bigImg = document.createElement('img');
+        bigImg.src = img.src;
+        bigImg.alt = img.alt;
 
-        // Lee el alt traducido o usa el original si no existe
-        const altTraducido = elementosATraducir[idioma][`galeria.alt.${item.id}`] || item.alt;
+        overlay.appendChild(bigImg);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
 
-        return `
-          <figure class="galeria__item${claseEspecial}">
-            <img src="${item.src}" alt="${altTraducido}" loading="lazy" width="600" height="450" />
-            <figcaption><i class="bi bi-camera-fill"></i> ${captionTraducido}</figcaption>
-          </figure>
-        `;
-      }).join('');
-
-      // Reactivación del Lightbox para las imágenes dinámicas
-      galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
-        img.style.cursor = 'zoom-in';
-        img.replaceWith(img.cloneNode(true));
+        const handleKey = (ev) => { if (ev.key === 'Escape') closeLightbox(); };
+        function closeLightbox() {
+          document.removeEventListener('keydown', handleKey);
+          overlay.style.opacity = '0';
+          overlay.style.transition = 'opacity 0.2s ease';
+          setTimeout(() => { overlay.remove(); document.body.style.overflow = ''; }, 200);
+        }
+        overlay.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', handleKey);
       });
-
-      galeriaGrid.querySelectorAll('.galeria__item img').forEach(img => {
-        img.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const overlay = document.createElement('div');
-          overlay.className = 'lightbox-overlay';
-
-          const bigImg = document.createElement('img');
-          bigImg.src = img.src.replace(/w=\d+/, 'w=1400').replace(/q=\d+/, 'q=90');
-          bigImg.alt = img.alt; // Copia el alt de la imagen chica que ya fue traducido
-
-          overlay.appendChild(bigImg);
-          document.body.appendChild(overlay);
-          document.body.style.overflow = 'hidden';
-
-          overlay.addEventListener('click', closeLightbox);
-
-          const handleKey = (e) => {
-            if (e.key === 'Escape') { closeLightbox(); document.removeEventListener('keydown', handleKey); }
-          };
-          document.addEventListener('keydown', handleKey);
-
-          function closeLightbox() {
-            overlay.style.opacity = '0';
-            overlay.style.transition = 'opacity 0.2s ease';
-            setTimeout(() => { overlay.remove(); document.body.style.overflow = ''; }, 200);
-          }
-        });
-      });
-    };
-
-    // Ejecución inicial de la galería en español
-    window.dibujarGaleria(idiomaActual);
+    });
   }
 
   /* ================================================
@@ -578,9 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Disparadores dinámicos en orden de carga
       traducirPaginaEstatica(idiomaActual);
-      if (typeof window.dibujarTarjetasPlanes === 'function') window.dibujarTarjetasPlanes(idiomaActual);
-      if (typeof window.dibujarTarjetasTestimonios === 'function') window.dibujarTarjetasTestimonios(idiomaActual);
-      if (typeof window.dibujarGaleria === 'function') window.dibujarGaleria(idiomaActual);
+      if (typeof window.reajustarTestimonios === 'function') window.reajustarTestimonios();
     });
   }
 
