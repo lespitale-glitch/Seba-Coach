@@ -31,14 +31,13 @@ import { testimoniosData, planesData, galeriaData, elementosATraducir } from './
   document.documentElement.appendChild(splash);
 })();
 
-// === DETECCIÓN AUTOMÁTICA DE IDIOMA ===
+// === IDIOMA ===
+// Siempre arranca en español (el HTML está en español y Google lo indexa así).
+// El inglés se activa solo con el botón ES/EN.
+// Antes se detectaba el idioma del navegador: Googlebot (en inglés) veía
+// la página mezclada (hero en español, planes/testimonios/galería en inglés).
 let idiomaActual = "ES";
-const usuarioLang = (navigator.language || navigator.userLanguage).toLowerCase();
-
-// Si el navegador del usuario NO está en español, seteamos inglés por defecto
-if (!usuarioLang.startsWith('es')) {
-  idiomaActual = "EN";
-}
+console.log("[i18n] Idioma inicial:", idiomaActual);
 
 document.addEventListener('DOMContentLoaded', () => {
   // Ajustamos el atributo lang del HTML para SEO de entrada
