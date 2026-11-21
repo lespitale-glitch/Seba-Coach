@@ -1,0 +1,60 @@
+# =====================================================
+#  .htaccess — sztriateam.com (Hostinger / LiteSpeed)
+#  Si algo falla (error 500), borrar este archivo desde
+#  hPanel → Administrador de archivos → public_html
+# =====================================================
+
+# ---- Codificación: tildes y ñ bien en .txt / .xml ----
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .txt .xml .html .css .js .json
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ---- Bloquear archivos ocultos (.git, .DS_Store, .gitignore) ----
+  # Se permite .well-known (lo usa el certificado SSL)
+  RewriteRule (^|/)\.(?!well-known/) - [F,L]
+
+  # ---- Bloquear archivos internos del repo ----
+  RewriteRule ^(prompts|DO_NOT_UPLOAD_HERE)$ - [F,L]
+
+  # ---- Forzar HTTPS ----
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ---- Forzar www (la URL oficial es https://www.sztriateam.com) ----
+  RewriteCond %{HTTP_HOST} ^sztriateam\.com$ [NC]
+  RewriteRule ^ https://www.sztriateam.com%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ---- Headers de seguridad ----
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  # HSTS: el navegador recuerda usar siempre https (1 año). Sin subdominios.
+  Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+</IfModule>
+
+# ---- Caché: fotos 30 días; CSS/JS 1 hora (para que los cambios se vean rápido) ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType text/css "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+  ExpiresByType text/javascript "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ---- Compresión (LiteSpeed ya comprime; esto es por si acaso) ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript text/javascript application/xml image/svg+xml
+</IfModule>
+
+# ---- Sin listado de carpetas ----
+Options -Indexes
