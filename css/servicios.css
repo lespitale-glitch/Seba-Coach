@@ -268,3 +268,17 @@
     gap: 1rem;
   }
 }
+/* Precio mensual en la tarjeta */
+.svc-card__price {
+  font-family: var(--font-display);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+.svc-card__price strong {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-right: 0.15rem;
+}
+.svc-card--premium .svc-card__price strong { color: var(--color-pink); }

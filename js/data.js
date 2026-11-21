@@ -248,6 +248,26 @@ export const elementosATraducir = {
     "galeria.alt.plan": "Training plan",
     "galeria.alt.equipamiento": "Swimming equipment",
 
+    // Preguntas frecuentes
+    "faq.eyebrow": "Frequently asked questions",
+    "faq.titleLineOne": "Everything you",
+    "faq.titleEmphasis": "need to know",
+    "plan.global.perMonth": "/ month",
+    "faq.q1": "Is the training online or in person?",
+    "faq.a1": "Mainly remote: your personalized plan is built and tracked in TrainingPeaks, with direct feedback on every session. There is also an in-person swim team at Club Banco Nación on Mondays and Fridays from 7 to 8 a.m.",
+    "faq.q2": "How much does coaching cost?",
+    "faq.a2": "The monthly triathlon plan (swimming, cycling and running) costs USD 60. The monthly single-sport plan (swimming or running) costs USD 40. Prices are in US dollars so they don't change with inflation.",
+    "faq.q3": "Do I need previous experience?",
+    "faq.a3": "No. Plans are adapted to any level: beginner, advanced or professional. From your first race to qualifying for a world championship.",
+    "faq.q4": "How does remote coaching work?",
+    "faq.a4": "You get your plan week by week in TrainingPeaks, with every session detailed: duration, zones and goals. The app syncs with Garmin, Wahoo and Polar watches and with Strava, and you can comment on each session to get personalized feedback.",
+    "faq.q5": "Can I train with you if I don't live in Buenos Aires?",
+    "faq.a5": "Yes. Since coaching is remote, you can train from anywhere. Only the in-person swim team is in Buenos Aires.",
+    "faq.q6": "What races do you prepare athletes for?",
+    "faq.a6": "Triathlon (Sprint, Short, 70.3 and Ironman), running (10K, half marathon, marathon and trail) and pool and open water swimming.",
+    "faq.q7": "How do I get started?",
+    "faq.a7": "Message me on WhatsApp or fill out the form telling me your goal, experience and availability, and we'll build your plan.",
+
     // Placeholders del formulario
     "contact.form.namePlaceholder": "John Smith",
     "contact.form.phonePlaceholder": "+54 11 1234-5678",

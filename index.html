@@ -104,7 +104,9 @@
               "addressRegion": "Buenos Aires",
               "addressCountry": "AR"
             },
-            "sameAs": ["https://www.instagram.com/sebastianzamperoni"],
+            "sameAs": [
+              "https://www.instagram.com/sebastianzamperoni"
+            ],
             "knowsAbout": [
               "Triatlón",
               "Running",
@@ -120,17 +122,25 @@
             "@id": "https://www.sztriateam.com/#business",
             "name": "SZ Tria Team — Sebastián Zamperoni",
             "logo": "https://www.sztriateam.com/img/sz-logo.png",
-            "description": "Entrenamiento de triatlón, running, natación y ciclismo en Buenos Aires. Planes premium personalizados por TrainingPeaks.",
+            "description": "Entrenamiento de triatlón, running, natación y ciclismo a distancia con planes personalizados por TrainingPeaks, y equipo de natación presencial en Buenos Aires.",
             "url": "https://www.sztriateam.com",
             "telephone": "+5491157463710",
             "email": "sebaszampe@gmail.com",
             "image": "https://www.sztriateam.com/img/og-image.jpg",
             "priceRange": "$$",
-            "areaServed": {
-              "@type": "City",
-              "name": "Ciudad de Buenos Aires"
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Ciudad de Buenos Aires"
+              },
+              {
+                "@type": "Country",
+                "name": "Argentina"
+              }
+            ],
+            "founder": {
+              "@id": "https://www.sztriateam.com/#person"
             },
-            "founder": { "@id": "https://www.sztriateam.com/#person" },
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Ciudad de Buenos Aires",
@@ -142,20 +152,6 @@
               "latitude": -34.6037,
               "longitude": -58.3816
             },
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday"
-                ],
-                "opens": "08:00",
-                "closes": "20:00"
-              }
-            ],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Planes de entrenamiento",
@@ -166,6 +162,14 @@
                     "@type": "Service",
                     "name": "Plan Técnico de Natación",
                     "description": "Análisis biomecánico de brazada, entrenamientos estructurados y optimización de ritmos en TrainingPeaks."
+                  },
+                  "price": "40",
+                  "priceCurrency": "USD",
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "40",
+                    "priceCurrency": "USD",
+                    "unitText": "mes"
                   }
                 },
                 {
@@ -174,6 +178,14 @@
                     "@type": "Service",
                     "name": "Preparación Triatlón Integral",
                     "description": "Planificación unificada de las 3 disciplinas adaptada a zonas de potencia y umbrales."
+                  },
+                  "price": "60",
+                  "priceCurrency": "USD",
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "60",
+                    "priceCurrency": "USD",
+                    "unitText": "mes"
                   }
                 },
                 {
@@ -182,6 +194,14 @@
                     "@type": "Service",
                     "name": "Performance Running Plan",
                     "description": "Periodización inteligente basada en ritmos y umbrales para calle y trail."
+                  },
+                  "price": "40",
+                  "priceCurrency": "USD",
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "40",
+                    "priceCurrency": "USD",
+                    "unitText": "mes"
                   }
                 }
               ]
@@ -193,7 +213,73 @@
             "url": "https://www.sztriateam.com",
             "name": "SZ Tria Team",
             "description": "Entrenador de triatlón, running y natación en Buenos Aires",
-            "inLanguage": ["es-AR", "en-US"]
+            "inLanguage": [
+              "es-AR",
+              "en-US"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://www.sztriateam.com/#faq",
+            "inLanguage": "es-AR",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿El entrenamiento es online o presencial?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Principalmente a distancia: tu plan personalizado se arma y se sigue en TrainingPeaks, con feedback directo sobre cada sesión. Además, hay un equipo de natación presencial en el Club Banco Nación los lunes y viernes de 7 a 8 h."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cuánto cuesta el entrenamiento?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "El plan mensual de triatlón (natación, ciclismo y running) cuesta USD 60. El plan mensual de un solo deporte (natación o running) cuesta USD 40. Los precios están en dólares para que no cambien con la inflación."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Necesito experiencia previa?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Los planes se adaptan a cualquier nivel: inicial, avanzado o profesional. Desde tu primera carrera hasta clasificar a un mundial."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo funciona el entrenamiento a distancia?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Recibís tu plan semana a semana en TrainingPeaks, con cada sesión detallada: duración, zonas y objetivos. La app se sincroniza con relojes Garmin, Wahoo y Polar y con Strava, y podés comentar cada sesión para recibir feedback personalizado."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo entrenar con vos si no vivo en Buenos Aires?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí. Como el entrenamiento es a distancia, podés entrenar desde cualquier lugar. Solo el equipo de natación presencial es en Buenos Aires."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Para qué carreras preparás?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Triatlón (Sprint, Short, 70.3 e Ironman), running (10K, media maratón, maratón y trail) y natación en pileta y aguas abiertas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo empiezo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Escribime por WhatsApp o completá el formulario contándome tu objetivo, tu experiencia y tu disponibilidad, y armamos tu plan."
+                }
+              }
+            ]
           }
         ]
       }
@@ -223,6 +309,7 @@
     <link rel="stylesheet" href="css/trainingpeaks.css" />
     <link rel="stylesheet" href="css/testimonios.css" />
     <link rel="stylesheet" href="css/galeria.css" />
+    <link rel="stylesheet" href="css/faq.css" />
     <link rel="stylesheet" href="css/contacto.css" />
   </head>
   <body>
@@ -685,6 +772,7 @@
                 <span class="svc-card__tag" data-i18n="plan.natacion.tag">Técnica · Resistencia · Aguas Abiertas</span>
               </div>
               <h3 class="svc-card__title" data-i18n="plan.natacion.titulo">Plan Técnico de<br />Natación</h3>
+              <p class="svc-card__price"><strong>USD 40</strong> <span data-i18n="plan.global.perMonth">/ mes</span></p>
               <p class="svc-card__desc" data-i18n="plan.natacion.desc">Diseñado para nadadores de pileta o atletas de aguas abiertas que buscan perfeccionar su brazada, mejorar su eficiencia hidrodinámica y ganar confianza en distancias largas.</p>
               <ul class="svc-card__features">
               <li><i class="bi bi-check2-circle"></i> <span data-i18n="plan.natacion.f1">Análisis biomecánico inicial de brazada</span></li>
@@ -706,6 +794,7 @@
                 <span class="svc-card__tag" data-i18n="plan.triatlon.tag">Sprint · Short · 70.3 · Full Ironman</span>
               </div>
               <h3 class="svc-card__title" data-i18n="plan.triatlon.titulo">Preparación<br />Triatlón Integral</h3>
+              <p class="svc-card__price"><strong>USD 60</strong> <span data-i18n="plan.global.perMonth">/ mes</span></p>
               <p class="svc-card__desc" data-i18n="plan.triatlon.desc">El programa insignia. Planificación unificada de las 3 disciplinas adaptada a tu zona de potencia, umbrales y tiempos disponibles, maximizando la asimilación del estímulo.</p>
               <ul class="svc-card__features">
               <li><i class="bi bi-check2-circle"></i> <span data-i18n="plan.triatlon.f1">Natación, ciclismo y running integrados en un solo bloque</span></li>
@@ -727,6 +816,7 @@
                 <span class="svc-card__tag" data-i18n="plan.running.tag">10K · Media Maratón · Maratón</span>
               </div>
               <h3 class="svc-card__title" data-i18n="plan.running.titulo">Performance<br />Running Plan</h3>
+              <p class="svc-card__price"><strong>USD 40</strong> <span data-i18n="plan.global.perMonth">/ mes</span></p>
               <p class="svc-card__desc" data-i18n="plan.running.desc">Pensado para corredores que quieren colgarse su primera medalla o pulverizar sus marcas personales en distancias de calle o trail, estructurando pasadas, fondos y fuerza.</p>
               <ul class="svc-card__features">
               <li><i class="bi bi-check2-circle"></i> <span data-i18n="plan.running.f1">Periodización inteligente basada en tus umbrales de ritmo</span></li>
@@ -1270,6 +1360,55 @@
           <figcaption><i class="bi bi-camera-fill"></i> <span data-i18n="galeria.caption.equipamiento">Equipamiento · Técnica</span></figcaption>
         </figure>
       </div>
+
+      <!-- =========================================
+         SECCIÓN — PREGUNTAS FRECUENTES
+         Si cambiás una respuesta, cambiala también en el schema FAQPage del <head> y en js/data.js (inglés)
+    ========================================= -->
+      <section class="faq" id="preguntas">
+        <div class="container">
+          <div class="section-head section-head--light">
+            <p class="eyebrow">
+              <i class="bi bi-question-circle"></i>
+              <span data-i18n="faq.eyebrow">Preguntas frecuentes</span>
+            </p>
+            <h2 class="section-title">
+              <span data-i18n="faq.titleLineOne">Todo lo que</span
+              ><br /><em data-i18n="faq.titleEmphasis">necesitás saber</em>
+            </h2>
+          </div>
+          <div class="faq__list">
+            <details class="faq__item" open>
+              <summary class="faq__q"><span data-i18n="faq.q1">¿El entrenamiento es online o presencial?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
+              <p class="faq__a" data-i18n="faq.a1">Principalmente a distancia: tu plan personalizado se arma y se sigue en TrainingPeaks, con feedback directo sobre cada sesión. Además, hay un equipo de natación presencial en el Club Banco Nación los lunes y viernes de 7 a 8 h.</p>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q"><span data-i18n="faq.q2">¿Cuánto cuesta el entrenamiento?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
+              <p class="faq__a" data-i18n="faq.a2">El plan mensual de triatlón (natación, ciclismo y running) cuesta USD 60. El plan mensual de un solo deporte (natación o running) cuesta USD 40. Los precios están en dólares para que no cambien con la inflación.</p>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q"><span data-i18n="faq.q3">¿Necesito experiencia previa?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
+              <p class="faq__a" data-i18n="faq.a3">No. Los planes se adaptan a cualquier nivel: inicial, avanzado o profesional. Desde tu primera carrera hasta clasificar a un mundial.</p>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q"><span data-i18n="faq.q4">¿Cómo funciona el entrenamiento a distancia?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
+              <p class="faq__a" data-i18n="faq.a4">Recibís tu plan semana a semana en TrainingPeaks, con cada sesión detallada: duración, zonas y objetivos. La app se sincroniza con relojes Garmin, Wahoo y Polar y con Strava, y podés comentar cada sesión para recibir feedback personalizado.</p>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q"><span data-i18n="faq.q5">¿Puedo entrenar con vos si no vivo en Buenos Aires?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
+              <p class="faq__a" data-i18n="faq.a5">Sí. Como el entrenamiento es a distancia, podés entrenar desde cualquier lugar. Solo el equipo de natación presencial es en Buenos Aires.</p>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q"><span data-i18n="faq.q6">¿Para qué carreras preparás?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
+              <p class="faq__a" data-i18n="faq.a6">Triatlón (Sprint, Short, 70.3 e Ironman), running (10K, media maratón, maratón y trail) y natación en pileta y aguas abiertas.</p>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__q"><span data-i18n="faq.q7">¿Cómo empiezo?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></summary>
+              <p class="faq__a" data-i18n="faq.a7">Escribime por WhatsApp o completá el formulario contándome tu objetivo, tu experiencia y tu disponibilidad, y armamos tu plan.</p>
+            </details>
+          </div>
+        </div>
+      </section>
 
       <!-- =========================================
          SECCIÓN 7 — CONTACTO (simplificado)
