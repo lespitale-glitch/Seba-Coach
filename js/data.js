@@ -254,7 +254,7 @@ export const elementosATraducir = {
     "faq.titleEmphasis": "need to know",
     "plan.global.perMonth": "/ month",
     "faq.q1": "Is the training online or in person?",
-    "faq.a1": "Mainly remote: your personalized plan is built and tracked in TrainingPeaks, with direct feedback on every session. There is also an in-person swim team at Club Banco Nación on Mondays and Fridays from 7 to 8 a.m.",
+    "faq.a1": "Mainly remote: your personalized plan is built and tracked in TrainingPeaks, with direct feedback on every session. There is also an in-person swim team at <a href=\"https://clubbanconacion.org.ar/\" target=\"_blank\" rel=\"noopener\">Club Banco Nación</a> on Mondays and Fridays from 7 to 8 a.m.",
     "faq.q2": "How much does coaching cost?",
     "faq.a2": "The monthly triathlon plan (swimming, cycling and running) costs USD 60. The monthly single-sport plan (swimming or running) costs USD 40. Prices are in US dollars so they don't change with inflation.",
     "faq.q3": "Do I need previous experience?",
